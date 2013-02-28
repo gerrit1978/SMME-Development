@@ -1,0 +1,26 @@
+
+/*** MEDIUM ****/
+/* first for IE 4–8 */
+@font-face {
+	font-family: "DaxlineWeb-Medium";
+	src: url("DaxlineWeb-Medium.eot");
+}
+
+/* then for WOFF-capable browsers */
+@font-face {
+	font-family: "DaxlineWeb-Medium";
+	src: url("DaxlineWeb-Medium.woff") format("woff");
+}
+
+/*** REGULAR ****/
+/* first for IE 4–8 */
+@font-face {
+	font-family: DaxlineWeb;
+	src: url("DaxlineWeb.eot");
+}
+
+/* then for WOFF-capable browsers */
+@font-face {
+	font-family: DaxlineWeb;
+	src: url("DaxlineWeb.woff") format("woff");
+}

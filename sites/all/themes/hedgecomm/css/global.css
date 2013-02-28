@@ -1,2 +1,81 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+
+/** General HTML elements **/
+body {
+  font-family: DaxlineWeb;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+/** Logo: Site Name **/
+h1.site-name a,
+h2.site-name a {
+  font-family: "DaxlineWeb-Medium";
+  font-weight: 100;
+  letter-spacing: -2px;
+  color: #b91d22;
+  font-size: 1.6em;
+}
+
+/** Zone Footer **/
+#zone-footer {
+  color: #bababa;
+}
+
+#zone-footer a {
+  color: #bababa;
+}
+
+#zone-footer a:hover {
+  color: white;
+}
+
+#zone-footer h2.block-title {
+  font-family: DaxlineWeb;
+  font-size: 1.077em;
+  font-weight: 100;
+  margin-bottom: 35px;
+}
+
+/** Footer Regions **/
+#region-footer-first {
+  margin: 0;
+  padding: 50px 10px 0 10px;
+  background: #3f3f3f;
+}
+
+/** Footer Third **/
+#region-footer-third {
+  margin: 0;
+  background: #080808;
+  padding: 35px 10px;
+}
+
+
+/** Footer News **/
+.view-news ul.news-items {
+  margin: 0;
+}
+
+.view-news ul.news-items li.news-item {
+  margin: 0;
+  width: 30%;
+  float: left;
+  margin-right: 5%;
+}
+
+.view-news ul.news-items li.news-item.views-row-last {
+  margin-right: 0;
+}
+
+.view-news ul.news-items li.news-item .body,
+.view-news ul.news-items li.news-item .link {
+  display: inline;
+}
+
+.view-news .view-footer {
+  margin-top: 20px;
+}

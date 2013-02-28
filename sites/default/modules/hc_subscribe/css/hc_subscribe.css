@@ -1,0 +1,31 @@
+#block-hc-subscribe-hc-subscribe .label {
+  float: left;
+  margin-right: 20px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 1.385em;
+}
+
+#block-hc-subscribe-hc-subscribe .form-item {
+  float: left;
+  margin: 0;
+  margin-right: 20px;
+}
+
+#block-hc-subscribe-hc-subscribe .form-text {
+	height: 35px;
+	line-height: 35px;
+	width: 180px;
+}
+
+#block-hc-subscribe-hc-subscribe .form-submit {
+  border: none;
+  height: 35px;
+  line-height: 35px;
+  background: url(../img/bg-subscribe.jpg) no-repeat left center;
+  padding-left: 30px;
+  color: white;
+  text-shadow: none;
+  cursor: pointer;
+  font-size: 1.385em;
+}

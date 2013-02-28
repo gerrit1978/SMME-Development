@@ -1,0 +1,273 @@
+<?php
+
+
+/**
+ * @file
+ *
+ *
+ */
+
+/************************************************************************************
+ * Drupal Hook Implementations
+ ***********************************************************************************/
+
+
+/**
+ * Implements hook_init
+ */
+function hc_regions_init() {
+
+
+  // include javascript and css for form
+  $path = drupal_get_path('module', 'hc_regions');
+  drupal_add_js($path . '/js/hc_regions.js');
+  drupal_add_css($path . '/css/hc_regions.css');
+
+  // add region variable to session, if not existing   
+  if (!isset($_SESSION) || (!isset($_SESSION['user_location'])) || (!is_array($_SESSION['user_location']))) { 
+
+		// include locale.inc file for country code <-> country name
+    include_once(DRUPAL_ROOT . '/includes/locale.inc');
+
+		// include helper file for country <-> continent
+		include_once(drupal_get_path('module', 'hc_regions') . '/hc_regions.countries.inc');
+
+    $ip = $_SERVER['REMOTE_ADDR'];
+    
+    // debugging
+    // $ip = "94.225.65.211";
+    //$ip = "202.175.128.234"; // New Zealand
+        
+    $country_code = ip2country_get_country($ip);
+    if (empty($country_code)) {
+      $country_code = "US";
+    }
+    
+    $country_list = country_get_list();
+    $country_name = $country_list[$country_code];
+  
+    $continent_code = _hc_regions_country_to_continent($country_code);
+
+    switch ($continent_code) {
+      case 'SA':
+      case 'AF':
+      case 'OC':
+        $continent_code = 'NA';
+        break;
+    }
+
+    $continent_name = _hc_regions_continent_code_to_continent_name($continent_code);
+    
+    $user_location = array(
+      'continent_code' => $continent_code,
+      'continent_name' => $continent_name,
+    );
+
+    $_SESSION['user_location'] = $user_location;
+  }
+
+}
+
+
+/**
+ * Implements hook_block_info
+ */
+function hc_regions_block_info() {
+  $blocks = array();
+  
+  $blocks['region_selection'] = array(
+    'info' => 'User\'s Region Selector',
+  );
+  
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view
+ */
+function hc_regions_block_view($delta = "") {
+  $block = array();
+  
+  switch ($delta) {
+    case 'region_selection':
+      $block['subject'] = '';
+      $block['content'] = _hc_regions_block_region_selection();
+  }
+  
+  return $block;
+}
+
+
+/**
+ * Implements hook_preprocess_node
+ *
+ * TODO: documentation. Show warning if product node is shown that does not belong to current user location (continent)
+ */
+function hc_regions_preprocess_node(&$vars) {
+
+  $field_course_region = field_get_items('node', $vars['node'], 'field_course_region');
+  
+  if (is_array($field_course_region) && isset($field_course_region[0]['value'])) {
+  
+  	$course_region = $field_course_region[0]['value'];
+  	$user_location = $_SESSION['user_location'];
+  	
+  	if (isset($user_location['continent_code'])) {
+  	
+  	  if ($user_location['continent_code'] != $course_region) {
+  	    $vars['content']['region_warning'] = array(
+  	      '#markup' => '<div class="region-warning">' . t('Warning: the product you are looking at does not belong to your region') . '</div>',
+  	    );
+  	  }
+  	}
+  }
+
+}
+
+
+/************************************************************************************
+ * Internal Helper Functions
+ ***********************************************************************************/
+
+/** 
+ * Custom submit function for "add to cart" form on products
+ * that can't be purchased
+ */
+function _hc_regions_submit_product_cant_purchase(&$form, &$form_state) {
+/*
+	$values = $form_state['values'];
+	$product_id = $values['product_id'];
+	$url = url('inquiry', array('absolute' => TRUE, 'query' => array('pid' => $product_id)));
+	drupal_goto($url);
+*/
+  exit('dit moet niet aangeroepen worden');
+}
+
+
+
+/**
+ * Helper function for rendering region selection block
+ */
+function _hc_regions_block_region_selection() {
+  
+  $output = drupal_get_form('hc_regions_select_region_form');
+  return $output;
+
+}
+
+
+/**
+ * Drupal Form for selecting region
+ */
+function hc_regions_select_region_form($form, &$form_state) {
+
+  if (!isset($_SESSION) || (!isset($_SESSION['user_location'])) || (!is_array($_SESSION['user_location']))) { 
+    return array();
+  }
+  
+  $user_location = $_SESSION['user_location'];
+  $continent_code = $user_location['continent_code'];
+  $continent_name = $user_location['continent_name'];
+
+  $form = array();
+  
+/*
+  $form['intro'] = array(
+    '#markup' => t('My current region is !continent_name.', array('!country_name' => $country_name, '!continent_name' => $continent_name)),
+  );
+*/
+  
+  $form['change_region'] = array(
+    '#title' => 'Region',
+    '#type' => 'select',
+    '#options' => array('NA' => 'America', 'EU' => 'Europe', 'AS' => 'Asia'),
+    '#default_value' => "$continent_code",
+  );
+  
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Change'),
+  );
+  
+  return $form;
+}
+
+
+
+/**
+ * Drupal Form for selecting region - SUBMIT
+ */
+function hc_regions_select_region_form_submit(&$form, &$form_state) {
+
+  $user_location = $_SESSION['user_location'];
+  $values = $form_state['values'];
+  $new_continent_code = $values['change_region'];
+  $new_continent_name = _hc_regions_continent_code_to_continent_name($new_continent_code);
+
+  $new_user_location = array(
+    'continent_code' => $new_continent_code,
+    'continent_name' => $new_continent_name,
+  );
+  
+  $_SESSION['user_location'] = $new_user_location;
+
+}
+
+
+/**
+ * Helper function for linking continent code to continent name 
+ */
+function _hc_regions_continent_code_to_continent_name($continent_code) {
+  switch ($continent_code) {
+    case 'NA':
+    case 'SA':
+    case 'AF':
+    case 'OC':
+    default:
+      $continent_name = "America";
+      break;
+    case 'EU':
+      $continent_name = "Europe";
+      break;
+    case 'AS':
+      $continent_name = "Asia";
+      break;
+  }
+  
+  return $continent_name;
+}
+
+
+/**
+ * Helper function for price format
+ *
+ * This function returns an array with variables to use
+ * when calculating/formatting/displaying price
+ *
+ */
+function _hc_regions_currency_format() {
+  
+  $return = array();
+  $user_location = $_SESSION['user_location'];
+  
+  $continent_code = $user_location['continent_code'];
+  
+  switch ($continent_code) {
+    case 'NA':
+    case 'SA':
+    case 'AF':
+    case 'OC':
+    case 'AS':
+    default:
+      $return['field'] = 'commerce_price';
+      $return['currency'] = 'USD';
+      break;
+    case 'EU':
+      $return['field'] = 'commerce_price_eur';
+      $return['currency'] = 'EUR';
+  }
+  
+  return $return;
+  
+}

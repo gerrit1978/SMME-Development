@@ -6,7 +6,7 @@
  */
 
 // The development version of Modernizr can be located here.
-define('MODERNIZR_DOWNLOAD_DEV','http://www.modernizr.com/downloads/modernizr-2.6.2.js');
+define('MODERNIZR_DOWNLOAD_DEV', 'http://www.modernizr.com/downloads/modernizr-2.6.2.js');
 
 
 /**
@@ -71,33 +71,47 @@ function modernizr_drush_help($section) {
  */
 function _modernizr_drush_download_dev() {
   $args = func_get_args();
+  $dir = '';
+  $drush_context = '';
+
+  // If the user supplied a destination, use that path
   if ($args[0]) {
-    $path = $args[0];
+    $dir = $args[0];
   }
+  // Otherwise we need to use one of the two default locations.
+  // Depends on whether Libraries API is enabled or not.
   else {
-    $path = drush_get_context('DRUSH_DRUPAL_ROOT');
+    $drush_context = drush_get_context('DRUSH_DRUPAL_ROOT');
     if (module_exists('libraries')) {
-      $path .= '/' . libraries_get_path('modernizr');
+      $libraries_dir = libraries_get_path('modernizr');
+      $dir = $libraries_dir
+           ? $drush_context . '/' . $libraries_dir
+           : $drush_context . '/sites/all/libraries/modernizr';
     }
     else {
-      $path .= '/' . drupal_get_path('module', 'modernizr') . '/js';
+      $dir = $drush_context . '/' . drupal_get_path('module', 'modernizr') . '/js';
     }
   }
 
-  // Create the path if it does not exist yet.
-  if (!is_dir($path)) {
-    drush_mkdir($path);
-  }
+  // Build full path including filename
+  $path = _modernizr_scan_for_library(array($dir));
 
-  if (is_dir($path)) {
+  // If the directory exists and contains a recognized file, we're finished.
+  if (modernizr_get_path()) {
     drush_log('Modernizr already present. No download required.', 'ok');
-  }
-  elseif (drush_op('chdir', $path) &&
-    drush_shell_exec('wget '. MODERNIZR_DOWNLOAD_DEV)) {
-      drush_log(dt('The latest Modernizr dev library has been downloaded to @path', array('@path' => $path)), 'success');
+    return;
   }
   else {
-    drush_log(dt('Drush was unable to download Modernizr dev to @path', array('@path' => $path)), 'error');
+    // The file was not present. Create the directory to hold it.
+    drush_mkdir($dir);
+
+    // Attempt to download the file and log the outcome.
+    if (drush_op('chdir', $dir) && drush_shell_exec('wget ' . MODERNIZR_DOWNLOAD_DEV)) {
+      drush_log(dt('The latest Modernizr dev library has been downloaded to @path', array('@path' => $dir)), 'success');
+    }
+    else {
+      drush_log(dt('Drush was unable to download Modernizr dev to @path', array('@path' => $dir)), 'error');
+    }
   }
 }
 
@@ -126,7 +140,7 @@ function _modernizr_drush_custom_build() {
   $output = '';
 
   // Fetch all the tests, and record which modules supplied them.
-  foreach($tests as $test => $info) {
+  foreach ($tests as $test => $info) {
     $args[$info['type']][] = $test;
     $modules[] = $info['module'];
   }
@@ -135,10 +149,10 @@ function _modernizr_drush_custom_build() {
   $modules = array_unique($modules);
 
   // Collapse tests into the format accepted by the node builder.
-  $tests  = (isset($args['tests']))  ? ' -t '. implode(' ',$args['tests'])  : '';
-  $extras = (isset($args['extras'])) ? ' -e '. implode(' ',$args['extras']) : '';
-  $groups = (isset($args['groups'])) ? ' -g '. implode(' ',$args['groups']) : '';
-  $not    = (isset($args['not']))    ? ' -n '. implode(' ',$args['not'])    : '';
+  $tests  = (isset($args['tests']))  ? ' -t ' . implode(' ', $args['tests'])  : '';
+  $extras = (isset($args['extras'])) ? ' -e ' . implode(' ', $args['extras']) : '';
+  $groups = (isset($args['groups'])) ? ' -g ' . implode(' ', $args['groups']) : '';
+  $not    = (isset($args['not']))    ? ' -n ' . implode(' ', $args['not'])    : '';
 
   $output = $tests . $extras . $groups . $not;
 
