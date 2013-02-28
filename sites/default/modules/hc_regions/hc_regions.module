@@ -17,7 +17,6 @@
  */
 function hc_regions_init() {
 
-
   // include javascript and css for form
   $path = drupal_get_path('module', 'hc_regions');
   drupal_add_js($path . '/js/hc_regions.js');

@@ -1,6 +1,6 @@
 #block-hc-subscribe-hc-subscribe .label {
   float: left;
-  margin-right: 20px;
+  margin-right: 50px;
   height: 35px;
   line-height: 35px;
   font-size: 1.385em;
@@ -16,6 +16,7 @@
 	height: 35px;
 	line-height: 35px;
 	width: 180px;
+	margin-top: -5px;
 }
 
 #block-hc-subscribe-hc-subscribe .form-submit {

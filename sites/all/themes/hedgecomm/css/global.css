@@ -1,26 +1,67 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
 
-/** General HTML elements **/
+/************************************************************************************************************************************
+ *
+ *
+ * A. SITE-WIDE ELEMENTS
+ *
+ *
+ ************************************************************************************************************************************/
+
+/****************************************************************
+ * A.1. LAYOUT
+ ***************************************************************/
+.zone.container-12 {
+  width: 1000px !important;
+  margin: 0 auto;
+}
+
+.zone.container-12 .region.grid-12 {
+  padding: 0 30px;
+}
+
+/****************************************************************
+ * A.2. GENERAL HTML ELEMENTS
+ ***************************************************************/
 body {
   font-family: DaxlineWeb;
 }
 
 a:link, a:visited {
   text-decoration: none;
+  -webkit-transition: all .1s linear;  
+  -moz-transition: all .1s linear;  
+  -o-transition: all .1s linear;  
+  -ms-transition: all .1s linear;   
+}
+
+a:hover {
+  -webkit-transition: all .1s linear;  
+  -moz-transition: all .1s linear;  
+  -o-transition: all .1s linear;  
+  -ms-transition: all .1s linear;   
 }
 
 /** Logo: Site Name **/
 h1.site-name a,
 h2.site-name a {
-  font-family: "DaxlineWeb-Medium";
-  font-weight: 100;
   letter-spacing: -2px;
   color: #b91d22;
   font-size: 1.6em;
 }
 
-/** Zone Footer **/
+h1, h2, h3, h4, h5, h6 {
+  font-family: "DaxlineWeb";
+  font-weight: 100;  
+}
+
+
+/****************************************************************
+ * A.3. ZONES
+ ***************************************************************/
+
+/* Footer */
 #zone-footer {
   color: #bababa;
 }
@@ -33,34 +74,48 @@ h2.site-name a {
   color: white;
 }
 
-#zone-footer h2.block-title {
-  font-family: DaxlineWeb;
-  font-size: 1.077em;
-  font-weight: 100;
-  margin-bottom: 35px;
-}
+/****************************************************************
+ * A.4. REGIONS
+ ***************************************************************/
+
 
 /** Footer Regions **/
 #region-footer-first {
   margin: 0;
-  padding: 50px 10px 0 10px;
+  padding-top: 50px;
   background: #3f3f3f;
 }
 
 #region-footer-second {
   margin: 0;
-  padding: 20px 10px 0 10px;
+  padding-top: 50px;
+  padding-bottom: 60px;
   background: #383838;
 }
 
 #region-footer-third {
   margin: 0;
   background: #080808;
-  padding: 35px 10px;
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 
+/************************************************************************************************************************************
+ *
+ *
+ * B. VIEWS BLOCKS
+ *
+ *
+ ************************************************************************************************************************************/
 
-/** Footer News **/
+/****************************************************************
+ * B.1. FOOTER NEWS
+ ***************************************************************/
+#block-views-news-block h2.block-title {
+  font-size: 1em;
+  margin-bottom: 30px;
+}
+
 .view-news ul.news-items {
   margin: 0;
 }
@@ -76,11 +131,119 @@ h2.site-name a {
   margin-right: 0;
 }
 
-.view-news ul.news-items li.news-item .body,
-.view-news ul.news-items li.news-item .link {
+.view-news ul.news-items li.news-item .news-body {
+  color: #939393;
+}
+
+.view-news ul.news-items li.news-item .news-body,
+.view-news ul.news-items li.news-item .news-link {
   display: inline;
 }
 
 .view-news .view-footer {
   margin-top: 20px;
+}
+
+
+/************************************************************************************************************************************
+ *
+ *
+ * C. GENERAL BLOCKS
+ *
+ *
+ ************************************************************************************************************************************/
+
+/****************************************************************
+ * C.1. CONTACT BLOCK (FOOTER)
+ ***************************************************************/
+.block-contact h2.block-title {
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.923em;
+  margin-bottom: 35px;
+}
+
+/****************************************************************
+ * C.2. CATALOG BLOCK (FOOTER)
+ ***************************************************************/
+.block-catalog h2.block-title {
+  margin-bottom: 45px;
+}
+
+.block-catalog ul.catalog-items {
+  margin: 0;
+  padding: 0;
+}
+
+.block-catalog ul.catalog-items li.catalog-item {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 6px;
+  list-style: none;
+}
+
+.block-catalog ul.catalog-items li.catalog-item a {
+  color: #939393;
+}
+
+.block-catalog ul.catalog-items li.catalog-item a:hover {
+  color: white;
+}
+
+/****************************************************************
+ * C.3. FOOTER MENU
+ ***************************************************************/
+.block-footer-menu h2.block-title {
+  margin-bottom: 45px;
+}
+
+.block-footer-menu ul.menu {
+  margin: 0;
+  padding: 0;
+}
+
+.block-footer-menu ul.menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.block-footer-menu ul.menu li a {
+  color: #939393;
+}
+
+/****************************************************************
+ * C.4. MAIN MENU
+ ***************************************************************/
+#block-system-main-menu {
+  float: right;
+}
+
+#block-system-main-menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+#block-system-main-menu ul li {
+  list-style: none;
+  float: left;
+  margin-right: 10px;
+}
+
+#block-system-main-menu ul li a {
+  font-size: 1.308em;
+  color: #949494;
+}
+
+#block-system-main-menu ul li a:hover,
+#block-system-main-menu ul li a.active {
+  color: #3f3f3f;
+}
+
+#block-system-main-menu ul li a#menu-shopping-cart {
+  background: url(../img/icons/menu-shopping-cart.jpg) no-repeat center center;
+  width: 20px;
+  height: 20px;
+  display: block;
+  text-indent: -999em;
 }

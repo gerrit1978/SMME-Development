@@ -24,3 +24,16 @@
 	font-family: DaxlineWeb;
 	src: url("DaxlineWeb.woff") format("woff");
 }
+
+/*** BOLD ***/
+/* first for IE 4–8 */
+@font-face {
+	font-family: "DaxlineWeb-Bold";
+	src: url("DaxlineWeb-Bold.eot");
+}
+
+/* then for WOFF-capable browsers */
+@font-face {
+	font-family: "DaxlineWeb-Bold";
+	src: url("DaxlineWeb-Bold.woff") format("woff");
+}
