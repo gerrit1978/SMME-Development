@@ -377,10 +377,24 @@ h1, h2, h3, h4, h5, h6 {
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link,
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link a {
   color: white;
+  -webkit-transition: all .1s linear;  
+  -moz-transition: all .1s linear;  
+  -o-transition: all .1s linear;  
+  -ms-transition: all .1s linear;   
 }
 
-.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link a:hover {
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link a:hover,
+.page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .color .name,
+.page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .color .description {
   color: #3f3f3f;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .color .name,
+.page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .color .description {
+  -webkit-transition: all .1s linear;  
+  -moz-transition: all .1s linear;  
+  -o-transition: all .1s linear;  
+  -ms-transition: all .1s linear;   
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .name {

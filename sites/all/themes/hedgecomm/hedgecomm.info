@@ -357,3 +357,5 @@ version = '1.x'
 
 stylesheets[all][] = fonts/fonts.css
 stylesheets[all][] = font-awesome/css/font-awesome.min.css
+
+scripts[] = scripts/scripts.js
