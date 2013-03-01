@@ -54,6 +54,7 @@ a:hover {
 h1.site-name a,
 h2.site-name a {
   letter-spacing: -2px;
+  font-family: "DaxlineWeb-Medium";
   color: #eb2c23;
   font-size: 1.6em;
 }
