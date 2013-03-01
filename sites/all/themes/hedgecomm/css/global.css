@@ -19,6 +19,8 @@
 
 .zone.container-12 .region.grid-12 {
   padding: 0 30px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /****************************************************************
@@ -56,26 +58,43 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 100;  
 }
 
-
 /****************************************************************
- * A.3. ZONES
+ * A.3. SECTIONS
  ***************************************************************/
 
-/* Footer */
-#zone-footer {
+/** Footer **/
+#section-footer {
   color: #bababa;
 }
 
-#zone-footer a {
+#section-footer a {
   color: #bababa;
 }
 
-#zone-footer a:hover {
+#section-footer a:hover {
   color: white;
 }
 
+
 /****************************************************************
- * A.4. REGIONS
+ * A.4. ZONES & WRAPPERS
+ ***************************************************************/
+
+/** Footer **/
+#zone-footer-wrapper {
+  background: #3f3f3f;
+}
+
+#zone-footer-second-wrapper {
+  background: #383838;
+}
+
+#zone-footer-third-wrapper {
+  background: #080808;
+}
+
+/****************************************************************
+ * A.5. REGIONS
  ***************************************************************/
 
 
@@ -157,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
  * C.1. CONTACT BLOCK (FOOTER)
  ***************************************************************/
 .block-contact h2.block-title {
-  font-family: "DaxlineWeb-Bold";
+  font-family: "DaxlineWeb-Medium";
   font-size: 1.923em;
   margin-bottom: 35px;
 }
@@ -246,4 +265,113 @@ h1, h2, h3, h4, h5, h6 {
   height: 20px;
   display: block;
   text-indent: -999em;
+}
+
+/****************************************************************
+ * C.5. HEADER VISUAL
+ ***************************************************************/
+#zone-header-visual .region.grid-12 {
+  margin: 0;
+  padding: 0;
+  width: 1000px;
+}
+
+.block-header-catalog {}
+.block-header-catalog ul {
+  margin: 0;
+  padding: 0;
+}
+
+.block-header-catalog ul li {
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  position: relative;
+}
+
+.block-header-catalog ul li .text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 45%;
+  padding: 35px 30px;
+}
+
+.block-header-catalog ul li .text .title {
+  font-size: 3.231em;
+}
+
+.block-header-catalog ul li .text .description {
+  font-size: 1.538em;
+}
+
+/************************************************************************************************************************************
+ *
+ *
+ * D. PAGES
+ *
+ *
+ ************************************************************************************************************************************/
+
+/****************************************************************
+ * D.1. CATALOG PAGE
+ ***************************************************************/
+.page-catalog h2.site-name a {
+  color: #00b2d9;
+}
+
+/** Header on catalog page **/
+.page-catalog .block-header-catalog ul li .text {
+  background: #00b2d9;
+}
+
+.page-catalog .block-header-catalog ul li .text .title,
+.page-catalog .block-header-catalog ul li .text .description {
+  color: white;
+} 
+
+/** Main catalog view **/
+.page-catalog #block-system-main ul.catalog-items {
+  margin: 0;
+  padding: 0;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item {
+  margin: 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item.last {
+  margin-right: 0;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color {
+  padding: 25px;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .name,
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .description,
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link,
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link a {
+  color: white;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link a:hover {
+  color: #3f3f3f;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .name {
+  font-family: "DaxlineWeb-Bold";
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .description {
+  font-size: 1.384em;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link {
+  font-size: 1.384em;
 }
