@@ -46,10 +46,15 @@ a:hover {
 }
 
 /** Logo: Site Name **/
+.branding-data {
+  position: absolute;
+  top: 15px;
+}
+
 h1.site-name a,
 h2.site-name a {
   letter-spacing: -2px;
-  color: #b91d22;
+  color: #eb2c23;
   font-size: 1.6em;
 }
 
@@ -79,6 +84,11 @@ h1, h2, h3, h4, h5, h6 {
 /****************************************************************
  * A.4. ZONES & WRAPPERS
  ***************************************************************/
+
+/** Branding **/
+#zone-branding-wrapper {
+  height: 100px;
+}
 
 /** Footer **/
 #zone-footer-wrapper {
@@ -236,6 +246,7 @@ h1, h2, h3, h4, h5, h6 {
  ***************************************************************/
 #block-system-main-menu {
   float: right;
+  margin-top: 50px;
 }
 
 #block-system-main-menu ul {
@@ -303,6 +314,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .block-header-catalog ul li .text .description {
   font-size: 1.538em;
+}
+
+/****************************************************************
+ * C.6. REGION SWITCHER
+ ***************************************************************/
+#block-hc-regions-region-selection {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 /************************************************************************************************************************************
@@ -374,4 +394,133 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link {
   font-size: 1.384em;
+}
+
+/****************************************************************
+ * D.2. CATALOG SUBJECT PAGE
+ ***************************************************************/
+
+/** Catalog Subject Header **/
+.catalog-subject-header {
+  position: relative;
+  margin-bottom: 40px;
+} 
+
+.catalog-subject-header .text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 45%;
+  padding: 35px 30px;
+  background: #eb2c23;
+}
+
+.catalog-subject-header .text .title,
+.catalog-subject-header .text .description,
+.catalog-subject-header .text .description a {
+  color: white;
+}
+
+.catalog-subject-header .text .title {
+  font-size: 3.231em;
+}
+
+.catalog-subject-header .text .description {
+  font-size: 1.538em;
+}
+
+
+/** Catalog Subject Navigation **/
+.catalog-subject-navigation {
+  margin-bottom: 60px;
+}
+
+
+/** Catalog Subject Content **/
+.field-collection-container {
+  margin: 0;
+  border: none;
+}
+
+.field-name-field-catalog-what .field-label {
+  font-size: 2.923em;
+  color: #eb2c23;
+}
+
+.field-collection-item-field-catalog-what .field-collection-container {
+  border-bottom: 1px solid #ededed;
+  padding-bottom: 30px;
+  margin-bottom: 60px;
+}
+
+.field-name-field-cat-what-header-text {
+  font-size: 1.385em;
+  color: #838383;
+  width: 75%;
+}
+
+.field-name-field-cat-what-blocks .field-collection-view {
+  border: none;
+  margin: 0;
+}
+
+.field-name-field-cat-what-blocks .field-item {
+  float: left;
+  width: 40%;
+  margin-right: 5%;
+}
+
+.field-name-field-cat-what-blocks .field-item.odd {
+  margin-right: 0;
+}
+
+.field-name-field-cat-what-blocks .field-item .field-collection-item-field-cat-what-blocks .field-item {
+  float: none;
+  width: auto;
+}
+
+.field-name-field-cat-what-block-title {
+  font-size: 1.692em;
+  color: #646464;
+}
+
+.field-name-field-cat-what-block-text {
+  font-size: 1.231em;
+  color: #838383;
+  margin-bottom: 30px;
+}
+
+.field-name-field-cat-what-footer-text {
+  width: 75%;
+  color: #838383;
+  font-size: 1.231em;
+}
+
+.field-name-field-catalog-where {
+  padding: 30px;
+  background: #eb2c23;
+  color: white;
+  font-size: 1.231em;
+  margin-bottom: 80px;
+}
+
+.field-name-field-catalog-where .field-label {
+  color: white;
+  font-size: 2.5em;
+}
+
+.field-name-field-catalog-where .field-items {
+  width: 75%;
+}
+
+.field-name-field-catalog-who {
+  color: #838383;
+  width: 75%;
+  font-size: 1.231em;
+  padding: 0 30px;
+}
+
+.field-name-field-catalog-who .field-label {
+  color: #eb2c23;
+  font-size: 2.5em;
 }

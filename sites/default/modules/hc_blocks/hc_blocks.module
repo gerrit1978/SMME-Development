@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * This module provides a number of custom blocks
+ */
+
+/**
+ * Implements hook_block_info
+ */
+function hc_blocks_block_info() {
+  $blocks = array();
+  
+  $blocks['catalog_subject_header'] = array(
+    'info' => t('Catalog Subject Page Header'),
+  );
+  
+  $blocks['catalog_subject_navigation'] = array(
+    'info' => t('Catalog Subject Page Navigation'),
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view
+ */
+function hc_blocks_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'catalog_subject_header':
+      $block['content'] = _hc_blocks_block_catalog_subject_header_render();
+      break;
+    case 'catalog_subject_navigation':
+      $block['content'] = _hc_blocks_block_catalog_subject_navigation_render();
+      break;
+  }
+  
+  return $block;
+}
+
+/**
+ * Helper function for rendering Catalog subject page header block
+ */
+function _hc_blocks_block_catalog_subject_header_render() {
+  $block = array();
+  
+  if (is_numeric(arg(2))) {
+    $tid = arg(2);
+    $term_wrapper = entity_metadata_wrapper('taxonomy_term', $tid);
+    $term_name = $term_wrapper->name->value();
+    $term_description = $term_wrapper->description->value();
+    $term_header_visual = $term_wrapper->field_catalog_header_visual->value();
+    $header_visual_path = file_create_url($term_header_visual['uri']);
+    $header_visual = theme('image', array('path' => $header_visual_path));
+
+		$output = "<div class='image'>" . $header_visual . "</div>"
+		  . "<div class='text'>"
+		  . "<div class='title'>" . $term_name . "</div>"
+		  . "<div class='description'>" . $term_description . "</div>"
+		  . "</div>";
+
+  } 
+  
+  $block['#markup'] = $output;
+  
+  return $block;
+}
+
+
+/**
+ * Helper function for rendering Catalog subject page navigation block
+ */
+function _hc_blocks_block_catalog_subject_navigation_render() {
+  return "NAVIGATION TO BE INSERTED HERE";
+}
