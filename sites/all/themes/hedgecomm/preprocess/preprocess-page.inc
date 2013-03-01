@@ -24,8 +24,10 @@ function hedgecomm_alpha_preprocess_page(&$vars) {
       $field_catalog_bg_color = $term_wrapper->field_catalog_bg_color->value();
       // Doe hier nog iets mee in de page (uit te zoeken wat)
     }
-
   }
   
-
+  /** COURSE DETAIL PAGE **/
+  if (isset($vars['node']) && $vars['node']->type == 'course') {
+    $vars['title'] = "";
+  }
 }

@@ -445,6 +445,7 @@ h1, h2, h3, h4, h5, h6 {
 .field-name-field-catalog-what .field-label {
   font-size: 2.923em;
   color: #eb2c23;
+  font-weight: 100;
 }
 
 .field-collection-item-field-catalog-what .field-collection-container {
@@ -507,6 +508,7 @@ h1, h2, h3, h4, h5, h6 {
 .field-name-field-catalog-where .field-label {
   color: white;
   font-size: 2.5em;
+  font-weight: 100;
 }
 
 .field-name-field-catalog-where .field-items {
@@ -523,4 +525,154 @@ h1, h2, h3, h4, h5, h6 {
 .field-name-field-catalog-who .field-label {
   color: #eb2c23;
   font-size: 2.5em;
+  font-weight: 100;  
+}
+
+/****************************************************************
+ * D.3. COURSE DETAIL PAGE
+ ***************************************************************/
+
+/** Header **/
+#block-hc-blocks-course-header {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.block-header-course .text-top {
+  background: #eb2c23;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  padding: 0 30px;
+  height: 100%;
+}
+
+.block-header-course .text-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  background: #cd1c1c;
+  padding: 30px;
+}
+
+.block-header-course .title,
+.block-header-course .description {
+  color: white;
+}
+
+.block-header-course .text-top .title {
+  font-size: 3.231em;
+  margin-top: 45px;
+  margin-bottom: 10px;
+}
+
+.block-header-course .text-top .description {
+  font-size: 1.692em;
+}
+
+.block-header-course .text-bottom .title {
+  font-size: 1.358em;
+  margin-bottom: 10px;
+}
+
+.block-header-course .text-bottom .description {
+  font-size: 1.358em;
+}
+
+.block-header-course .text-bottom .description ul {
+  margin-left: 20px;
+}
+
+/** Main Content **/
+.field-name-field-course-content-title {
+  color: #eb2c23;
+  font-family: "DaxlineWeb-Medium";
+  font-size: 2.5em;
+}
+
+.field-name-field-course-content-intro-text {
+  font-size: 1.385em;
+  color: #838383;
+  width: 70%;
+}
+
+.field-name-field-course-content-blocks .field-collection-view {
+  border: none;
+}
+
+.field-name-field-course-content-blocks .field-item {
+  width: 45%;
+  margin-right: 5%;
+  float: left;
+}
+
+.field-name-field-course-content-blocks .field-item .field-collection-item-field-course-content-blocks .field-item {
+  width: 100%;
+  float: none;
+}
+
+.field-name-field-course-content-block-title {
+  font-size: 1.692em;
+  color: #646464;
+}
+
+.field-name-field-course-content-block-text {
+  font-size: 1.231em;
+  color: #838383;
+  margin-bottom: 50px;
+}
+
+.field-collection-item-field-course-content .field-collection-container {
+  border-bottom: 1px solid #ededed;
+  margin-bottom: 20px;
+}
+
+/** Testimonials **/
+.block-course-testimonials {
+  margin-bottom: 20px;
+}
+
+.block-course-testimonials h2.block-title {
+  font-size: 3.231em;
+  color: #eb2c23;
+  margin-bottom: 20px;
+}
+
+.block-course-testimonials ul.testimonials {
+  margin: 0;
+  padding: 0;
+}
+
+.block-course-testimonials ul.testimonials li.testimonial {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 30%;
+  float: left;
+  margin-right: 5%;
+  position: relative;
+}
+
+.block-course-testimonials ul.testimonials li.testimonial.last {
+  margin-right: 0;
+}
+
+.block-course-testimonials ul.testimonials li.testimonial .body {
+  background: #eb2c23;
+  padding: 10px 20px;
+  color: white;
+}
+
+.block-course-testimonials ul.testimonials li.testimonial .name {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.231em;
+}
+
+.block-course-testimonials ul.testimonials li.testimonial .function {
+  margin-left: 20px;
+  font-size: 1.231em;
 }

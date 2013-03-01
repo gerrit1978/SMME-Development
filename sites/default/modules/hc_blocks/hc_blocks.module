@@ -19,6 +19,14 @@ function hc_blocks_block_info() {
     'info' => t('Catalog Subject Page Navigation'),
   );
   
+  $blocks['course_header'] = array(
+    'info' => t('Course Page Header'),
+  );
+  
+  $blocks['course_testimonials'] = array(
+    'info' => t('Course Testimonials'),
+  );
+  
   return $blocks;
 }
 
@@ -35,6 +43,12 @@ function hc_blocks_block_view($delta = '') {
     case 'catalog_subject_navigation':
       $block['content'] = _hc_blocks_block_catalog_subject_navigation_render();
       break;
+    case 'course_header':
+      $block['content'] = _hc_blocks_block_course_header_render();
+      break;
+    case 'course_testimonials':
+      $block['subject'] = t('Course Testimonials');
+      $block['content'] = _hc_blocks_block_course_testimonials_render();
   }
   
   return $block;
@@ -74,4 +88,64 @@ function _hc_blocks_block_catalog_subject_header_render() {
  */
 function _hc_blocks_block_catalog_subject_navigation_render() {
   return "NAVIGATION TO BE INSERTED HERE";
+}
+
+
+/**
+ * Helper function for rendering Course Page header block
+ */
+function _hc_blocks_block_course_header_render() {
+  $block = array();
+  
+  if (is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node_wrapper = entity_metadata_wrapper('node', $nid);
+    $course_header_field = $node_wrapper->field_course_header->value();
+    $course_header_wrapper = entity_metadata_wrapper('field_collection_item', $course_header_field->item_id);
+    
+    $course_header_title = $course_header_wrapper->field_course_header_title->value();
+    $course_header_text = $course_header_wrapper->field_course_header_text->value();
+    $course_header_text_formatted = check_markup($course_header_text['value']);
+    
+    $course_header_visual = $course_header_wrapper->field_course_header_visual->value();
+    $course_header_visual_path = file_create_url($course_header_visual['uri']);
+    $course_header_visual_image = theme('image', array('path' => $course_header_visual_path));
+    
+    $course_header_information_text = $course_header_wrapper->field_course_header_information->value();
+    $course_header_information_text_formatted = $course_header_information_text['value'];
+    
+    $output = "<div class='image'>" . $course_header_visual_image . "</div>"
+      . "<div class='text-top'>"
+      . "<div class='title'>" . $course_header_title . "</div>"
+      . "<div class='description'>" . $course_header_text_formatted . "</div>"
+      . "</div>"
+      . "<div class='text-bottom'>"
+      . "<div class='title'>" . t('Key Information:') . "</div>"
+      . "<div class='description'>" . $course_header_information_text_formatted . "</div>"
+      . "</div>";
+
+    $block['#markup'] = $output;
+
+  }
+  return $block;
+}
+
+
+/**
+ * Helper function for rendering Course Testimonials block
+ */
+function _hc_blocks_block_course_testimonials_render() {
+
+  if (is_numeric(arg(1))) {
+    $testimonial_nids = array();
+    $nid = arg(1);
+    $result = db_query("SELECT entity_id FROM {field_revision_field_testimonial_reference} WHERE field_testimonial_reference_nid=:course_nid", array(':course_nid' => $nid));
+    foreach ($result as $row) {
+      $testimonial_nids[] = $row->entity_id;
+    }
+  }
+
+  $output = views_embed_view('testimonials', 'block', implode(',', $testimonial_nids));
+
+  return $output;
 }
