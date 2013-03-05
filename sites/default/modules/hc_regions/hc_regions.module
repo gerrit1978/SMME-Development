@@ -210,6 +210,8 @@ function hc_regions_select_region_form_submit(&$form, &$form_state) {
   );
   
   $_SESSION['user_location'] = $new_user_location;
+  
+  drupal_goto('<front>');
 
 }
 
