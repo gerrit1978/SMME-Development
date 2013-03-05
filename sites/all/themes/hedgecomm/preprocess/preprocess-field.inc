@@ -10,6 +10,9 @@
  */
 function hedgecomm_alpha_preprocess_field(&$vars) {
 
+/*
+  $vars['highlight_array'] = array();
+
   // load taxonomy term for catalog subject pages
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
     $tid = arg(2);
@@ -18,16 +21,23 @@ function hedgecomm_alpha_preprocess_field(&$vars) {
   }
 
   $field_name = $vars['element']['#field_name'];
-
-  if ($field_name == 'field_catalog_what') {
-		$vars['label'] = t('What is @subject?', array('@subject' => $term_name));
+ 
+  // highlight blocks 
+  if ($field_name == 'field_block') {
+    $vars['highlight_array'] = array();
+  
+    foreach ($vars['items'] as $delta => $item) {
+	    $field_collection_items = $item['entity']['field_collection_item'];
+	    foreach ($field_collection_items as $field_collection_id => $field_collection_item) {
+        $field_collection_wrapper = entity_metadata_wrapper('field_collection_item', $field_collection_id);
+        $highlighted = $field_collection_wrapper->field_block_highlight->value();
+        $vars['highlight_array'][$delta] = "";
+        if ($highlighted) {
+          $vars['highlight_array'][$delta] = "highlighted";
+        } 
+	    }
+    }
   }
-
-  if ($field_name == 'field_catalog_where') {
-		$vars['label'] = t('Where does @subject come from?', array('@subject' => $term_name));  
-  }
-
-  if ($field_name == 'field_catalog_who') {
-		$vars['label'] = t('Who is @subject for?', array('@subject' => $term_name));  
-  }
+*/
+  
 }

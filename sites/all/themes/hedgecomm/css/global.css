@@ -457,11 +457,76 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
 }
 
-.field-name-field-catalog-what .field-label {
+.field-collection-view {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted {
+  background: #eb2c23;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 20px 30px;
+  
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-title,
+.field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-text {
+  color: white;
+}
+
+.field-collection-item-field-block .field-name-field-block-title {
   font-size: 2.923em;
   color: #eb2c23;
   font-weight: 100;
 }
+
+.field-collection-item-field-block .field-name-field-block-text,
+.field-collection-item-field-block .field-name-field-block-footer-text { 
+  font-size: 1.231em;
+  color: #838383;
+  width: 75%;
+  margin: 30px 0;
+}
+
+.field-collection-item-field-block .field-name-field-block-footer-text {
+  border-top: 1px solid #ededed;
+  padding-top: 60px;
+}
+
+.field-collection-item-field-block .field-name-field-block-subblock .field-item {
+  width: 40%;
+  margin-right: 25px;
+  float: left;
+}
+
+.field-collection-item-field-block .field-name-field-block-subblock .field-item.odd {
+  margin-right: 0;
+}
+
+.field-collection-item-field-block .field-name-field-block-subblock .field-item .field-collection-item-field-block-subblock .field-item {
+  float: none;
+  width: auto;
+}
+
+.field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-title {
+  font-size: 1.692em;
+  color: #646464;
+}
+
+.field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text {
+  font-size: 1.231em;
+  color: #838383;
+  margin-bottom: 30px;
+}
+
+.field-collection-item-field-block .field-item.highlighted {
+  background: #eb2c23;
+  color: white;
+}
+
+/*
 
 .field-collection-item-field-catalog-what .field-collection-container {
   border-bottom: 1px solid #ededed;
@@ -469,35 +534,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 60px;
 }
 
-.field-name-field-cat-what-header-text {
-  font-size: 1.385em;
-  color: #838383;
-  width: 75%;
-}
-
-.field-name-field-cat-what-blocks .field-collection-view {
-  border: none;
-  margin: 0;
-}
-
-.field-name-field-cat-what-blocks .field-item {
-  float: left;
-  width: 40%;
-  margin-right: 5%;
-}
-
-.field-name-field-cat-what-blocks .field-item.odd {
-  margin-right: 0;
-}
-
-.field-name-field-cat-what-blocks .field-item .field-collection-item-field-cat-what-blocks .field-item {
-  float: none;
-  width: auto;
-}
 
 .field-name-field-cat-what-block-title {
   font-size: 1.692em;
-  color: #646464;
+
 }
 
 .field-name-field-cat-what-block-text {
@@ -542,6 +582,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2.5em;
   font-weight: 100;  
 }
+*/
 
 /****************************************************************
  * D.3. COURSE DETAIL PAGE

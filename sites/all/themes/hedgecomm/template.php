@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * This file is empty by default because the base theme chain (Alpha & Omega) provides
@@ -10,3 +9,19 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
+ 
+function hedgecomm_preprocess_field_collection_item(&$vars) {
+ exit('hier');
+}
+ 
+function hedgecomm_preprocess_entity(&$vars) {
+
+  if ($vars['elements']['#bundle'] == 'field_block') {
+    $entity_id = $vars['elements']['field_block_title']['#object']->item_id;
+    $block_wrapper = entity_metadata_wrapper('field_collection_item', $entity_id);
+    $highlight_field = $block_wrapper->field_block_highlight->value();
+    if ($highlight_field) {
+      $vars['classes_array'][] = "highlighted";
+    }
+	}
+}
