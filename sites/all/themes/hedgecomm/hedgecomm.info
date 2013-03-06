@@ -355,7 +355,12 @@ settings[alpha_region_footer_second_weight] = '2'
 settings[alpha_region_footer_second_css] = ''
 version = '1.x'
 
+stylesheets[all][] = css/colors/red.css
+stylesheets[all][] = css/colors/yellow.css
+stylesheets[all][] = css/colors/blue.css
+stylesheets[all][] = css/colors/green.css
 stylesheets[all][] = fonts/fonts.css
 stylesheets[all][] = font-awesome/css/font-awesome.min.css
 
+scripts[] = scripts/jquery.easing.1.3.js
 scripts[] = scripts/scripts.js

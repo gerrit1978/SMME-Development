@@ -10,14 +10,13 @@
  * for more information on this topic.
  */
  
-function hedgecomm_preprocess_field_collection_item(&$vars) {
- exit('hier');
-}
- 
 function hedgecomm_preprocess_entity(&$vars) {
 
   if ($vars['elements']['#bundle'] == 'field_block') {
     $entity_id = $vars['elements']['field_block_title']['#object']->item_id;
+    
+    $vars['attributes_array']['id'] = "text_block_" . $entity_id;
+    
     $block_wrapper = entity_metadata_wrapper('field_collection_item', $entity_id);
     $highlight_field = $block_wrapper->field_block_highlight->value();
     if ($highlight_field) {

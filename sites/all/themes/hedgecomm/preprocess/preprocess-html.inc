@@ -21,4 +21,12 @@ function hedgecomm_alpha_preprocess_html(&$vars) {
     }
   }
   
+  /** ADD COLOR TO BODY CLASSES FOR SUBJECT PAGES (Taxonomy Term) **/
+  if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
+    $term_wrapper = entity_metadata_wrapper('taxonomy_term', arg(2));
+    $color_field = $term_wrapper->field_color->value();
+    if (isset($color_field->name)) {
+      $vars['attributes_array']['class'][] = $color_field->name;
+    }
+  }
 }

@@ -1,0 +1,162 @@
+/** Stylesheet defining different colors **/
+
+/****************************************** 
+ * 1. Course Detail page 
+ ******************************************/
+
+/* Site Logo */
+.blue1 h1.site-name a, .blue1 h2.site-name a {
+  color: #00b2d9;
+}
+
+.blue2 h1.site-name a, .blue2 h2.site-name a {
+  color: #1889b3;
+} 
+
+.blue3 h1.site-name a, .blue3 h2.site-name a {
+  color: #005a86;
+}
+
+
+/* Header background */
+.blue1 .block-header-course .text-top {
+  background-color: #00b2d9;
+}
+
+.blue1 .block-header-course .text-bottom {
+  background-color: #1889b3;
+}
+
+.blue2 .block-header-course .text-top {
+  background-color: #1889b3;
+}
+
+.blue2 .block-header-course .text-bottom {
+  background-color: #005a86;
+}
+
+.blue3 .block-header-course .text-top {
+  background-color: #005a86;
+}
+
+.blue3 .block-header-course .text-bottom {
+  background-color: #00b2d9;
+}
+
+
+/* Block Titles */
+.blue1 .field-collection-item-field-block .field-name-field-block-title {
+  color: #00b2d9;
+}
+
+.blue2 .field-collection-item-field-block .field-name-field-block-title {
+  color: #1889b3;
+}
+
+.blue3 .field-collection-item-field-block .field-name-field-block-title {
+  color: #005a86;
+}
+
+
+/* Highlight Block */
+.blue1 .field-name-field-block .field-collection-item-field-block.highlighted {
+  background: #00b2d9;
+}
+
+.blue2 .field-name-field-block .field-collection-item-field-block.highlighted {
+  background: #1889b3;
+}
+
+.blue3 .field-name-field-block .field-collection-item-field-block.highlighted {
+  background: #005a86;
+}
+
+
+/* Testimonials */
+.blue1 .block-course-testimonials ul.testimonials li.testimonial .body {
+  background: #00b2d9;
+}
+
+.blue2 .block-course-testimonials ul.testimonials li.testimonial .body {
+  background: #1889b3;
+}
+
+.blue3 .block-course-testimonials ul.testimonials li.testimonial .body {
+  background: #005a86;
+}
+
+.blue1 .block-course-testimonials h2.block-title {
+  color: #00b2d9;
+}
+
+.blue2 .block-course-testimonials h2.block-title {
+  color: #1889b3;
+}
+
+.blue3 .block-course-testimonials h2.block-title {
+  color: #005a86;
+}
+
+/****************************************** 
+ * 2. Course Subject page 
+ ******************************************/
+
+/* Header background */
+.blue1 .catalog-subject-header .text {
+  background: #00b2d9;
+}
+
+.blue2 .catalog-subject-header .text {
+  background: #1889b3;
+}
+
+.blue3 .catalog-subject-header .text {
+  background: #005a86;
+}
+
+/* Navigation links */
+.blue1 #block-hc-blocks-catalog-subject-navigation .item-list ul li a {
+  color: #00b2d9;
+}
+
+.blue1 #block-hc-blocks-catalog-subject-navigation .item-list ul li a:hover,
+.blue1 #block-hc-blocks-catalog-subject-navigation .item-list ul li.active a {
+  background: #00b2d9;
+  color: white;
+}
+
+.blue2 #block-hc-blocks-catalog-subject-navigation .item-list ul li a {
+  color: #1889b3;
+}
+
+.blue2 #block-hc-blocks-catalog-subject-navigation .item-list ul li a:hover,
+.blue2 #block-hc-blocks-catalog-subject-navigation .item-list ul li.active a {
+  background: #1889b3;
+  color: white;
+}
+
+.blue3 #block-hc-blocks-catalog-subject-navigation .item-list ul li a {
+  color: #005a86;
+}
+
+.blue3 #block-hc-blocks-catalog-subject-navigation .item-list ul li a:hover,
+.blue3 #block-hc-blocks-catalog-subject-navigation .item-list ul li.active a {
+  background: #005a86;
+  color: white;
+}
+
+/****************************************** 
+ * 3. Catalog Page
+ ******************************************/
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color.blue1 {
+  background: #00b2d9;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color.blue2 {
+  background: #1889b3;
+}
+
+.page-catalog #block-system-main ul.catalog-items li.catalog-item .color.blue3 {
+  background: #005a86;
+}

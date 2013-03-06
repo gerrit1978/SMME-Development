@@ -362,6 +362,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
   margin-right: 20px;
   padding: 0;
+  background: #ef2a09;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item.last {
@@ -479,7 +480,7 @@ h1, h2, h3, h4, h5, h6 {
 .field-collection-item-field-block .field-name-field-block-title {
   font-size: 2.923em;
   color: #eb2c23;
-  font-weight: 100;
+  font-family: "DaxlineWeb-Medium";
 }
 
 .field-collection-item-field-block .field-name-field-block-text,
@@ -526,63 +527,6 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-/*
-
-.field-collection-item-field-catalog-what .field-collection-container {
-  border-bottom: 1px solid #ededed;
-  padding-bottom: 30px;
-  margin-bottom: 60px;
-}
-
-
-.field-name-field-cat-what-block-title {
-  font-size: 1.692em;
-
-}
-
-.field-name-field-cat-what-block-text {
-  font-size: 1.231em;
-  color: #838383;
-  margin-bottom: 30px;
-}
-
-.field-name-field-cat-what-footer-text {
-  width: 75%;
-  color: #838383;
-  font-size: 1.231em;
-}
-
-.field-name-field-catalog-where {
-  padding: 30px;
-  background: #eb2c23;
-  color: white;
-  font-size: 1.231em;
-  margin-bottom: 80px;
-}
-
-.field-name-field-catalog-where .field-label {
-  color: white;
-  font-size: 2.5em;
-  font-weight: 100;
-}
-
-.field-name-field-catalog-where .field-items {
-  width: 75%;
-}
-
-.field-name-field-catalog-who {
-  color: #838383;
-  width: 75%;
-  font-size: 1.231em;
-  padding: 0 30px;
-}
-
-.field-name-field-catalog-who .field-label {
-  color: #eb2c23;
-  font-size: 2.5em;
-  font-weight: 100;  
-}
-*/
 
 /****************************************************************
  * D.3. COURSE DETAIL PAGE

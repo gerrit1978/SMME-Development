@@ -1,0 +1,33 @@
+#block-hc-blocks-catalog-subject-navigation {
+  margin: 0 30px;
+  margin-bottom: 20px;
+}
+
+#block-hc-blocks-catalog-subject-navigation h2.block-title {
+  color: #969696;
+  text-transform: uppercase;
+  float: left;
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+#block-hc-blocks-catalog-subject-navigation .item-list ul li {
+  float: left;
+  margin: 0;
+  margin-right: 5px;
+  padding-top: 8px;
+}
+
+#block-hc-blocks-catalog-subject-navigation .item-list ul li a {
+  color: #eb2c23;
+  padding: 4px 10px;
+}
+
+#block-hc-blocks-catalog-subject-navigation .item-list ul li a:hover,
+#block-hc-blocks-catalog-subject-navigation .item-list ul li.active a {
+  background: #eb2c23;
+  color: white;
+  border-radius: 10px;
+}

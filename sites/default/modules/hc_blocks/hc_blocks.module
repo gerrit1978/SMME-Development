@@ -6,6 +6,14 @@
  */
 
 /**
+ * Implements hook_block_init
+ */
+function hc_blocks_init() {
+  $path = drupal_get_path('module', 'hc_blocks');
+  drupal_add_css($path . '/hc_blocks.css');
+}
+
+/**
  * Implements hook_block_info
  */
 function hc_blocks_block_info() {
@@ -41,6 +49,7 @@ function hc_blocks_block_view($delta = '') {
       $block['content'] = _hc_blocks_block_catalog_subject_header_render();
       break;
     case 'catalog_subject_navigation':
+      $block['subject'] = t('Navigation');
       $block['content'] = _hc_blocks_block_catalog_subject_navigation_render();
       break;
     case 'course_header':
@@ -87,7 +96,27 @@ function _hc_blocks_block_catalog_subject_header_render() {
  * Helper function for rendering Catalog subject page navigation block
  */
 function _hc_blocks_block_catalog_subject_navigation_render() {
-  return "NAVIGATION TO BE INSERTED HERE";
+  $block = array();
+  
+  if (is_numeric(arg(2))) {
+    $tid = arg(2);
+    $term_wrapper = entity_metadata_wrapper('taxonomy_term', $tid);
+    $field_block = $term_wrapper->field_block->value();
+
+    if (is_array($field_block)) {
+      $items = array();
+      foreach ($field_block as $block_item) {
+        $field_block_wrapper = entity_metadata_wrapper('field_collection_item', $block_item->item_id);
+        $title = $field_block_wrapper->field_block_title->value();
+        $items[] = array('data' => "<a href='#'>" . $title . "</a>", 'data-naventityid' => $block_item->item_id);
+      }
+    }
+
+  } 
+  
+ $block['#markup'] = theme('item_list', array('items' => $items));
+  
+  return $block;
 }
 
 
