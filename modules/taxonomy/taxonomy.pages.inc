@@ -67,6 +67,7 @@ function taxonomy_term_page($term) {
       '#suffix' => '</p>',
     );
   }
+  
   return $build;
 }
 
