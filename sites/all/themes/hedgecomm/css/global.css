@@ -326,16 +326,135 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
 }
 
+
 /************************************************************************************************************************************
  *
  *
- * D. PAGES
+ * D. HOMEPAGE BLOCKS
  *
  *
  ************************************************************************************************************************************/
 
 /****************************************************************
- * D.1. CATALOG PAGE
+ * D.1. CARROUSEL BLOCK
+ ***************************************************************/
+.carrousel-home {
+  width: 1000px;
+  margin-left: -30px;
+  height: 515px;
+  background: #ef2a09 url(../img/temp/placeholder-carrousel.jpg);
+  color: white;
+  margin-bottom: 60px;
+}
+
+.carrousel-home a {
+  color: white;
+  font-size: 1.539em;
+  font-family: "DaxlineWeb-Bold";
+}
+
+.carrousel-home a:hover {
+  color: #383838;
+}
+
+.carrousel-home .block-inner {
+  margin: 0 30px;
+}
+
+.carrousel-home h3 {
+  padding-top: 200px;
+  font-size: 3.539em;
+  line-height: 1;
+}
+
+
+/****************************************************************
+ * D.2. VIDEO BLOCK
+ ***************************************************************/
+.video-homepage {
+  width: 1000px;
+  margin-left: -30px;
+  height: 625px;
+  background: #00b2d9;
+  color: white;
+  margin-bottom: 60px;
+}
+
+.video-homepage .block-inner {
+  margin: 0 30px;
+  padding-top: 55px;
+}
+
+.video-homepage h2.block-title {
+  font-size: 3.231em;
+  font-family: "DaxlineWeb-Medium";
+}
+
+.video-homepage p {
+  font-size: 1.539em;
+}
+
+.video-homepage .video-placeholder {
+  width: 940px;
+  height: 340px;
+  background: url(../img/temp/placeholder-video.jpg) no-repeat left top;
+}
+
+
+/****************************************************************
+ * D.3. THREE COLUMNS HOMEPAGE BLOCK
+ ***************************************************************/
+.block-three-columns-home {
+  color: #898989;
+}
+
+.block-three-columns-home h2.block-title {
+	font-size: 3.231em;  
+	font-family: "DaxlineWeb-Medium";
+	color: #616161;
+}
+
+.block-three-columns-home h2 {
+  color: #626262;
+  font-family: "DaxlineWeb-Bold";
+  margin-bottom: 5px;
+}
+
+/****************************************************************
+ * D.4. CALL TO ACTION HOMEPAGE BLOCK
+ ***************************************************************/
+.call-to-action-homepage {
+  width: 1000px;
+  margin-left: -30px;
+  height: 120px;
+  background: #5adb82;
+}
+
+.call-to-action-homepage .block-inner {
+  margin: 0 30px;
+  line-height: 118px;
+}
+
+.call-to-action-homepage .block-inner a {
+  color: white; 
+  font-size: 1.539em;
+  font-family: "DaxlineWeb-Bold";
+}
+
+.call-to-action-homepage .block-inner a:hover {
+  color: #383838;
+}
+
+/************************************************************************************************************************************
+ *
+ *
+ * E. PAGES
+ *
+ *
+ ************************************************************************************************************************************/
+
+/****************************************************************
+ * E.1. CATALOG PAGE
  ***************************************************************/
 .page-catalog h2.site-name a {
   color: #00b2d9;
@@ -413,7 +532,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /****************************************************************
- * D.2. CATALOG SUBJECT PAGE
+ * E.2. CATALOG SUBJECT PAGE
  ***************************************************************/
 
 /** Catalog Subject Header **/
@@ -529,7 +648,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /****************************************************************
- * D.3. COURSE DETAIL PAGE
+ * E.3. COURSE DETAIL PAGE
  ***************************************************************/
 
 /** Header **/

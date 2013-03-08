@@ -10,6 +10,11 @@
  */
 function hedgecomm_alpha_preprocess_page(&$vars) {
 
+  /** HOMEPAGE **/
+  if (drupal_is_front_page()) {
+    $vars['title'] = "";
+  }
+
 	/** MAIN CATALOG PAGE **/
   if (arg(0) == 'catalog') {
     $vars['title'] = "";

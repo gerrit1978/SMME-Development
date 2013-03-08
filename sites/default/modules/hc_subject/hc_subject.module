@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * This module alters the taxonomy (subject, e.g. ITIL) page
+ *
+ * Normally, the list of nodes beloning to a particular term
+ * is hardcoded in taxonomy_term_page().
+ * This module alters this function for a more flexible output
+ * of nodes.
+ */
+
+/************************************************************************
+ * DRUPAL HOOKS
+ ***********************************************************************/
+
+
+/**
+ * Implements hook_menu_alter
+ */
+function hc_subject_menu_alter(&$items) {
+ if (!empty($items['taxonomy/term/%taxonomy_term'])) {
+    $items['taxonomy/term/%taxonomy_term']['page callback'] = 'hc_subject_term_page';
+    $items['taxonomy/term/%taxonomy_term']['file'] = 'hc_subject.pages.inc';
+    $items['taxonomy/term/%taxonomy_term']['file path'] = drupal_get_path('module', 'hc_subject');    
+  }
+}
+
+
+
+/************************************************************************
+ * HELPER FUNCTIONS
+ ***********************************************************************/

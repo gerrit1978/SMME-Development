@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * @file
+ * Provides newsletter subscription functionality
+ *
+ * Currently, Campaign Monitor is supported. This module
+ * also provides a subscription block
+ *
+ */
+
+/**
  * Implementation of hook_init
  */
 function hc_subscribe_init() {

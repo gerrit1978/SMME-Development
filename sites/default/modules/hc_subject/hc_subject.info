@@ -1,0 +1,7 @@
+name         = Subject Page
+description  = Alters the taxonomy (subject, e.g. ITIL) page
+core         = 7.x
+package      = HedgeComm
+
+; files[]      = hc_subject.module
+; files[]      = hc_subject.pages.inc

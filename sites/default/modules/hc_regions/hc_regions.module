@@ -3,7 +3,10 @@
 
 /**
  * @file
+ * Provides region functionality
  *
+ * This module adds a session variable, containing the region the user
+ * is currently surfing from. It also provides the region selection block.
  *
  */
 

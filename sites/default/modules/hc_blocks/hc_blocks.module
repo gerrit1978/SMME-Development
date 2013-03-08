@@ -3,6 +3,12 @@
 /**
  * @file
  * This module provides a number of custom blocks
+ *
+ * - header block for subject (taxonomy) page
+ * - navigation block for subject (taxonomy) page
+ * - header block for course (node) page
+ * - testimonial block for course (node) page
+ *
  */
 
 /**
