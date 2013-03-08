@@ -145,6 +145,20 @@
   color: white;
 }
 
+/* Courses per subject */
+.yellow1 .course-roadmap h2.roadmap-title {
+  color: #f7a31c;
+}
+
+.yellow2 .course-roadmap h2.roadmap-title {
+  color: #e08a1e;
+}
+
+.yellow3 .course-roadmap h2.roadmap-title {
+  color: #d16800;
+}
+
+
 /****************************************** 
  * 3. Catalog Page
  ******************************************/

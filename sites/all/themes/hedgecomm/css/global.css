@@ -571,7 +571,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/** Catalog Subject Content **/
+/** Catalog Subject Content Blocks **/
 .field-collection-container {
   margin: 0;
   border: none;
@@ -646,6 +646,49 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
+/* Course Roadmap */
+.course-roadmap h2.roadmap-title {
+  font-size: 2.923em;
+  color: #eb2c23;
+  font-family: "DaxlineWeb-Medium";
+}
+
+.course-roadmap .view-courses-per-subject h3 {
+  float: left;
+  font-size: 1.692em;
+  color: #585858;
+  padding-top: 15px;
+}
+
+.course-roadmap .view-courses-per-subject .item-list {
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses {
+  margin: 0;
+  margin-left: 30%;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course {
+  border-left: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;  
+  margin-bottom: 0;
+  padding: 5% 20px;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course.views-row-first {
+  padding-top: 2%;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course.views-row-last {
+  border-bottom: none;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course .title a {
+  font-size: 1.692em;
+  color: #585858;
+  font-family: "DaxlineWeb-Bold";
+}
 
 /****************************************************************
  * E.3. COURSE DETAIL PAGE

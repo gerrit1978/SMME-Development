@@ -48,15 +48,25 @@ function hc_subject_term_page($term) {
     'term' => taxonomy_term_view($term, 'full'),
   );
 
-  if ($nids = taxonomy_select_nodes($term->tid, TRUE, variable_get('default_nodes_main', 10))) {
+
+//  $output_courses = "Term tid: " . $term->tid;
+  $output_courses = "<h2 class='roadmap-title'>" . t('Course Roadmap') . "</h2>"
+    . views_embed_view('courses_per_subject', 'block', $term->tid);
+
+  $build['courses'] = array(
+    '#prefix' => '<div class="course-roadmap">',
+    '#markup' => $output_courses,
+    '#suffix' => '</div>',
+  );
+
 /*
+  if ($nids = taxonomy_select_nodes($term->tid, TRUE, variable_get('default_nodes_main', 10))) {
     $nodes = node_load_multiple($nids);
     $build += node_view_multiple($nodes);
     $build['pager'] = array(
       '#theme' => 'pager',
       '#weight' => 5,
     );
-*/
   }
   else {
     $build['no_content'] = array(
@@ -65,5 +75,6 @@ function hc_subject_term_page($term) {
       '#suffix' => '</p>',
     );
   }
+*/
   return $build;
 }

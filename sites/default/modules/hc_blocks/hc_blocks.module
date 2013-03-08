@@ -136,27 +136,31 @@ function _hc_blocks_block_course_header_render() {
     $nid = arg(1);
     $node_wrapper = entity_metadata_wrapper('node', $nid);
     $course_header_field = $node_wrapper->field_course_header->value();
-    $course_header_wrapper = entity_metadata_wrapper('field_collection_item', $course_header_field->item_id);
-    
-    $course_header_title = $course_header_wrapper->field_course_header_title->value();
-    $course_header_text = $course_header_wrapper->field_course_header_text->value();
-    
-    $course_header_visual = $course_header_wrapper->field_course_header_visual->value();
-    $course_header_visual_path = file_create_url($course_header_visual['uri']);
-    $course_header_visual_image = theme('image', array('path' => $course_header_visual_path));
-    
-    $course_header_information_text = $course_header_wrapper->field_course_header_information->value();
-    $course_header_information_text_formatted = $course_header_information_text['value'];
-    
-    $output = "<div class='image'>" . $course_header_visual_image . "</div>"
-      . "<div class='text-top'>"
-      . "<div class='title'>" . $course_header_title . "</div>"
-      . "<div class='description'>" . $course_header_text . "</div>"
-      . "</div>"
-      . "<div class='text-bottom'>"
-      . "<div class='title'>" . t('Key Information:') . "</div>"
-      . "<div class='description'>" . $course_header_information_text_formatted . "</div>"
-      . "</div>";
+    if ($course_header_field) {
+	    $course_header_wrapper = entity_metadata_wrapper('field_collection_item', $course_header_field->item_id);
+	    
+	    $course_header_title = $course_header_wrapper->field_course_header_title->value();
+	    $course_header_text = $course_header_wrapper->field_course_header_text->value();
+	    
+	    $course_header_visual = $course_header_wrapper->field_course_header_visual->value();
+	    $course_header_visual_path = file_create_url($course_header_visual['uri']);
+	    $course_header_visual_image = theme('image', array('path' => $course_header_visual_path));
+	    
+	    $course_header_information_text = $course_header_wrapper->field_course_header_information->value();
+	    $course_header_information_text_formatted = $course_header_information_text['value'];
+	    
+	    $output = "<div class='image'>" . $course_header_visual_image . "</div>"
+	      . "<div class='text-top'>"
+	      . "<div class='title'>" . $course_header_title . "</div>"
+	      . "<div class='description'>" . $course_header_text . "</div>"
+	      . "</div>"
+	      . "<div class='text-bottom'>"
+	      . "<div class='title'>" . t('Key Information:') . "</div>"
+	      . "<div class='description'>" . $course_header_information_text_formatted . "</div>"
+	      . "</div>";
+    } else {
+      $output = "NO HEADER AVAILABLE";
+    }
 
     $block['#markup'] = $output;
 
