@@ -416,7 +416,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .block-three-columns-home h2 {
   color: #626262;
-  font-family: "DaxlineWeb-Bold";
+  font-family: "DaxlineWeb-Medium";
   margin-bottom: 5px;
 }
 
@@ -677,7 +677,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .course-roadmap .view-courses-per-subject ul.courses li.course.views-row-first {
-  padding-top: 2%;
+  padding-top: 1%;
 }
 
 .course-roadmap .view-courses-per-subject ul.courses li.course.views-row-last {
@@ -687,7 +687,11 @@ h1, h2, h3, h4, h5, h6 {
 .course-roadmap .view-courses-per-subject ul.courses li.course .title a {
   font-size: 1.692em;
   color: #585858;
-  font-family: "DaxlineWeb-Bold";
+  font-family: "DaxlineWeb-Medium";
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course .title a:hover {
+  color: #838383;
 }
 
 /****************************************************************
