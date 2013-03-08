@@ -694,6 +694,28 @@ h1, h2, h3, h4, h5, h6 {
   color: #838383;
 }
 
+.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links li.course-link {
+  float: left;
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.231em;
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links li.course-link a {
+  color: #00b2d9;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links li.course-link a:hover {
+  color: #1889b3;
+}
+
 /****************************************************************
  * E.3. COURSE DETAIL PAGE
  ***************************************************************/
