@@ -93,7 +93,10 @@
   color: #1889b3;
 }
 
-.blue3 .block-course-testimonials h2.block-title blue
+.blue3 .block-course-testimonials h2.block-title {
+  color: #005a86;
+}
+
 
 /****************************************** 
  * 2. Course Subject page 
