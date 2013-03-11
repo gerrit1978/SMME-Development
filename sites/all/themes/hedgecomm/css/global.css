@@ -481,7 +481,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
   margin-right: 20px;
   padding: 0;
-  background: #ef2a09;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item.last {
@@ -490,6 +489,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color {
   padding: 25px;
+  height: 150px;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .name,
