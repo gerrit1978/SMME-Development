@@ -288,20 +288,20 @@ h1, h2, h3, h4, h5, h6 {
   width: 1000px;
 }
 
-.block-header-catalog {}
-.block-header-catalog ul {
+.block-header-view {}
+.block-header-view ul {
   margin: 0;
   padding: 0;
 }
 
-.block-header-catalog ul li {
+.block-header-view ul li {
   margin: 0;
   margin-bottom: 20px;
   padding: 0;
   position: relative;
 }
 
-.block-header-catalog ul li .text {
+.block-header-view ul li .text {
   position: absolute;
   left: 0;
   top: 0;
@@ -309,11 +309,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 35px 30px;
 }
 
-.block-header-catalog ul li .text .title {
+.block-header-view ul li .text .title {
   font-size: 3.231em;
 }
 
-.block-header-catalog ul li .text .description {
+.block-header-view ul li .text .description {
   font-size: 1.538em;
 }
 
@@ -864,3 +864,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 20px;
   font-size: 1.231em;
 }
+
+/****************************************************************
+ * E.4. TEAM PAGE
+ ***************************************************************/
+.page-team h2.site-name a {
+  color: #ef2a09;
+}
+
+/** Header on catalog page **/
+.page-team .block-header-team ul li .text {
+  background: #ef2a09;
+}
+
+.page-team .block-header-team ul li .text .title,
+.page-team .block-header-team ul li .text .description {
+  color: white;
+} 
+
