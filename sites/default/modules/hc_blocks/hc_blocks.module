@@ -41,6 +41,10 @@ function hc_blocks_block_info() {
     'info' => t('Course Testimonials'),
   );
   
+  $blocks['team_header'] = array(
+    'info' => t('Team Page Header'),
+  );
+  
   return $blocks;
 }
 
@@ -64,6 +68,9 @@ function hc_blocks_block_view($delta = '') {
     case 'course_testimonials':
       $block['subject'] = t('Course Testimonials');
       $block['content'] = _hc_blocks_block_course_testimonials_render();
+      break;
+    case 'team_header':
+      $block['content'] = _hc_blocks_block_team_header_render();
   }
   
   return $block;
@@ -186,4 +193,40 @@ function _hc_blocks_block_course_testimonials_render() {
   $output = views_embed_view('testimonials', 'block', implode(',', $testimonial_nids));
 
   return $output;
+}
+
+
+/**
+ * Helper function for rendering Team Page Header block
+ */
+function _hc_blocks_block_team_header_render() {
+  $block = array();
+  
+  if (is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node_wrapper = entity_metadata_wrapper('node', $nid);
+    $team_header_field = $node_wrapper->field_team_header->value();
+    if ($team_header_field) {
+	    $team_header_wrapper = entity_metadata_wrapper('field_collection_item', $team_header_field->item_id);
+	    
+	    $team_header_title = $team_header_wrapper->field_team_header_title->value();
+	    $team_header_text = $team_header_wrapper->field_team_header_text->value();
+	    
+	    $team_header_visual = $team_header_wrapper->field_team_header_visual->value();
+	    $team_header_visual_path = file_create_url($team_header_visual['uri']);
+	    $team_header_visual_image = theme('image', array('path' => $team_header_visual_path));
+	    
+	    $output = "<div class='image'>" . $team_header_visual_image . "</div>"
+	      . "<div class='text'>"
+	      . "<div class='title'>" . $team_header_title . "</div>"
+	      . "<div class='description'>" . $team_header_text . "</div>"
+	      . "</div>";
+    } else {
+      $output = "NO HEADER AVAILABLE";
+    }
+
+    $block['#markup'] = $output;
+
+  }
+  return $block;
 }

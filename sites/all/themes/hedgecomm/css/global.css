@@ -866,13 +866,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /****************************************************************
- * E.4. TEAM PAGE
+ * E.4. TEAM OVERVIEW PAGE
  ***************************************************************/
 .page-team h2.site-name a {
   color: #ef2a09;
 }
 
-/** Header on catalog page **/
+/** Header on team page **/
 .page-team .block-header-team ul li .text {
   background: #ef2a09;
 }
@@ -882,3 +882,37 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 } 
 
+/****************************************************************
+ * E.5. TEAM DETAIL (NODE) PAGE
+ ***************************************************************/
+
+/** Header **/
+#block-hc-blocks-team-header {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.block-header-team-page .text {
+  background: #eb2c23;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  padding: 0 30px;
+  padding-bottom: 20px;
+}
+
+.block-header-team-page .title,
+.block-header-team-page .description {
+  color: white;
+}
+
+.block-header-team-page .text .title {
+  font-size: 3.231em;
+  margin-top: 45px;
+  margin-bottom: 10px;
+}
+
+.block-header-team-page .text .description {
+  font-size: 1.692em;
+}
