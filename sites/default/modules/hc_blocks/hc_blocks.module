@@ -45,6 +45,10 @@ function hc_blocks_block_info() {
     'info' => t('Team Page Header'),
   );
   
+  $blocks['trainer_testimonials'] = array(
+    'info' => t('Trainer Testimonials'),
+  );
+  
   return $blocks;
 }
 
@@ -71,6 +75,10 @@ function hc_blocks_block_view($delta = '') {
       break;
     case 'team_header':
       $block['content'] = _hc_blocks_block_team_header_render();
+      break;
+    case 'trainer_testimonials':
+      $block['subject'] = t('Trainer Testimonials');
+      $block['content'] = _hc_blocks_block_trainer_testimonials_render();
   }
   
   return $block;
@@ -229,4 +237,24 @@ function _hc_blocks_block_team_header_render() {
 
   }
   return $block;
+}
+
+
+/**
+ * Helper function for rendering Trainer Testimonials block
+ */
+function _hc_blocks_block_trainer_testimonials_render() {
+
+  if (is_numeric(arg(1))) {
+    $testimonial_nids = array();
+    $nid = arg(1);
+    $result = db_query("SELECT entity_id FROM {field_revision_field_testimonial_reference} WHERE field_testimonial_reference_nid=:course_nid", array(':course_nid' => $nid));
+    foreach ($result as $row) {
+      $testimonial_nids[] = $row->entity_id;
+    }
+  }
+
+  $output = views_embed_view('testimonials', 'block', implode(',', $testimonial_nids));
+
+  return $output;
 }

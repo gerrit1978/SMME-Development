@@ -64,6 +64,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 100;  
 }
 
+.item-list .title {
+  font-weight: normal;
+}
+
 /****************************************************************
  * A.3. SECTIONS
  ***************************************************************/
@@ -588,7 +592,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: -30px;
   margin-right: -30px;
   padding: 20px 30px;
-  
 }
 
 .field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-title,
@@ -915,4 +918,110 @@ h1, h2, h3, h4, h5, h6 {
 
 .block-header-team-page .text .description {
   font-size: 1.692em;
+}
+
+/** Testimonials **/
+.block-trainer-testimonials {
+  margin-bottom: 20px;
+}
+
+.block-trainer-testimonials h2.block-title {
+  font-size: 3.231em;
+  color: #eb2c23;
+  margin-bottom: 20px;
+}
+
+.block-trainer-testimonials ul.testimonials {
+  margin: 0;
+  padding: 0;
+}
+
+.block-trainer-testimonials ul.testimonials li.testimonial {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 30%;
+  float: left;
+  margin-right: 5%;
+  position: relative;
+}
+
+.block-trainer-testimonials ul.testimonials li.testimonial.last {
+  margin-right: 0;
+}
+
+.block-trainer-testimonials ul.testimonials li.testimonial .body {
+  background: #eb2c23;
+  padding: 10px 20px;
+  color: white;
+}
+
+.block-trainer-testimonials ul.testimonials li.testimonial .name {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.231em;
+}
+
+.block-trainer-testimonials ul.testimonials li.testimonial .function {
+  margin-left: 20px;
+  font-size: 1.231em;
+}
+
+/** Fields: subtitle **/
+.field-name-field-team-subtitle {
+  color: #EB2C23;
+  font-family: "DaxlineWeb-Medium";
+  font-size: 2.923em;
+}
+
+.field-name-field-team-subtext {
+  width: 70%;
+  font-size: 1.385em;
+  color: #838383;
+  margin-bottom: 60px;
+}
+
+.field-name-field-team-about {
+  width: 50%;
+  float: left;
+  font-size: 1.385em;
+  color: #838383;
+}
+
+.field-name-field-team-certifications,
+.field-name-field-team-accreditations {
+  margin-left: 60%;
+  font-size: 1.231em;
+  color: #838383;
+}
+
+.field-name-field-team-certifications {
+  margin-bottom: 30px;
+}
+
+/* Fields: video */
+.field-name-field-team-video {
+  clear: left;
+  padding-top: 60px;
+  margin-bottom: 60px;
+}
+
+.field-name-field-team-video .field-item {
+  background: #eb2c23;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 20px 30px;
+  color: white;
+}
+
+.field-name-field-team-video .field-item .field-name-field-team-video-description {
+  font-size: 1.538em;
+}
+
+.field-name-field-team-video .field-item .field-name-field-team-video-description .field-label {
+  font-family: "DaxlineWeb-Medium";
+  font-size: 2.1em;
+  font-weight: lighter;
+  width: auto;
 }

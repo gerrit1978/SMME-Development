@@ -30,4 +30,16 @@ function hedgecomm_alpha_preprocess_page(&$vars) {
   if (isset($vars['node']) && $vars['node']->type == 'course') {
     $vars['title'] = "";
   }
+
+  /** MAIN TEAM PAGE **/
+  if (arg(0) == 'team') {
+    $vars['title'] = "";
+  }
+
+  
+  /** TEAM DETAIL PAGE **/
+  if (isset($vars['node']) && $vars['node']->type == 'team_member') {
+    $vars['title'] = "";
+  }
+  
 }
