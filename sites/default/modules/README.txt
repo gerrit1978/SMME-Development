@@ -20,3 +20,7 @@ is surfing from. This module also provides the region-selection block.
 4. hc_subject
 This module alters the "taxonomy page". Normally the list of nodes belonging to a particular taxonomy term (i.e. the "subject", e.g. ITIL),
 is hardcoded in taxonomy_term_page(). This function is rewritten in this module for a more flexible node list.
+
+
+5. hc_team
+This module provides a custom view mode, "team page" for the team page nodes in the view (only showing the image).

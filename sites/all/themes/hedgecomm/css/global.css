@@ -883,7 +883,50 @@ h1, h2, h3, h4, h5, h6 {
 .page-team .block-header-team ul li .text .title,
 .page-team .block-header-team ul li .text .description {
   color: white;
-} 
+}
+
+/** Main view with team members on team page **/
+.page-team .view-team h3 {
+  font-family: "DaxlineWeb-Medium";
+  font-weight: normal;
+  font-size: 3.231em;
+  color: #ef2a09;
+}
+
+.page-team .view-team ul.team-items {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 60px;
+}
+
+.page-team .view-team ul.team-items li.team-item {
+  list-style: none;
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-right: 10px;
+  width: 300px;
+}
+
+.page-team .view-team ul.team-items li.team-item .visual {
+  margin-bottom: 20px;
+}
+
+.page-team .view-team ul.team-items li.team-item .name a {
+  font-family: "DaxlineWeb-Bold";
+  color: #00b2d9;
+  font-size: 1.692em;
+}
+
+.page-team .view-team ul.team-items li.team-item .role,
+.page-team .view-team ul.team-items li.team-item .teaches {
+  font-size: 1.077em;
+  color: #838383;
+}
+
+.page-team .view-team ul.team-items li.team-item .teaches a {
+  color: #838383;
+}
 
 /****************************************************************
  * E.5. TEAM DETAIL (NODE) PAGE
@@ -1022,6 +1065,13 @@ h1, h2, h3, h4, h5, h6 {
 .field-name-field-team-video .field-item .field-name-field-team-video-description .field-label {
   font-family: "DaxlineWeb-Medium";
   font-size: 2.1em;
-  font-weight: lighter;
+  font-weight: normal;
   width: auto;
+}
+
+.field-name-field-team-about .field-label,
+.field-name-field-team-accreditations .field-label,
+.field-name-field-team-certifications .field-label {
+  font-family: "DaxlineWeb-Bold";
+  font-weight: normal;
 }

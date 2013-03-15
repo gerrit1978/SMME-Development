@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * This module provides a custom view mode for team page nodes
+ */
+
+/**
+ * Implements hook_entity_info_alter
+ */
+function hc_team_entity_info_alter(&$entity_info) {
+  $entity_info['field_collection_item']['view modes']['team_page'] = array(
+    'label' => 'Team Page',
+    'custom settings' => TRUE,
+  );
+}
