@@ -918,6 +918,10 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.692em;
 }
 
+.page-team .view-team ul.team-items li.team-item .name a:hover {
+  color: black;
+}
+
 .page-team .view-team ul.team-items li.team-item .role,
 .page-team .view-team ul.team-items li.team-item .teaches {
   font-size: 1.077em;
