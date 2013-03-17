@@ -150,27 +150,27 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 30px;
 }
 
-.view-news ul.news-items {
+.view-news .footer ul.news-items {
   margin: 0;
 }
 
-.view-news ul.news-items li.news-item {
+.view-news .footer ul.news-items li.news-item {
   margin: 0;
   width: 30%;
   float: left;
   margin-right: 5%;
 }
 
-.view-news ul.news-items li.news-item.views-row-last {
+.view-news .footer ul.news-items li.news-item.views-row-last {
   margin-right: 0;
 }
 
-.view-news ul.news-items li.news-item .news-body {
+.view-news .footer ul.news-items li.news-item .news-body {
   color: #939393;
 }
 
-.view-news ul.news-items li.news-item .news-body,
-.view-news ul.news-items li.news-item .news-link {
+.view-news .footer ul.news-items li.news-item .news-body,
+.view-news .footer ul.news-items li.news-item .news-link {
   display: inline;
 }
 
@@ -1078,4 +1078,78 @@ h1, h2, h3, h4, h5, h6 {
 .field-name-field-team-certifications .field-label {
   font-family: "DaxlineWeb-Bold";
   font-weight: normal;
+}
+
+
+/****************************************************************
+ * E.6. BLOG/NEWS OVERVIEW PAGE
+ ***************************************************************/
+.page-news h1.title {
+  background: #eb2c23;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 20px 30px;
+  color: white;
+}
+
+.page-news .main-page ul.news-items { 
+  margin: 0;
+  padding: 0;
+}
+
+.page-news .main-page ul.news-items li.news-item {
+  float: none;
+  margin-bottom: 40px;
+  padding-left: 250px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid #e2e2e2;
+}
+
+.page-news .main-page ul.news-items li.news-item.views-row-first {
+  margin-top: 60px;
+}
+
+.page-news .main-page ul.news-items li.news-item.views-row-last {
+  border-bottom: none;
+}
+
+.page-news .main-page ul.news-items li.news-item .news-title {
+  font-size: 3.231em;
+  font-family: "DaxlineWeb-Medium";
+  color: #3f3f3f;
+}
+
+.page-news .main-page ul.news-items li.news-item .intro {
+  text-transform: uppercase;
+  font-size: 1.077em;
+  font-family: "DaxlineWeb-Medium";
+  color: #969696;
+  margin-bottom: 30px;
+}
+
+.page-news .main-page ul.news-items li.news-item .intro a {
+  color: #00b2d9;
+}
+
+.page-news .main-page ul.news-items li.news-item .intro a:hover {
+  color: #000;
+}
+
+.page-news .main-page ul.news-items li.news-item .news-body {
+  font-size: 1.384em;
+  color: #838383;
+}
+
+.page-news .main-page ul.news-items li.news-item .read-this-post {
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.231em;
+  margin-top: 20px;
+}
+
+.page-news .main-page ul.news-items li.news-item .read-this-post a {
+  color: #00b2d9;
+}
+
+.page-news .main-page ul.news-items li.news-item .read-this-post a:hover {
+  color: black;
 }
