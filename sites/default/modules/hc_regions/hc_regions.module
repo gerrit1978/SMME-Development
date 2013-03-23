@@ -183,7 +183,7 @@ function hc_regions_select_region_form($form, &$form_state) {
   $form['change_region'] = array(
     '#title' => 'Region',
     '#type' => 'select',
-    '#options' => array('NA' => 'America', 'EU' => 'Europe', 'AS' => 'Asia'),
+    '#options' => array('AS' => 'Asia', 'EU' => 'Europe', 'NA' => 'USA',),
     '#default_value' => "$continent_code",
   );
   

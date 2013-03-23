@@ -2,10 +2,10 @@
 
   Drupal.behaviors.catalogHover = {
     attach: function (context, settings) {
-      $('li.catalog-item a', context).hover(function () {
-        $(this).parent().parent().parent().addClass('hover');
+      $('li.catalog-item', context).hover(function () {
+        $(this).addClass('hover');
       }, function() {
-        $(this).parent().parent().parent().removeClass('hover');
+        $(this).removeClass('hover');
       });
     }
   };

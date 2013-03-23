@@ -23,6 +23,16 @@
   margin-right: 0;
 }
 
+.container-12 {
+  width: 1000px !important;
+}
+
+.container-12 .grid-12 {
+  padding: 0 30px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /****************************************************************
  * A.2. GENERAL HTML ELEMENTS
  ***************************************************************/
@@ -48,15 +58,20 @@ a:hover {
 /** Logo: Site Name **/
 .branding-data {
   position: absolute;
-  top: 15px;
+}
+
+h1.site-name,
+h2.site-name {
+  margin: 0;
+  margin-top: 48px;
 }
 
 h1.site-name a,
 h2.site-name a {
-  letter-spacing: -2px;
+  letter-spacing: -4px;
   font-family: "DaxlineWeb-Medium";
   color: #eb2c23;
-  font-size: 1.6em;
+  font-size: 2.154em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -92,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /** Branding **/
 #zone-branding-wrapper {
-  height: 100px;
+  height: 124px;
 }
 
 /** Footer **/
@@ -116,22 +131,22 @@ h1, h2, h3, h4, h5, h6 {
 /** Footer Regions **/
 #region-footer-first {
   margin: 0;
-  padding-top: 50px;
+  padding-top: 32px;
   background: #3f3f3f;
 }
 
 #region-footer-second {
   margin: 0;
-  padding-top: 50px;
-  padding-bottom: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background: #383838;
 }
 
 #region-footer-third {
   margin: 0;
   background: #080808;
-  padding-top: 35px;
-  padding-bottom: 35px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 /************************************************************************************************************************************
@@ -146,19 +161,20 @@ h1, h2, h3, h4, h5, h6 {
  * B.1. FOOTER NEWS
  ***************************************************************/
 #block-views-news-block h2.block-title {
-  font-size: 1em;
+  font-size: 1.538em;
   margin-bottom: 30px;
 }
 
 .view-news .footer ul.news-items {
   margin: 0;
+  margin-bottom: 32px;
 }
 
 .view-news .footer ul.news-items li.news-item {
   margin: 0;
-  width: 30%;
+  width: 290px;
   float: left;
-  margin-right: 5%;
+  margin-right: 32px;
 }
 
 .view-news .footer ul.news-items li.news-item.views-row-last {
@@ -191,16 +207,23 @@ h1, h2, h3, h4, h5, h6 {
  * C.1. CONTACT BLOCK (FOOTER)
  ***************************************************************/
 .block-contact h2.block-title {
+  letter-spacing: -4px;
   font-family: "DaxlineWeb-Medium";
-  font-size: 1.923em;
-  margin-bottom: 35px;
+  font-size: 58px;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.block-contact .content {
+  padding-right: 64px;
 }
 
 /****************************************************************
  * C.2. CATALOG BLOCK (FOOTER)
  ***************************************************************/
 .block-catalog h2.block-title {
-  margin-bottom: 45px;
+  margin-bottom: 32px;
+  font-family: "DaxlineWeb-Medium";
 }
 
 .block-catalog ul.catalog-items {
@@ -227,7 +250,8 @@ h1, h2, h3, h4, h5, h6 {
  * C.3. FOOTER MENU
  ***************************************************************/
 .block-footer-menu h2.block-title {
-  margin-bottom: 45px;
+  margin-bottom: 32px;
+  font-family: "DaxlineWeb-Medium";
 }
 
 .block-footer-menu ul.menu {
@@ -251,7 +275,7 @@ h1, h2, h3, h4, h5, h6 {
  ***************************************************************/
 #block-system-main-menu {
   float: right;
-  margin-top: 50px;
+  margin-top: 69px;
 }
 
 #block-system-main-menu ul {
@@ -262,10 +286,18 @@ h1, h2, h3, h4, h5, h6 {
 #block-system-main-menu ul li {
   list-style: none;
   float: left;
-  margin-right: 10px;
+  margin: 0;
+  margin-right: 32px;
+  padding: 0;
+}
+
+#block-system-main-menu ul li.last {
+  margin-right: 0;
+  padding-right: 0;
 }
 
 #block-system-main-menu ul li a {
+  font-family: "DaxlineWeb-Bold";
   font-size: 1.308em;
   color: #949494;
 }
@@ -276,11 +308,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #block-system-main-menu ul li a#menu-shopping-cart {
+/*
   background: url(../img/icons/menu-shopping-cart.jpg) no-repeat center center;
   width: 20px;
   height: 20px;
   display: block;
   text-indent: -999em;
+*/
 }
 
 /****************************************************************
@@ -300,25 +334,37 @@ h1, h2, h3, h4, h5, h6 {
 
 .block-header-view ul li {
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   padding: 0;
   position: relative;
+}
+
+.block-header-view ul li .visual {
+  height: 500px;
+}
+
+.block-header-view ul li .visual img {
+  height: 500px;
 }
 
 .block-header-view ul li .text {
   position: absolute;
   left: 0;
   top: 0;
-  width: 45%;
-  padding: 35px 30px;
+  width: 50%;
+  height: 50%;
 }
 
 .block-header-view ul li .text .title {
   font-size: 3.231em;
+  line-height: 1;
+  margin-top: 32px;
+  margin-left: 32px;
 }
 
 .block-header-view ul li .text .description {
   font-size: 1.538em;
+  margin: 32px;
 }
 
 /****************************************************************
@@ -345,7 +391,8 @@ h1, h2, h3, h4, h5, h6 {
 .carrousel-home {
   width: 1000px;
   margin-left: -30px;
-  height: 515px;
+  height: 500px;
+  overflow: hidden;
   background: #ef2a09 url(../img/temp/placeholder-carrousel.jpg);
   color: white;
   margin-bottom: 60px;
@@ -482,9 +529,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item {
   margin: 0;
-  margin-bottom: 20px;
-  margin-right: 20px;
+  margin-bottom: 16px;
+  margin-right: 17px;
   padding: 0;
+  width: 301px;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item.last {
@@ -492,8 +540,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color {
-  padding: 25px;
-  height: 150px;
+  padding: 0 32px;
+  height: 228px;
+  position: relative;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .name,
@@ -507,9 +556,9 @@ h1, h2, h3, h4, h5, h6 {
   -ms-transition: all .1s linear;   
 }
 
-.page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link a:hover,
 .page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .color .name,
-.page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .color .description {
+.page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .color .description,
+.page-catalog #block-system-main ul.catalog-items li.catalog-item.hover .link {
   color: #3f3f3f;
 }
 
@@ -523,8 +572,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .name {
   font-family: "DaxlineWeb-Bold";
-  font-size: 2em;
-  margin-bottom: 15px;
+  font-size: 2.462em;
+  margin-bottom: 32px;
+  padding-top: 16px;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .description {
@@ -533,6 +583,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link {
   font-size: 1.384em;
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
 }
 
 /****************************************************************
@@ -542,15 +595,24 @@ h1, h2, h3, h4, h5, h6 {
 /** Catalog Subject Header **/
 .catalog-subject-header {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 } 
+
+.catalog-subject-header .image {
+  height: 500px;
+}
+
+.catalog-subject-header .image img {
+  height: 500px;
+  width: 1000px;
+}
 
 .catalog-subject-header .text {
   position: absolute;
   left: 0;
   top: 0;
-  width: 45%;
-  padding: 35px 30px;
+  width: 50%;
+  height: 50%;
   background: #eb2c23;
 }
 
@@ -562,10 +624,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .catalog-subject-header .text .title {
   font-size: 3.231em;
+  line-height: 1;
+  margin-top: 32px;
+  margin-left: 32px;
 }
 
 .catalog-subject-header .text .description {
   font-size: 1.538em;
+  margin: 32px;
 }
 
 
@@ -589,18 +655,28 @@ h1, h2, h3, h4, h5, h6 {
 
 .field-name-field-block .field-collection-item-field-block.highlighted {
   background: #eb2c23;
-  margin-left: -30px;
-  margin-right: -30px;
-  padding: 20px 30px;
+  margin-left: -32px;
+  margin-right: -32px;
+  padding: 32px;
 }
 
 .field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-title,
 .field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-text {
   color: white;
+  margin: 0;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-title {
+  line-height: 1;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-text {
+  margin-top: 32px;
 }
 
 .field-collection-item-field-block .field-name-field-block-title {
-  font-size: 2.923em;
+  font-size: 2.615em;
+  line-height: 1.2;
   color: #eb2c23;
   font-family: "DaxlineWeb-Medium";
 }
@@ -735,7 +811,6 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   width: 50%;
-  padding: 0 30px;
   height: 100%;
 }
 
@@ -744,8 +819,8 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   left: 0;
   width: 50%;
+  height: 33%;
   background: #cd1c1c;
-  padding: 30px;
 }
 
 .block-header-course .title,
@@ -755,25 +830,30 @@ h1, h2, h3, h4, h5, h6 {
 
 .block-header-course .text-top .title {
   font-size: 3.231em;
-  margin-top: 45px;
-  margin-bottom: 10px;
+  line-height: 1;
+  margin-left: 32px;
+  margin-top: 32px;
 }
 
 .block-header-course .text-top .description {
   font-size: 1.692em;
+  margin: 32px;
 }
 
 .block-header-course .text-bottom .title {
   font-size: 1.358em;
-  margin-bottom: 10px;
+  margin-left: 32px;
+  margin-top: 16px;
 }
 
 .block-header-course .text-bottom .description {
-  font-size: 1.358em;
+  font-size: 1.077em;
+  margin: 16px;
+  margin-left: 32px;
 }
 
 .block-header-course .text-bottom .description ul {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 /** Main Content **/

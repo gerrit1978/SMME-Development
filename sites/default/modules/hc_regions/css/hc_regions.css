@@ -1,4 +1,6 @@
 #hc-regions-select-region-form .form-submit { display: none; }
 
-#block-hc-regions-region-selection { margin-right: 30px;}
-#block-hc-regions-region-selection label { float: left; padding-top: 3px; margin-right: 10px;}
+#block-hc-regions-region-selection { margin-right: 30px; margin-top: 15px;}
+#block-hc-regions-region-selection label { float: left; padding-top: 6px; margin-right: 8px; font-weight: 100; color: #949494;}
+#block-hc-regions-region-selection select { margin-top: 4px;}
+#block-hc-regions-region-selection select option { font-family: "DaxlineWeb-Medium"; font-size: 1.231em; color: #949494;}

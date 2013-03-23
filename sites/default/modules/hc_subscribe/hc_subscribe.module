@@ -85,7 +85,7 @@ function hc_subscribe($form_state) {
 	$form = array();
 
   $form['label'] = array(
-    '#markup' => '<div class="label">Sign up for email updates & deals to get 15% off a thing we haz.</div>',
+    '#markup' => '<div class="label">Be the first to hear about new courses and special offers.<br /><strong>Get email updates. Receive a coupon code for 15% off any course.</strong></div>',
   );
 
   $form['email'] = array(

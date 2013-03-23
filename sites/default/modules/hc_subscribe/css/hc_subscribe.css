@@ -1,9 +1,20 @@
+#block-hc-subscribe-hc-subscribe {
+  width: 90%;
+  margin: 0 auto;
+}
+
 #block-hc-subscribe-hc-subscribe .label {
   float: left;
   margin-right: 50px;
   height: 35px;
-  line-height: 35px;
-  font-size: 1.385em;
+  line-height: 1.2;
+  font-size: 1em;
+  padding-top: 3px;
+}
+
+#block-hc-subscribe-hc-subscribe .label strong {
+  color: white;
+  font-family: "DaxlineWeb-Medium";
 }
 
 #block-hc-subscribe-hc-subscribe .form-item {
@@ -13,18 +24,16 @@
 }
 
 #block-hc-subscribe-hc-subscribe .form-text {
-	height: 35px;
-	line-height: 35px;
 	width: 180px;
-	margin-top: -5px;
+	height: 30px;
 }
 
 #block-hc-subscribe-hc-subscribe .form-submit {
   border: none;
   height: 35px;
   line-height: 35px;
-  background: url(../img/bg-subscribe.jpg) no-repeat left center;
-  padding-left: 30px;
+  background: url(../img/bg-subscribe.jpg) no-repeat right center;
+  padding-right: 30px;
   color: white;
   text-shadow: none;
   cursor: pointer;
