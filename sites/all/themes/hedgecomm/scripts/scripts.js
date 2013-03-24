@@ -24,5 +24,18 @@
     }
   }
   
+  Drupal.behaviors.testimonials = {
+    attach: function(context, settings) {
+      $('ul.testimonials').carouFredSel({
+        scroll : {
+          timeoutDuration: 10000,
+          duration: 750,
+          fx: "fade",
+          items: "3"
+        }
+      });
+    }
+  }
+  
 
 })(jQuery);

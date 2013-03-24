@@ -363,4 +363,5 @@ stylesheets[all][] = fonts/fonts.css
 stylesheets[all][] = font-awesome/css/font-awesome.min.css
 
 scripts[] = scripts/jquery.easing.1.3.js
+scripts[] = scripts/jquery.carouFredSel-6.2.0-packed.js
 scripts[] = scripts/scripts.js

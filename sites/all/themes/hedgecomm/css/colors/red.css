@@ -70,15 +70,15 @@
 }
 
 /* Testimonials */
-.red1 .block-course-testimonials ul.testimonials li.testimonial .body {
+.red1 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
   background: #eb2c23;
 }
 
-.red2 .block-course-testimonials ul.testimonials li.testimonial .body {
+.red2 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
   background: #cd1c1c;
 }
 
-.red3 .block-course-testimonials ul.testimonials li.testimonial .body {
+.red3 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
   background: #a30000;
 }
 
