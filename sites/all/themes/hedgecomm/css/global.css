@@ -642,7 +642,7 @@ ul.testimonials li.testimonial .function {
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color {
-  padding: 0 32px;
+  padding: 0 30px;
   height: 228px;
   position: relative;
 }
@@ -675,8 +675,8 @@ ul.testimonials li.testimonial .function {
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .name {
   font-family: "DaxlineWeb-Bold";
   font-size: 2.462em;
-  margin-bottom: 32px;
-  padding-top: 16px;
+  margin-bottom: 16px;
+  padding-top: 24px;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .description {
@@ -686,8 +686,8 @@ ul.testimonials li.testimonial .function {
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color .link {
   font-size: 1.384em;
   position: absolute;
-  bottom: 32px;
-  right: 32px;
+  bottom: 22px;
+  right: 26px;
 }
 
 /****************************************************************
