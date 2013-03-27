@@ -115,7 +115,7 @@
 }
 
 /* Navigation links */
-.yellow1 #block-hc-blocks-catalog-subject-navigation .item-list ul li a {
+.yellow1 #block-hc-blocks-catalog-subject-navigation .item-list ul li p.title {
   color: #f7a31c;
 }
 
@@ -125,7 +125,7 @@
   color: white;
 }
 
-.yellow2 #block-hc-blocks-catalog-subject-navigation .item-list ul li a {
+.yellow2 #block-hc-blocks-catalog-subject-navigation .item-list ul li p.title {
   color: #e08a1e;
 }
 
@@ -135,7 +135,7 @@
   color: white;
 }
 
-.yellow3 #block-hc-blocks-catalog-subject-navigation .item-list ul li a {
+.yellow3 #block-hc-blocks-catalog-subject-navigation .item-list ul li p.title {
   color: #d16800;
 }
 

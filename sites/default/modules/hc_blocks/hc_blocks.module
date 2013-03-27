@@ -122,20 +122,24 @@ function _hc_blocks_block_catalog_subject_navigation_render() {
   if (is_numeric(arg(2))) {
     $tid = arg(2);
     $term_wrapper = entity_metadata_wrapper('taxonomy_term', $tid);
+    $term_name = $term_wrapper->name->value();
     $field_block = $term_wrapper->field_block->value();
 
     if (is_array($field_block)) {
       $items = array();
+      $items[] = array('data' => '<p class="title">' . t('Have questions?<br />Click for an answer.') . '</p>');
+      
       foreach ($field_block as $block_item) {
         $field_block_wrapper = entity_metadata_wrapper('field_collection_item', $block_item->item_id);
         $title = $field_block_wrapper->field_block_title->value();
         $items[] = array('data' => "<a href='#'>" . $title . "</a>", 'data-naventityid' => $block_item->item_id);
       }
+      
+      $items[] = array('data' => "<a href='#'>" . t('What is the @term_name course roadmap?', array('@term_name' => $term_name)) . "</a>");
     }
 
   } 
-  
- $block['#markup'] = theme('item_list', array('items' => $items));
+  $block['#markup'] = theme('item_list', array('items' => $items));
   
   return $block;
 }

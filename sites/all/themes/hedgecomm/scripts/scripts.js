@@ -17,9 +17,29 @@
         $('#block-hc-blocks-catalog-subject-navigation ul li').removeClass('active');
         $(this).addClass('active');
         var entityId = $(this).data('naventityid');
-        var selector = "#text_block_" + entityId;
+        if (entityId > 0) {
+	        var selector = "#text_block_" + entityId;
+	      } else {
+	        var selector = ".course-roadmap";
+	      }
         var offset = $(selector).offset();
         $('html,body').animate({scrollTop: offset.top}, 1000, "easeInOutExpo");
+      });
+    }
+  }
+
+  Drupal.behaviors.textBlocksTopLink = {
+    attach : function(context, settings) {
+      $('.field-collection-item-field-block').append('<a href="#" class="to-top to-top-block">Top&nbsp;<i class="arrow-up"></i></a>');
+    }
+  }
+
+  Drupal.behaviors.toTop = {
+    attach: function(context, settings) {
+      $('a.to-top').click(function(e){
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 1000, "easeInOutExpo");
+		    return false;
       });
     }
   }

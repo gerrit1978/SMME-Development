@@ -147,6 +147,5 @@ function hedgecomm_alpha_preprocess_field(&$vars) {
     }
     
   }
-  
 
 }

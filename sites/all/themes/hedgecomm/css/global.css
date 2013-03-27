@@ -55,6 +55,32 @@ a:hover {
   -ms-transition: all .1s linear;   
 }
 
+a.to-top {
+  height: 16px;
+  background: url(../img/icons/arrow_sprite.png) no-repeat right top;
+  color: #9a9a9a;
+  display: inline-block;
+  padding-right: 22px;
+  line-height: 16px;
+  -webkit-transition: none;  
+  -moz-transition: none;  
+  -o-transition: none;  
+  -ms-transition: none;   
+}
+
+a.to-top:hover {
+  color: black;
+  background-position: right center;
+  -webkit-transition: none;  
+  -moz-transition: none;  
+  -o-transition: none;  
+  -ms-transition: none;   
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0;
+}
+
 /** Logo: Site Name **/
 .branding-data {
   position: absolute;
@@ -732,7 +758,7 @@ ul.testimonials li.testimonial .function {
 }
 
 .catalog-subject-header .text .description {
-  font-size: 1.538em;
+  font-size: 1.462em;
   margin: 32px;
 }
 
@@ -759,7 +785,22 @@ ul.testimonials li.testimonial .function {
   background: #eb2c23;
   margin-left: -32px;
   margin-right: -32px;
-  padding: 32px;
+  padding: 32px 42px 6px 32px;
+  margin-bottom: 32px;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted a.to-top-block {
+  right: 48px;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted a.to-top {
+  color: white;
+  background-position: right bottom;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted a.to-top:hover {
+  color: black;
+  background-position: right center;
 }
 
 .field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-title,
@@ -776,29 +817,55 @@ ul.testimonials li.testimonial .function {
   margin-top: 32px;
 }
 
+.field-collection-item-field-block {
+  position: relative;
+}
+
+.field-collection-item-field-block a.to-top-block {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+}
+
 .field-collection-item-field-block .field-name-field-block-title {
-  font-size: 2.615em;
+  font-size: 2.846em;
   line-height: 1.2;
   color: #eb2c23;
-  font-family: "DaxlineWeb-Medium";
+  font-family: "DaxlineWeb";
+  margin-bottom: 26px;
 }
 
 .field-collection-item-field-block .field-name-field-block-text,
 .field-collection-item-field-block .field-name-field-block-footer-text { 
-  font-size: 1.231em;
-  color: #838383;
-  width: 75%;
-  margin: 30px 0;
+  font-size: 1.385em;
+  color: black;
+}
+
+.field-collection-item-field-block .field-name-field-block-text h4 {
+  font-weight: normal;
+  font-family: "DaxlineWeb-Bold";
+  margin: 0;
+}
+
+.field-collection-item-field-block .field-name-field-block-text ul {
+  margin-left: 32px;
+}
+
+.field-collection-item-field-block .field-name-field-block-text ul.columns li {
+  width: 50%;
+  float: left;
+}
+
+.field-collection-item-field-block .field-name-field-block-text p {
+  margin-bottom: 32px;
 }
 
 .field-collection-item-field-block .field-name-field-block-footer-text {
-  border-top: 1px solid #ededed;
-  padding-top: 60px;
 }
 
 .field-collection-item-field-block .field-name-field-block-subblock .field-item {
-  width: 40%;
-  margin-right: 25px;
+  width: 47%;
+  margin-right: 48px;
   float: left;
 }
 
@@ -813,13 +880,18 @@ ul.testimonials li.testimonial .function {
 
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-title {
   font-size: 1.692em;
-  color: #646464;
+  color: black;
+  font-family: "DaxlineWeb-Medium";
 }
 
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text {
   font-size: 1.231em;
-  color: #838383;
+  color: black;
   margin-bottom: 30px;
+}
+
+.field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text p {
+  margin-bottom: 0;
 }
 
 .field-collection-item-field-block .field-item.highlighted {
@@ -828,17 +900,24 @@ ul.testimonials li.testimonial .function {
 }
 
 /* Course Roadmap */
+.course-roadmap {
+  margin-bottom: 32px;
+}
+
 .course-roadmap h2.roadmap-title {
   font-size: 2.923em;
   color: #eb2c23;
-  font-family: "DaxlineWeb-Medium";
+  font-family: "DaxlineWeb";
 }
 
 .course-roadmap .view-courses-per-subject h3 {
   float: left;
-  font-size: 1.692em;
+  font-size: 1.538em;
+  font-family: "DaxlineWeb-Bold";
   color: #585858;
-  padding-top: 15px;
+  padding-top: 32px;
+  letter-spacing: 0;
+  width: 290px;
 }
 
 .course-roadmap .view-courses-per-subject .item-list {
@@ -854,7 +933,7 @@ ul.testimonials li.testimonial .function {
   border-left: 1px solid #d6d6d6;
   border-bottom: 1px solid #d6d6d6;  
   margin-bottom: 0;
-  padding: 5% 20px;
+  padding: 32px 20px;
 }
 
 .course-roadmap .view-courses-per-subject ul.courses li.course.views-row-first {
@@ -865,10 +944,24 @@ ul.testimonials li.testimonial .function {
   border-bottom: none;
 }
 
+.course-roadmap .view-courses-per-subject ul.courses li.course .course-roadmap-intro {
+  color: #969696;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course .course-roadmap-intro span {
+  margin-right: 16px;
+}
+
+.course-roadmap .view-courses-per-subject ul.courses li.course .title {
+  margin-bottom: 6px;
+}
+
 .course-roadmap .view-courses-per-subject ul.courses li.course .title a {
-  font-size: 1.692em;
+  font-size: 1.538em;
   color: #585858;
-  font-family: "DaxlineWeb-Medium";
+  font-family: "DaxlineWeb-Bold";
 }
 
 .course-roadmap .view-courses-per-subject ul.courses li.course .title a:hover {
