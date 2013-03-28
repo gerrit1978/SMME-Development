@@ -899,7 +899,7 @@ ul.testimonials li.testimonial .function {
   color: white;
 }
 
-/* Course Roadmap */
+/* Course Roadmap DEPRECATED */
 .course-roadmap {
   margin-bottom: 32px;
 }
@@ -988,6 +988,98 @@ ul.testimonials li.testimonial .function {
 
 .course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links li.course-link a:hover {
   color: #1889b3;
+}
+
+/* Course Roadmap NEW */
+.catalog-subject-roadmap {
+  margin-bottom: 32px;
+}
+
+.catalog-subject-roadmap h2.block-title {
+  color: #eb2c23;
+  font-family: "DaxlineWeb";
+  font-size: 2.923em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.catalog-subject-roadmap ul {
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li {
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division {
+  border-bottom: 1px solid #d6d6d6;
+  clear: left;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division .division {
+  width: 300px;
+  float: left;
+  padding: 16px 0;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division .division h3 {
+  font-family: "DaxlineWeb-Bold";
+  color: #585858;
+  font-size: 1.538em;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division .division-description p {
+  font-size: 1.077em;
+  margin-bottom: 0;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses {
+  margin-left: 300px;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course {
+  border-bottom: 1px solid #d6d6d6;
+  padding: 16px;
+  border-left: 1px solid #d6d6d6;  
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course .title {
+  margin-bottom: 6px;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course .title a {
+  font-size: 1.538em;
+  color: #585858;
+  font-family: "DaxlineWeb-Bold";
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course ul.course-links {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course ul.course-links li.course-link {
+  display: inline-block;
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.231em;
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course ul.course-links li.course-link a {
+  color: #00b2d9;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course ul.course-links li.course-link a:hover {
+  color: #1889b3;
+}
+
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course.last {
+  border-bottom: none;
 }
 
 /****************************************************************
