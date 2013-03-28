@@ -146,15 +146,15 @@
 }
 
 /* Courses per subject */
-.yellow1 .course-roadmap h2.roadmap-title {
+.yellow1 .catalog-subject-roadmap h2.block-title {
   color: #f7a31c;
 }
 
-.yellow2 .course-roadmap h2.roadmap-title {
+.yellow2 .catalog-subject-roadmap h2.block-title {
   color: #e08a1e;
 }
 
-.yellow3 .course-roadmap h2.roadmap-title {
+.yellow3 .catalog-subject-roadmap h2.block-title {
   color: #d16800;
 }
 

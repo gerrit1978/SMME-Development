@@ -20,7 +20,7 @@
         if (entityId > 0) {
 	        var selector = "#text_block_" + entityId;
 	      } else {
-	        var selector = ".course-roadmap";
+	        var selector = ".catalog-subject-roadmap";
 	      }
         var offset = $(selector).offset();
         $('html,body').animate({scrollTop: offset.top}, 1000, "easeInOutExpo");

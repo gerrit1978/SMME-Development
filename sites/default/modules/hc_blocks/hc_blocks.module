@@ -179,11 +179,12 @@ function _hc_blocks_block_catalog_subject_course_roadmap_render() {
   if (is_numeric(arg(2))) {
     $tid = arg(2);
     $result = db_query("SELECT * FROM {field_data_field_subject} s, {field_data_field_global_order} o WHERE s.field_subject_tid=:tid 
-                        AND s.entity_id = o.entity_id ORDER BY o.field_global_order_value ASC;", 
+                        AND s.entity_id = o.entity_id AND o.bundle = 'subject_divisions' ORDER BY o.field_global_order_value ASC;", 
               array(':tid' => $tid));
     foreach ($result as $row) {
       $subject_divisions[] = $row->entity_id; 
     }
+    
   }  
   
   foreach ($subject_divisions as $division_tid) {

@@ -899,97 +899,6 @@ ul.testimonials li.testimonial .function {
   color: white;
 }
 
-/* Course Roadmap DEPRECATED */
-.course-roadmap {
-  margin-bottom: 32px;
-}
-
-.course-roadmap h2.roadmap-title {
-  font-size: 2.923em;
-  color: #eb2c23;
-  font-family: "DaxlineWeb";
-}
-
-.course-roadmap .view-courses-per-subject h3 {
-  float: left;
-  font-size: 1.538em;
-  font-family: "DaxlineWeb-Bold";
-  color: #585858;
-  padding-top: 32px;
-  letter-spacing: 0;
-  width: 290px;
-}
-
-.course-roadmap .view-courses-per-subject .item-list {
-  border-bottom: 1px solid #d6d6d6;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses {
-  margin: 0;
-  margin-left: 30%;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course {
-  border-left: 1px solid #d6d6d6;
-  border-bottom: 1px solid #d6d6d6;  
-  margin-bottom: 0;
-  padding: 32px 20px;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course.views-row-first {
-  padding-top: 1%;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course.views-row-last {
-  border-bottom: none;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course .course-roadmap-intro {
-  color: #969696;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course .course-roadmap-intro span {
-  margin-right: 16px;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course .title {
-  margin-bottom: 6px;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course .title a {
-  font-size: 1.538em;
-  color: #585858;
-  font-family: "DaxlineWeb-Bold";
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course .title a:hover {
-  color: #838383;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links {
-  margin: 0;
-  margin-top: 10px;
-  padding: 0;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links li.course-link {
-  float: left;
-  font-family: "DaxlineWeb-Bold";
-  font-size: 1.231em;
-  margin-left: 0;
-  margin-right: 30px;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links li.course-link a {
-  color: #00b2d9;
-}
-
-.course-roadmap .view-courses-per-subject ul.courses li.course ul.course-links li.course-link a:hover {
-  color: #1889b3;
-}
-
 /* Course Roadmap NEW */
 .catalog-subject-roadmap {
   margin-bottom: 32px;
@@ -1018,16 +927,26 @@ ul.testimonials li.testimonial .function {
   clear: left;
 }
 
+.catalog-subject-roadmap ul.subject-divisions li.subject-division.last {
+  border-bottom: none;
+}
+
 .catalog-subject-roadmap ul.subject-divisions li.subject-division .division {
   width: 300px;
   float: left;
-  padding: 16px 0;
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division .division h3 {
   font-family: "DaxlineWeb-Bold";
   color: #585858;
   font-size: 1.538em;
+  margin: 16px;
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division .division-description {
+  margin: 16px;
+  margin-top: 0;
+  color: #b2b2b2;
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division .division-description p {
@@ -1045,6 +964,17 @@ ul.testimonials li.testimonial .function {
   border-left: 1px solid #d6d6d6;  
 }
 
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course .pre-title {
+  color: #b2b2b2;
+  text-transform: uppercase;
+  font-family: "DaxlineWeb-Bold";
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course .pre-title span {
+  display: inline-block;
+  margin-right: 32px;
+}
+
 .catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course .title {
   margin-bottom: 6px;
 }
@@ -1057,7 +987,7 @@ ul.testimonials li.testimonial .function {
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course ul.course-links {
   margin: 0;
-  margin-top: 10px;
+  margin-top: 16px;
   padding: 0;
 }
 

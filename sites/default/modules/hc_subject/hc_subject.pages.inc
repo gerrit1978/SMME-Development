@@ -49,6 +49,7 @@ function hc_subject_term_page($term) {
   );
 
 
+/*
 //  $output_courses = "Term tid: " . $term->tid;
   $output_courses = "<h2 class='roadmap-title'>" . t('What is the @term_name course roadmap?', array('@term_name' => $term->name)) . "</h2>"
     . views_embed_view('courses_per_subject', 'block', $term->tid);
@@ -58,6 +59,7 @@ function hc_subject_term_page($term) {
     '#markup' => $output_courses,
     '#suffix' => '</div>',
   );
+*/
 
 /*
   if ($nids = taxonomy_select_nodes($term->tid, TRUE, variable_get('default_nodes_main', 10))) {
