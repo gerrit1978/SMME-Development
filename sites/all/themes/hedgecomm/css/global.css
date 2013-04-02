@@ -335,7 +335,7 @@ ul.testimonials li.testimonial .function {
  * C.1. CONTACT BLOCK (FOOTER)
  ***************************************************************/
 .block-contact h2.block-title {
-  letter-spacing: -4px;
+  letter-spacing: -2px;
   font-family: "DaxlineWeb-Medium";
   font-size: 58px;
   line-height: 1;
@@ -364,6 +364,7 @@ ul.testimonials li.testimonial .function {
   padding: 0;
   margin-bottom: 6px;
   list-style: none;
+  font-family: "DaxlineWeb-Medium";
 }
 
 .block-catalog ul.catalog-items li.catalog-item a {
@@ -392,6 +393,7 @@ ul.testimonials li.testimonial .function {
   margin: 0;
   padding: 0;
   margin-bottom: 6px;
+  font-family: "DaxlineWeb-Medium";
 }
 
 .block-footer-menu ul.menu li a {
@@ -857,7 +859,7 @@ ul.testimonials li.testimonial .function {
 }
 
 .field-collection-item-field-block .field-name-field-block-text p {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .field-collection-item-field-block .field-name-field-block-footer-text {
@@ -885,7 +887,7 @@ ul.testimonials li.testimonial .function {
 }
 
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text {
-  font-size: 1.231em;
+  font-size: 1.385em;
   color: black;
   margin-bottom: 30px;
 }
@@ -934,33 +936,35 @@ ul.testimonials li.testimonial .function {
 .catalog-subject-roadmap ul.subject-divisions li.subject-division .division {
   width: 300px;
   float: left;
+  border-right: 1px solid #d6d6d6;
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division .division h3 {
   font-family: "DaxlineWeb-Bold";
-  color: #585858;
+  color: black;
   font-size: 1.538em;
-  margin: 16px;
+  margin: 32px;
+  margin-bottom: 0;
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division .division-description {
-  margin: 16px;
+  margin: 32px;
   margin-top: 0;
   color: #b2b2b2;
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division .division-description p {
-  font-size: 1.077em;
-  margin-bottom: 0;
+  font-size: 1.038em;
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses {
   margin-left: 300px;
+  font-size: 1.038em;
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course {
   border-bottom: 1px solid #d6d6d6;
-  padding: 16px;
+  padding: 32px;
   border-left: 1px solid #d6d6d6;  
 }
 
@@ -981,8 +985,12 @@ ul.testimonials li.testimonial .function {
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course .title a {
   font-size: 1.538em;
+  color: black;
+  font-family: "DaxlineWeb-Medium";
+}
+
+.catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course .title a:hover {
   color: #585858;
-  font-family: "DaxlineWeb-Bold";
 }
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course ul.course-links {
@@ -993,7 +1001,7 @@ ul.testimonials li.testimonial .function {
 
 .catalog-subject-roadmap ul.subject-divisions li.subject-division ul.courses li.course ul.course-links li.course-link {
   display: inline-block;
-  font-family: "DaxlineWeb-Bold";
+  font-family: "DaxlineWeb-Medium";
   font-size: 1.231em;
   margin-left: 0;
   margin-right: 30px;
