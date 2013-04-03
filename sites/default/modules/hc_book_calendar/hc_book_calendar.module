@@ -1,0 +1,198 @@
+<?php
+
+/**
+ * @file
+ * This module provides the "Book a course" rows view
+ * see http://grayside.org/2010/09/how-override-views-field-template-module for details concerning hook_theme and theme functions
+ */
+
+/**
+ * Implements hook_views_api
+ */
+function hc_book_calendar_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+
+function hc_book_calendar_theme($existing, $type, $theme, $path) {
+  return array(
+
+		// main catalog pages
+    'views_view_field__book_a_course__page__nothing' => array( 
+        'arguments' => array('view' => FALSE, 'field' => FALSE, 'row' => FALSE),
+        'original hook' => 'views_view_field',
+    ),
+
+    'views_view_field__courses_per_subject__block_2__nothing' => array( 
+        'arguments' => array('view' => FALSE, 'field' => FALSE, 'row' => FALSE),
+        'original hook' => 'views_view_field',
+    ),
+
+  );
+}
+
+
+
+/**
+ * Theme function for formatting product 
+ */
+function theme_views_view_field__book_a_course__page__nothing(&$vars) {
+
+
+
+  $subject_term_tid = $vars['row']->tid;
+  
+  if (!$subject_term_tid) {
+    return;
+  }
+
+  // get all courses associated with this subject
+  $result = db_query("SELECT * FROM {field_data_field_course_catalog_subject} s, {field_data_field_global_order} o WHERE s.field_course_catalog_subject_tid=:tid
+                        AND s.entity_id = o.entity_id ORDER BY o.field_global_order_value ASC;",
+              array(':tid' => $subject_term_tid));
+  foreach ($result as $row) {
+    $entity_id = $row->entity_id;
+    $items_course_nids[] = $entity_id;
+  }
+  
+  if (count($items_course_nids)) {
+  
+    $output_header = "<div class='header clearfix'>"
+      . "<div class='left'>" . t('Course') . "</div><div class='center'>" . t('Upcoming Public Dates') . "</div><div class='right'>" . t('Book') . "</div>"
+      . "</div>";
+  
+    $output_course_list = views_embed_view('courses_per_subject', 'block_2', implode(',', $items_course_nids));
+  }
+  
+  $output = $output_header . $output_course_list;
+  return $output;
+
+}
+
+
+function theme_views_view_field__courses_per_subject__block_2__nothing(&$vars) {
+  $output = "";
+  $course_nid = $vars['row']->nid;
+  
+  // get all "variations" belonging to this course
+  $course_wrapper = entity_metadata_wrapper('node', $course_nid);
+  $variations_field = $course_wrapper->field_course_public_courses->value();
+
+  if (is_array($variations_field) && count($variations_field)) {
+    $output_variations = array();
+    $variation_list = array();
+    foreach ($variations_field as $variation) {
+      $variation_wrapper = entity_metadata_wrapper('commerce_product', $variation);
+      $variation_product_id = $variation_wrapper->product_id->value();
+      $variation_location = $variation_wrapper->field_public_course_location->value();
+      $variation_date = $variation_wrapper->field_public_course_date->value();
+      $variation_date_start = date('m.d.Y', $variation_date['value']);
+      if (isset($variation_date['value2'])) {
+        $variation_date_end = date('m.d.Y', $variation_date['value2']);
+      }
+      
+      if (isset($variation_date_end)) {
+        $output_variation_date = $variation_date_start . " to " . $variation_date_end;
+      } else {
+        $output_variation_date = $variation_date_start;
+      }
+      
+      $output_variation = "<div class='col1'><span class='location'>" . $variation_location . "</span>"
+        . "<span class='date'>" . $output_variation_date . "</span></div>"
+        . "<div class='col2'><div class='book'><a href='/book-course?pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book this Course') . "</a></div></div>";
+      
+      $variation_list[] = array('data' => $output_variation, 'class' => array('clearfix'));
+    }
+    $output_variations = theme('item_list', array('items' => $variation_list));
+    $output .= $output_variations;
+  } else {
+    $output .= "<div class='no-dates'>" . t('No public Dates') . "</div>";
+  }
+
+  return $output;
+}
+
+
+/********************************************************************************************
+ DEPRECATED
+*******************************************************************************************/
+
+/**
+ * Implements hook_menu
+ 
+function hc_book_calendar_menu() {
+  $items = array();
+  
+  $items['book-a-course-old'] = array(
+    'title' => '',
+    'page callback' => '_hc_book_calendar_page',
+    'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
+
+
+/**
+ * Callback function for rendering page
+ 
+function _hc_book_calendar_page() {
+
+  // get current region
+  $user_location = $_SESSION['user_location'];
+
+  // get all taxonomy terms (subjects) for catalog vocabulary
+  $terms = taxonomy_get_tree(3);
+  
+  // region check for all subjects and store subjects (taxonomy term ids) in array()
+  $subjects = array();
+  foreach ($terms as $term) {
+    $subject = entity_metadata_wrapper('taxonomy_term', $term->tid);
+    $region_field = $subject->field_global_region->value();
+    if (is_array($region_field)) {
+      foreach ($region_field as $region) {
+        if ($region == $user_location['continent_code']) {
+          $subjects[] = $term->tid;
+        }
+      }
+    }
+  }
+  
+  foreach ($subjects as $subject) {
+    $subject_wrapper = entity_metadata_wrapper('taxonomy_term', $subject);
+    $subject_name = $subject_wrapper->name->value();
+    $subject_description = $subject_wrapper->description->value();
+    
+    // intro output
+    $output .= "<div class='subject'>"
+      . "<div class='intro'><h3>" . $subject_name . "</h3><div class='description'>" . $subject_description . "</div>"
+      . "</div>";
+      
+      
+    // get list of courses belonging to this subject, with the right region
+/*
+    $result = db_query("SELECT * FROM {node} n, {field_data_field_global_region} r 
+      WHERE n.type='course'
+      AND n.nid =
+    ;");
+
+    $result = db_query("SELECT * FROM {node} n, {field_data_field_global_region} r, {field_data_field_course_catalog_subject} c 
+      WHERE n.nid = r.entity_id 
+      AND n.type = 'course' 
+      AND r.field_global_region_value=:region
+      AND c.entity_id = n.nid
+      AND c.field_course_catalog_subject_tid=:subject;", 
+      array(':region' => $user_location['continent_code'], ':subject' => $subject));
+    foreach ($result as $row) {
+      $node = node_load($row->nid);
+      $output .= $node->title . " - " . $node->nid . "<br />";
+    }
+  }
+
+  
+  return $output;
+}
+*/
+

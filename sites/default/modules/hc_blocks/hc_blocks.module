@@ -6,8 +6,12 @@
  *
  * - header block for subject (taxonomy) page
  * - navigation block for subject (taxonomy) page
+ * - roadmap block for subject (taxonomy) page (divided according to subject divisions vocabulary)
  * - header block for course (node) page
+ * - "product variations" (public dates) for course (node) page
  * - testimonial block for course (node) page
+ * - header block for team (node) page
+ * - testimonial block for trainer (node) page
  *
  */
 
@@ -39,6 +43,10 @@ function hc_blocks_block_info() {
   
   $blocks['course_header'] = array(
     'info' => t('Course Page Header'),
+  );
+  
+  $blocks['course_public_dates'] = array(
+    'info' => t('Course Public Dates'),
   );
   
   $blocks['course_testimonials'] = array(
@@ -77,6 +85,10 @@ function hc_blocks_block_view($delta = '') {
     case 'course_header':
       $block['content'] = _hc_blocks_block_course_header_render();
       break;
+    case 'course_public_dates':
+      $block['subject'] = _hc_blocks_block_course_public_dates_render_title();
+      $block['content'] = _hc_blocks_block_course_public_dates_render();
+      break;
     case 'course_testimonials':
       $block['subject'] = t('Course Testimonials');
       $block['content'] = _hc_blocks_block_course_testimonials_render();
@@ -104,7 +116,8 @@ function _hc_blocks_block_catalog_subject_header_render() {
     $term_name = $term_wrapper->name->value();
     $term_description = $term_wrapper->description->value();
     $term_header_visual = $term_wrapper->field_catalog_header_visual->value();
-    $header_visual_path = file_create_url($term_header_visual['uri']);
+    $header_visual_path = image_style_url('subject_header_default', $term_header_visual['uri']);
+//    $header_visual_path = file_create_url($term_header_visual['uri']);
     $header_visual = theme('image', array('path' => $header_visual_path));
 
 		$output = "<div class='image'>" . $header_visual . "</div>"
@@ -258,6 +271,54 @@ function _hc_blocks_block_course_header_render() {
 
   }
   return $block;
+}
+
+/**
+ * Helper function for rendering public course dates block title 
+ */
+function _hc_blocks_block_course_public_dates_render_title() {
+
+  $title = "Public Course Dates";
+
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node = node_load($nid);
+    $node_title = $node->title;
+    $title = t('Public Course Dates for @title', array('@title' => $node_title));
+  }
+
+  return $title;
+}
+
+
+/**
+ * Helper function for rendering public course dates block
+ */
+function _hc_blocks_block_course_public_dates_render() {
+
+  $output = "";
+
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node_wrapper = entity_metadata_wrapper('node', $nid);
+    $node_title = $node_wrapper->title->value();
+    $public_course_field = $node_wrapper->field_course_public_courses->value();
+    if (is_array($public_course_field) && count($public_course_field)) {
+      $product_pids = array();
+      foreach ($public_course_field as $public_course) {
+        $product_pids[] = $public_course->product_id;
+      }
+      if (count($product_pids)) {
+        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Public Dates') . "</div><div class='right'>Book</div></div>";
+        $output .= "<div class='title clearfix'>" . $node_title . "</div>";
+      
+        $output .= views_embed_view('public_courses_temp', 'block', implode(',', $product_pids));
+        return $output;
+      }
+    }
+  } else {
+    return;
+  }
 }
 
 

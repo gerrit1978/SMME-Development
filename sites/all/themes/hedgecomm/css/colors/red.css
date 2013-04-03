@@ -172,3 +172,18 @@
 .page-catalog #block-system-main ul.catalog-items li.catalog-item .color.red3 {
   background: #a30000;
 }
+
+/*******************************************
+ * 4. Course detail page
+ ******************************************/
+.red1 .block-public-course-dates h2.block-title {
+  color: #eb2c23;
+}
+
+.red2 .block-public-course-dates h2.block-title {
+  color: #cd1c1c;
+}
+
+.red3 .block-public-course-dates h2.block-title {
+  color: #a30000;
+}

@@ -42,4 +42,10 @@ function hedgecomm_alpha_preprocess_page(&$vars) {
     $vars['title'] = "";
   }
   
+
+  /** BOOK A COURSE PAGE **/
+  if (arg(0) == 'book-a-course') {
+    $vars['title'] = "";
+  }
+  
 }

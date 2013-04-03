@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Implements hook_form_alter
+ */
+function hc_book_temp_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'webform_client_form_41') {
+  
+    if (isset($_GET['pid'])) {  
+    
+      // try to load the product (public course) with this pid
+      $commerce_product_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
+      
+      $date = $commerce_product_wrapper->field_public_course_date->value();
+      
+      if (isset($date['value'])) {
+        $startdate = date('m.d.Y', $date['value']);
+      }
+      if (isset($date['value2'])) {
+        $enddate = date('m.d.Y', $date['value2']);
+      }
+
+      $course_date = $startdate;
+      if ($enddate) {
+        $course_date .= " - " . $enddate;
+      }
+
+      
+      $result = db_query("SELECT entity_id FROM {field_data_field_course_public_courses} WHERE field_course_public_courses_target_id=:product_id;", array(':product_id' => $_GET['pid']));
+      foreach ($result as $row) {
+        $nid = $row->entity_id;
+      }
+      
+      $course_node = node_load($nid);
+      $course_name = $course_node->title;
+    
+	    $form['submitted']['course_name']['#default_value'] = $course_name;
+	    $form['submitted']['course_date']['#default_value'] = $course_date;
+    }
+  }
+}

@@ -57,5 +57,20 @@
     }
   }
   
+  Drupal.behaviors.retina = {
+    attach: function(context, settings) {
+      var retina = window.devicePixelRatio >= 2;
+      
+      if (retina) {
+        // images for catalog subject page
+        if ($('body').hasClass('context-catalog')) {
+	        var subject_header_image = $('#block-hc-blocks-catalog-subject-header .image img').attr('src');
+	        var subject_header_retina_image = subject_header_image.replace('subject_header_default', 'subject_header_retina');
+	        $('#block-hc-blocks-catalog-subject-header .image img').attr('src', subject_header_retina_image);
+  	    }
+      } 
+    }
+  }
+  
 
 })(jQuery);

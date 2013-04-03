@@ -1,0 +1,5 @@
+name        = Book a Course Calendar
+description = Adds the public calendar page
+core        = 7.x
+version     = 7.x-1.0
+package     = HedgeComm
