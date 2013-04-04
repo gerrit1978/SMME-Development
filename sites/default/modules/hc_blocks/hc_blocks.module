@@ -201,39 +201,92 @@ function _hc_blocks_block_catalog_subject_course_roadmap_render() {
   
   if (is_numeric(arg(2))) {
     $tid = arg(2);
-    $result = db_query("SELECT * FROM {field_data_field_subject} s, {field_data_field_global_order} o WHERE s.field_subject_tid=:tid 
-                        AND s.entity_id = o.entity_id AND o.bundle = 'subject_divisions' ORDER BY o.field_global_order_value ASC;", 
-              array(':tid' => $tid));
-    foreach ($result as $row) {
+  }
+  
+  $result = db_query("SELECT * FROM {field_data_field_subject} s, {field_data_field_global_order} o WHERE s.field_subject_tid=:tid 
+                      AND s.entity_id = o.entity_id AND o.bundle = 'subject_divisions' ORDER BY o.field_global_order_value ASC;", 
+            array(':tid' => $tid));
+  foreach ($result as $row) {
+    // region check here
+    $current_location = $_SESSION['user_location']['continent_code'];
+    $subject_division_wrapper = entity_metadata_wrapper('taxonomy_term', $row->entity_id);
+    $region_field = $subject_division_wrapper->field_global_region->value();
+    if (in_array($current_location, $region_field)) {
       $subject_divisions[] = $row->entity_id; 
     }
-    
-  }  
-  
-  foreach ($subject_divisions as $division_tid) {
-    $output_courses = "";
-    $items_course_nids = array();
-    // get basic info for this division
-    $division_term = entity_metadata_wrapper('taxonomy_term', $division_tid);
-    $division_title = $division_term->name->value();
-    $division_description = $division_term->description->value();
-    
-    // get courses belonging to this division
-    $result = db_query("SELECT * FROM {field_data_field_course_training_division} d, {field_data_field_global_order} o WHERE d.field_course_training_division_tid=:tid
-                        AND d.entity_id = o.entity_id ORDER BY o.field_global_order_value ASC;",
-              array(':tid' => $division_tid));
-    foreach ($result as $row) {
-      $entity_id = $row->entity_id;
-      $items_course_nids[] = $entity_id;
-    }
-    
-    $output_courses = views_embed_view('courses_per_subject', 'block_1', implode(',', $items_course_nids));
-    
-    if (count($items_course_nids)) {    
-	    $items[] = array('data' => "<div class='division'><h3>" . $division_title . "</h3><div class='division-description'>" . $division_description . "</div></div>" . $output_courses,
-                     'class' => array('subject-division', 'clearfix'));
-    }
   }
+    
+
+  
+  // for subjects containing divisions
+  if (count($subject_divisions)) {
+	  foreach ($subject_divisions as $division_tid) {
+	    $output_courses = "";
+	    $items_course_nids = array();
+	    // get basic info for this division
+	    $division_term = entity_metadata_wrapper('taxonomy_term', $division_tid);
+	    $division_title = $division_term->name->value();
+	    $division_description = $division_term->description->value();
+	    
+	    // get courses belonging to this division
+	    $result = db_query("SELECT * FROM {field_data_field_course_training_division} d, {field_data_field_global_order} o WHERE d.field_course_training_division_tid=:tid
+	                        AND d.entity_id = o.entity_id ORDER BY o.field_global_order_value ASC;",
+	              array(':tid' => $division_tid));
+	              
+	    // do region check
+	    $current_location = $_SESSION['user_location']['continent_code'];
+	    foreach ($result as $row) {
+	      $entity_id = $row->entity_id;
+	      
+	      $course_wrapper = entity_metadata_wrapper('node', $entity_id);
+	      $region_field = $course_wrapper->field_global_region->value();
+	      if (in_array($current_location, $region_field)) {
+		      $items_course_nids[] = $entity_id;      
+	      }
+	    }
+	    
+	    $output_courses = views_embed_view('courses_per_subject', 'block_1', implode(',', $items_course_nids));
+	    
+	    if (count($items_course_nids)) {
+		    $items[] = array('data' => "<div class='division'><h3>" . $division_title . "</h3><div class='division-description'>" . $division_description . "</div></div>" . $output_courses,
+	                     'class' => array('subject-division', 'clearfix'));
+	    }
+	  }
+	} else {
+	  // subjects containing no divisions
+	  $output_courses = "";
+	  $items_course_nids = array();
+	  // get basic info for this subject
+    $subject_wrapper = entity_metadata_wrapper('taxonomy_term', $tid);
+    $subject_name = $subject_wrapper->name->value();
+    $subject_description = $subject_wrapper->description->value();
+    
+    $result = db_query("SELECT DISTINCT * FROM {node} n, {field_data_field_course_catalog_subject} s, {field_data_field_global_order} o
+      WHERE n.nid = o.entity_id
+      AND n.type = 'course'
+      AND n.nid = s.entity_id
+      AND s.field_course_catalog_subject_tid=:subject_tid
+      ORDER BY o.field_global_order_value ASC;",
+      array(':subject_tid' => $tid));
+
+    foreach ($result as $row) {
+      $course_nid = $row->nid;
+      $course_wrapper = entity_metadata_wrapper('node', $course_nid);
+      $region_field = $course_wrapper->field_global_region->value();
+      $current_location = $_SESSION['user_location']['continent_code'];
+      if (in_array($current_location, $region_field)) {
+        $items_course_nids[] = $course_nid;
+      }
+    }
+
+    $output_courses = views_embed_view('courses_per_subject', 'block_1', implode(',', $items_course_nids));
+	    
+    if (count($items_course_nids)) {
+		    $items[] = array('data' => "<div class='division'><h3>" . $subject_name . "</h3><div class='division-description'>" . $subject_description . "</div></div>" . $output_courses,
+	                     'class' => array('subject-division', 'clearfix'));
+    }
+   
+	}
   
   $block['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'subject-divisions clearfix')));
   
