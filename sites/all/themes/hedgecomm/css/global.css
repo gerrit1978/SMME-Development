@@ -1502,13 +1502,17 @@ ul.testimonials li.testimonial .function {
  ***************************************************************/
 .page-book-a-course h2.site-name a,
 .page-book-a-course h1.site-name a {
-  color: #47cf6e;
+  color: #f7a31c;
+}
+
+.page-book-a-course .view-header-visuals ul li .visual img {
+  width: 1000px;
 }
 
 .page-book-a-course .view-header-visuals ul li .text,
 .page-book-a-course .view-header-visuals ul li .text .description {
   color: white;
-  background: #47cf6e;
+  background: #f7a31c;
 }
 
 .page-book-a-course ul.subjects {
@@ -1523,7 +1527,7 @@ ul.testimonials li.testimonial .function {
 }
 
 .page-book-a-course ul.subjects li.subject h3.subject-title {
-  color: #47cf6e;
+  color: #f7a31c;
   font-size: 2.923em;
   line-height: 1;
   font-weight: lighter;
@@ -1535,30 +1539,177 @@ ul.testimonials li.testimonial .function {
 	color: black;
 }
 
+.page-book-a-course ul.subjects li.subject table {
+  margin: 0;
+  padding: 0;
+}
+
+.page-book-a-course ul.subjects li.subject table td,
+.page-book-a-course ul.subjects li.subject table th {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-book-a-course ul.subjects li.subject table.header {
+  border: none;
+  border-bottom: 1px solid #d6d6d6;
+  font-family: "DaxlineWeb-Medium";
+  font-size: 1.538em;
+
+}
+
+.page-book-a-course ul.subjects li.subject table.header th {
+  border-right: 1px solid #d6d6d6;  
+  text-align: center;
+  padding: 24px 0;
+}
+
+.page-book-a-course ul.subjects li.subject table th.left,
+.page-book-a-course ul.subjects li.subject table td.left {
+  width: 284px;
+}
+
+.page-book-a-course ul.subjects li.subject table th.center,
+.page-book-a-course ul.subjects li.subject table td.center {
+  width: 440px;
+}
+
+.page-book-a-course ul.subjects li.subject table th.right,
+.page-book-a-course ul.subjects li.subject table td.right {
+  border-right: none;
+  width: 217px;
+}
+
+.page-book-a-course ul.subjects li.subject table.main {
+  border: none;
+}
+
+.page-book-a-course ul.subjects li.subject table.main tr.odd,
+.page-book-a-course ul.subjects li.subject table.main tr.even {
+  background: none;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td {
+  border-right: 1px solid #d6d6d6;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.left {
+  padding: 24px 0;
+  vertical-align: top;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right {
+  border-right: 0;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.left .course-title {
+  font-family: "DaxlineWeb-Medium";
+  font-size: 1.385em;
+  padding: 0 32px;
+  line-height: 1.538em;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.left .course-title a {
+  color: #00b2d9;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.left .course-title a:hover {
+  color: #1889b3;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.center .variations ul {
+  margin: 0;
+  padding: 0;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.center .variations ul li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d6d6d6;
+  height: 74px;
+  line-height: 74px;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.center .variations ul li.last {
+  border-bottom: none;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.center .variations ul li .location,
+.page-book-a-course ul.subjects li.subject table.main td.center .variations ul li .date {
+  float: left;
+  width: 50%;
+  text-align: center;
+  font-size: 1.385em;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul {
+  margin: 0;
+  padding: 0;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d6d6d6;
+  height: 74px;
+  line-height: 74px;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li.last {
+  border-bottom: none;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li .booking-link {
+  font-size: 1.385em;
+  text-align: center;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li .booking-link a {
+  color: #00b2d9;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li .booking-link a:hover {
+  color: #1889b3;
+}
+
+
+.page-book-a-course ul.subjects li.subject a.to-top-book {
+  float: right;
+  margin-right: 32px;
+  margin-top: 16px;
+  color: #9a9a9a;
+}
+
+.page-book-a-course ul.subjects li.subject a.to-top-book:hover {
+  color: black;
+}
+
+/*
 .page-book-a-course ul.subjects li.subject .courses-list .header {
   border-bottom: 1px solid #d6d6d6;
-  padding: 16px;
-  padding-top: 0;
   font-family: "DaxlineWeb-Medium";
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list .header div {
   float: left;
   font-size: 1.538em;
+  text-align: center;
+  padding: 24px 0;
+  border-right: 1px solid #d6d6d6;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list .header .left {
-  width: 350px;
+  width: 284px;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list .header .center {
-  width: 325px;
-  padding-left: 18px;
+  width: 440px;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list .header .right {
-  width: 176px;
-  padding-left: 24px;
+  width: 214px;
+  border-right: none;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses {
@@ -1573,21 +1724,20 @@ ul.testimonials li.testimonial .function {
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .course-title {
-  width: 310px;
   float: left;
-  padding: 24px;
-  padding-left: 0;
-  margin-left: 16px;
   font-family: "DaxlineWeb-Medium";
   color: black;
   font-size: 1.538em;
   border-right: 1px solid #d6d6d6;
-  height: 50px;
-  line-height: 1.2;
+  padding: 0 32px;
+  width: 220px;
+  line-height: 1.538em;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .course-title a {
   color: #00b2d9;
+  padding: 24px 0;
+  display: block;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .course-title a:hover {
@@ -1595,9 +1745,9 @@ ul.testimonials li.testimonial .function {
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations {
-  margin-left: 350px;
   font-size: 1.385em;
   border-left: 1px solid #d6d6d6;
+  margin-left: 284px;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul {
@@ -1608,11 +1758,10 @@ ul.testimonials li.testimonial .function {
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li {
   margin: 0;
   padding: 0;
-  padding-left: 32px;
-  height: 64px;
-  line-height: 64px;
+  height: 74px;
+  line-height: 74px;
   border-bottom: 1px solid #d6d6d6;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li.last {
@@ -1625,18 +1774,20 @@ ul.testimonials li.testimonial .function {
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col1 {
-  width: 325px;
+  width: 440px;
   border-right: 1px solid #d6d6d6;
-  margin-right: 16px;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .location {
-  color: #00b2d9;
-  margin-right: 20px;
+.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col1 .location,
+.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col1 .date {
+  display: inline-block;
+  float: left;
+  width: 50%;
+  text-align: center;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col2 .book {
-  padding-left: 8px;
+  margin-left: 24px;
 }
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col2 .book a {
@@ -1650,5 +1801,6 @@ ul.testimonials li.testimonial .function {
 
 .page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations .no-dates {
   color: #cdcdcd;
-  padding: 32px;
+  text-align: center;
 }
+*/

@@ -28,6 +28,21 @@
     }
   }
 
+  Drupal.behaviors.bookCourseNav = {
+    attach: function (context, settings) {
+      $('#block-hc-blocks-book-a-course-navigation ul li').click(function(e) {
+        e.preventDefault();
+        $('#block-hc-blocks-book-a-course-navigation ul li').removeClass('active');
+        $(this).addClass('active');
+        var entityId = $(this).data('naventityid');
+        var selector = "#subject-title" + entityId;
+        var offset = $(selector).offset();
+        $('html,body').animate({scrollTop: offset.top}, 1000, "easeInOutExpo");
+      });
+    }
+  }
+
+
   Drupal.behaviors.textBlocksTopLink = {
     attach : function(context, settings) {
       $('.field-collection-item-field-block').append('<a href="#" class="to-top to-top-block">Top&nbsp;<i class="arrow-up"></i></a>');
@@ -38,11 +53,24 @@
     attach: function(context, settings) {
       $('a.to-top').click(function(e){
         e.preventDefault();
-        $('html, body').animate({scrollTop: 0}, 1000, "easeInOutExpo");
+        var offset = $('#block-hc-blocks-catalog-subject-navigation').offset();
+        $('html, body').animate({scrollTop: offset.top}, 1000, "easeInOutExpo");
 		    return false;
       });
     }
   }
+
+  Drupal.behaviors.toTopBook = {
+    attach: function(context, settings) {
+      $('a.to-top-book').click(function(e){
+        e.preventDefault();
+        var offset = $('#block-hc-blocks-book-a-course-navigation').offset();
+        $('html, body').animate({scrollTop: offset.top}, 1000, "easeInOutExpo");
+		    return false;
+      });
+    }
+  }
+
   
   Drupal.behaviors.testimonials = {
     attach: function(context, settings) {
@@ -72,5 +100,19 @@
     }
   }
   
+/*
+  Drupal.behaviors.courseBorder = {
+    attach: function(context, settings) {
+      $('.view-courses-per-subject ul.courses li.course .course-title').each(function() {
+        var height = $(this).height();
+        var variationsHeight = $(this).parent().parent().find('.variations').height();
+        if (variationsHeight < height) {
+	        $(this).find('li.onsite .col1').css('height', height);
+	      }
+      });
+    }
+  }
+*/
+
 
 })(jQuery);

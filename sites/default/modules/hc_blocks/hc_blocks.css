@@ -1,3 +1,4 @@
+/** Subject Navigation **/
 #block-hc-blocks-catalog-subject-navigation {
   margin: 0 30px;
   margin-bottom: 16px;
@@ -35,5 +36,46 @@
 #block-hc-blocks-catalog-subject-navigation .item-list ul li a:hover,
 #block-hc-blocks-catalog-subject-navigation .item-list ul li.active a {
   background: #eb2c23;
+  color: white;
+}
+
+
+/** Book a Course roadmap **/
+#block-hc-blocks-book-a-course-navigation {
+  margin-bottom: 30px;
+}
+
+#block-hc-blocks-book-a-course-navigation .item-list ul {
+  margin-bottom: 0;
+}
+
+#block-hc-blocks-book-a-course-navigation .item-list ul li {
+  float: left;
+  margin: 0;
+  margin-right: 5px;
+  padding-top: 8px;
+  font-size: 1.231em;
+}
+
+#block-hc-blocks-book-a-course-navigation .item-list ul li p.title {
+  color: #f7a31c;
+  line-height: 1.4;
+  margin-right: 16px;
+  margin-bottom: 0;
+  padding-top: 4px;
+  text-align: center;
+  font-family: "DaxlineWeb-Bold";
+}
+
+#block-hc-blocks-book-a-course-navigation .item-list ul li a {
+  color: black;
+  padding: 6px 10px 4px 10px;
+  font-family: "DaxlineWeb-Bold";
+  line-height: 1;
+}
+
+#block-hc-blocks-book-a-course-navigation .item-list ul li a:hover,
+#block-hc-blocks-book-a-course-navigation .item-list ul li.active a {
+  background: #f7a31c;
   color: white;
 }

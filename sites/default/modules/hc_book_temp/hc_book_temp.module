@@ -11,8 +11,9 @@ function hc_book_temp_form_alter(&$form, &$form_state, $form_id) {
       // try to load the product (public course) with this pid
       $commerce_product_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
       
-      $date = $commerce_product_wrapper->field_public_course_date->value();
+      $course_date = $commerce_product_wrapper->field_public_course_date_format->value();
       
+/*
       if (isset($date['value'])) {
         $startdate = date('m.d.Y', $date['value']);
       }
@@ -24,8 +25,7 @@ function hc_book_temp_form_alter(&$form, &$form_state, $form_id) {
       if ($enddate) {
         $course_date .= " - " . $enddate;
       }
-
-      
+*/
       $result = db_query("SELECT entity_id FROM {field_data_field_course_public_courses} WHERE field_course_public_courses_target_id=:product_id;", array(':product_id' => $_GET['pid']));
       foreach ($result as $row) {
         $nid = $row->entity_id;
@@ -33,9 +33,15 @@ function hc_book_temp_form_alter(&$form, &$form_state, $form_id) {
       
       $course_node = node_load($nid);
       $course_name = $course_node->title;
-    
-	    $form['submitted']['course_name']['#default_value'] = $course_name;
-	    $form['submitted']['course_date']['#default_value'] = $course_date;
     }
+    
+    if (isset($_GET['onsite']) && $_GET['onsite'] == TRUE && isset($_GET['course_nid'])) {
+      $course_node = node_load($_GET['course_nid']);
+      $course_name = $course_node->title;
+    }
+    
+    $form['submitted']['course_name']['#default_value'] = $course_name;
+    $form['submitted']['course_date']['#default_value'] = $course_date;
+    
   }
 }

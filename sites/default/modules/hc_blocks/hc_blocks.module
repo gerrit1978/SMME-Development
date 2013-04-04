@@ -61,6 +61,11 @@ function hc_blocks_block_info() {
     'info' => t('Trainer Testimonials'),
   );
   
+  $blocks['book_a_course_navigation'] = array(
+    'info' => t('Book a Course Page Navigation'),
+  );
+
+  
   return $blocks;
 }
 
@@ -99,6 +104,11 @@ function hc_blocks_block_view($delta = '') {
     case 'trainer_testimonials':
       $block['subject'] = t('Trainer Testimonials');
       $block['content'] = _hc_blocks_block_trainer_testimonials_render();
+      break;
+     case 'book_a_course_navigation':
+      $block['subject'] = t('Navigation');
+      $block['content'] = _hc_blocks_block_book_a_course_navigation_render();
+      break;
   }
   
   return $block;
@@ -394,5 +404,40 @@ function _hc_blocks_block_trainer_testimonials_render() {
 
   $output = views_embed_view('testimonials', 'block', implode(',', $testimonial_nids));
 
+  return $output;
+}
+
+
+/**
+ * Helper function for rendering book a course page navigation
+ */
+function _hc_blocks_block_book_a_course_navigation_render() {
+
+  $catalog = taxonomy_get_tree(3);
+  
+  // get user_location
+  $continent_code = $_SESSION['user_location']['continent_code'];
+  
+  if (is_array($catalog) && count($catalog) > 0) {
+    $items = array();
+    $items[] = array('data' => '<p class="title">' . t('Which courses<br />are you looking for?') . '</p>');
+
+    foreach ($catalog as $subject) {
+      $subject_wrapper = entity_metadata_wrapper('taxonomy_term', $subject->tid);
+      $subject_title = $subject_wrapper->name->value();
+      $subject_tid = $subject->tid;
+      $subject_region = $subject_wrapper->field_global_region->value();
+      if (is_array($subject_region)) {
+        foreach ($subject_region as $region) {
+          if ($region == $continent_code) {
+            $items[] = array('data' => "<a href='#'>" . $subject_title . "</a>", 'data-naventityid' => $subject_tid);
+          }
+        }
+      }
+    }
+  }
+
+  $output = theme('item_list', array('items' => $items));
+  
   return $output;
 }
