@@ -57,10 +57,8 @@ a:hover {
 
 a.to-top {
   height: 16px;
-  background: url(../img/icons/arrow_sprite.png) no-repeat right top;
   color: #9a9a9a;
   display: inline-block;
-  padding-right: 22px;
   line-height: 16px;
   -webkit-transition: none;  
   -moz-transition: none;  

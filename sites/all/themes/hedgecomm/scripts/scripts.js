@@ -45,7 +45,7 @@
 
   Drupal.behaviors.textBlocksTopLink = {
     attach : function(context, settings) {
-      $('.field-collection-item-field-block').append('<a href="#" class="to-top to-top-block">Top&nbsp;<i class="arrow-up"></i></a>');
+      $('.field-collection-item-field-block').append("<a class='to-top to-top-block' href='#'>Top&nbsp;<i class='icon-arrow-up'></i></a>");
     }
   }
 
