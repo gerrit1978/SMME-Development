@@ -72,19 +72,207 @@
 }
 
 
-/* Testimonials */
-.blue1 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
-  background: #00b2d9;
-}
+/**
+ * Testimonials 
+ **/
 
-.blue2 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
+/** Body Text **/
+.blue1 ul.testimonials li.testimonial .body .inner {
   background: #1889b3;
 }
 
-.blue3 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
+.blue1 ul.testimonials li.testimonial.item1 .body .inner,
+.blue1 ul.testimonials li.testimonial.item4 .body .inner,
+.blue1 ul.testimonials li.testimonial.item7 .body .inner,
+.blue1 ul.testimonials li.testimonial.item10 .body .inner,
+.blue1 ul.testimonials li.testimonial.item13 .body .inner,
+.blue1 ul.testimonials li.testimonial.item16 .body .inner,
+.blue1 ul.testimonials li.testimonial.item19 .body .inner,
+.blue1 ul.testimonials li.testimonial.item22 .body .inner,
+.blue1 ul.testimonials li.testimonial.item25 .body .inner,
+.blue1 ul.testimonials li.testimonial.item28 .body .inner {
   background: #005a86;
 }
 
+.blue1 ul.testimonials li.testimonial.item2 .body .inner,
+.blue1 ul.testimonials li.testimonial.item5 .body .inner,
+.blue1 ul.testimonials li.testimonial.item8 .body .inner,
+.blue1 ul.testimonials li.testimonial.item11 .body .inner,
+.blue1 ul.testimonials li.testimonial.item14 .body .inner,
+.blue1 ul.testimonials li.testimonial.item17 .body .inner,
+.blue1 ul.testimonials li.testimonial.item20 .body .inner,
+.blue1 ul.testimonials li.testimonial.item23 .body .inner,
+.blue1 ul.testimonials li.testimonial.item26 .body .inner,
+.blue1 ul.testimonials li.testimonial.item29 .body .inner {
+  background: #00b2d9;
+}
+
+.blue2 ul.testimonials li.testimonial .body .inner {
+  background: #005a86;
+}
+
+.blue2 ul.testimonials li.testimonial.item1 .body .inner,
+.blue2 ul.testimonials li.testimonial.item4 .body .inner,
+.blue2 ul.testimonials li.testimonial.item7 .body .inner,
+.blue2 ul.testimonials li.testimonial.item10 .body .inner,
+.blue2 ul.testimonials li.testimonial.item13 .body .inner,
+.blue2 ul.testimonials li.testimonial.item16 .body .inner,
+.blue2 ul.testimonials li.testimonial.item19 .body .inner,
+.blue2 ul.testimonials li.testimonial.item22 .body .inner,
+.blue2 ul.testimonials li.testimonial.item25 .body .inner,
+.blue2 ul.testimonials li.testimonial.item28 .body .inner {
+  background: #00b2d9;
+}
+
+.blue2 ul.testimonials li.testimonial.item2 .body .inner,
+.blue2 ul.testimonials li.testimonial.item5 .body .inner,
+.blue2 ul.testimonials li.testimonial.item8 .body .inner,
+.blue2 ul.testimonials li.testimonial.item11 .body .inner,
+.blue2 ul.testimonials li.testimonial.item14 .body .inner,
+.blue2 ul.testimonials li.testimonial.item17 .body .inner,
+.blue2 ul.testimonials li.testimonial.item20 .body .inner,
+.blue2 ul.testimonials li.testimonial.item23 .body .inner,
+.blue2 ul.testimonials li.testimonial.item26 .body .inner,
+.blue2 ul.testimonials li.testimonial.item29 .body .inner {
+  background: #1889b3;
+}
+
+.blue3 ul.testimonials li.testimonial .body .inner {
+  background: #00b2d9;
+}
+
+.blue3 ul.testimonials li.testimonial.item1 .body .inner,
+.blue3 ul.testimonials li.testimonial.item4 .body .inner,
+.blue3 ul.testimonials li.testimonial.item7 .body .inner,
+.blue3 ul.testimonials li.testimonial.item10 .body .inner,
+.blue3 ul.testimonials li.testimonial.item13 .body .inner,
+.blue3 ul.testimonials li.testimonial.item16 .body .inner,
+.blue3 ul.testimonials li.testimonial.item19 .body .inner,
+.blue3 ul.testimonials li.testimonial.item22 .body .inner,
+.blue3 ul.testimonials li.testimonial.item25 .body .inner,
+.blue3 ul.testimonials li.testimonial.item28 .body .inner {
+  background: #1889b3;
+}
+
+.blue3 ul.testimonials li.testimonial.item2 .body .inner,
+.blue3 ul.testimonials li.testimonial.item5 .body .inner,
+.blue3 ul.testimonials li.testimonial.item8 .body .inner,
+.blue3 ul.testimonials li.testimonial.item11 .body .inner,
+.blue3 ul.testimonials li.testimonial.item14 .body .inner,
+.blue3 ul.testimonials li.testimonial.item17 .body .inner,
+.blue3 ul.testimonials li.testimonial.item20 .body .inner,
+.blue3 ul.testimonials li.testimonial.item23 .body .inner,
+.blue3 ul.testimonials li.testimonial.item26 .body .inner,
+.blue3 ul.testimonials li.testimonial.item29 .body .inner {
+  background: #005a86;
+}
+
+
+
+/** Triangles **/
+.blue1 ul.testimonials li.testimonial .triangle {
+	border-color: #1889b3 transparent transparent transparent;
+	_border-color: #1889b3 #000000 #000000 #000000;
+}
+
+.blue1 ul.testimonials li.testimonial.item1 .triangle,
+.blue1 ul.testimonials li.testimonial.item4 .triangle,
+.blue1 ul.testimonials li.testimonial.item7 .triangle,
+.blue1 ul.testimonials li.testimonial.item10 .triangle,
+.blue1 ul.testimonials li.testimonial.item13 .triangle,
+.blue1 ul.testimonials li.testimonial.item16 .triangle,
+.blue1 ul.testimonials li.testimonial.item19 .triangle,
+.blue1 ul.testimonials li.testimonial.item22 .triangle,
+.blue1 ul.testimonials li.testimonial.item25 .triangle,
+.blue1 ul.testimonials li.testimonial.item28 .triangle {
+	border-color: #005a86 transparent transparent transparent;
+	_border-color: #005a86 #000000 #000000 #000000;
+}
+
+.blue1 ul.testimonials li.testimonial.item2 .triangle,
+.blue1 ul.testimonials li.testimonial.item5 .triangle,
+.blue1 ul.testimonials li.testimonial.item8 .triangle,
+.blue1 ul.testimonials li.testimonial.item11 .triangle,
+.blue1 ul.testimonials li.testimonial.item14 .triangle,
+.blue1 ul.testimonials li.testimonial.item17 .triangle,
+.blue1 ul.testimonials li.testimonial.item20 .triangle,
+.blue1 ul.testimonials li.testimonial.item23 .triangle,
+.blue1 ul.testimonials li.testimonial.item26 .triangle,
+.blue1 ul.testimonials li.testimonial.item29 .triangle {
+	border-color: #00b2d9 transparent transparent transparent;
+	_border-color: #00b2d9 #000000 #000000 #000000;
+}
+
+.blue2 ul.testimonials li.testimonial .triangle {
+	border-color: #005a86 transparent transparent transparent;
+	_border-color: #005a86 #000000 #000000 #000000;
+}
+
+.blue2 ul.testimonials li.testimonial.item1 .triangle,
+.blue2 ul.testimonials li.testimonial.item4 .triangle,
+.blue2 ul.testimonials li.testimonial.item7 .triangle,
+.blue2 ul.testimonials li.testimonial.item10 .triangle,
+.blue2 ul.testimonials li.testimonial.item13 .triangle,
+.blue2 ul.testimonials li.testimonial.item16 .triangle,
+.blue2 ul.testimonials li.testimonial.item19 .triangle,
+.blue2 ul.testimonials li.testimonial.item22 .triangle,
+.blue2 ul.testimonials li.testimonial.item25 .triangle,
+.blue2 ul.testimonials li.testimonial.item28 .triangle {
+	border-color: #00b2d9 transparent transparent transparent;
+	_border-color: #00b2d9 #000000 #000000 #000000;
+}
+
+.blue2 ul.testimonials li.testimonial.item2 .triangle,
+.blue2 ul.testimonials li.testimonial.item5 .triangle,
+.blue2 ul.testimonials li.testimonial.item8 .triangle,
+.blue2 ul.testimonials li.testimonial.item11 .triangle,
+.blue2 ul.testimonials li.testimonial.item14 .triangle,
+.blue2 ul.testimonials li.testimonial.item17 .triangle,
+.blue2 ul.testimonials li.testimonial.item20 .triangle,
+.blue2 ul.testimonials li.testimonial.item23 .triangle,
+.blue2 ul.testimonials li.testimonial.item26 .triangle,
+.blue2 ul.testimonials li.testimonial.item29 .triangle {
+	border-color: #1889b3 transparent transparent transparent;
+	_border-color: #1889b3 #000000 #000000 #000000;
+}
+
+.blue3 ul.testimonials li.testimonial .triangle {
+	border-color: #00b2d9 transparent transparent transparent;
+	_border-color: #00b2d9 #000000 #000000 #000000;
+}
+
+.blue3 ul.testimonials li.testimonial.item1 .triangle,
+.blue3 ul.testimonials li.testimonial.item4 .triangle,
+.blue3 ul.testimonials li.testimonial.item7 .triangle,
+.blue3 ul.testimonials li.testimonial.item10 .triangle,
+.blue3 ul.testimonials li.testimonial.item13 .triangle,
+.blue3 ul.testimonials li.testimonial.item16 .triangle,
+.blue3 ul.testimonials li.testimonial.item19 .triangle,
+.blue3 ul.testimonials li.testimonial.item22 .triangle,
+.blue3 ul.testimonials li.testimonial.item25 .triangle,
+.blue3 ul.testimonials li.testimonial.item28 .triangle {
+	border-color: #1889b3 transparent transparent transparent;
+	_border-color: #1889b3 #000000 #000000 #000000;
+}
+
+.blue3 ul.testimonials li.testimonial.item2 .triangle,
+.blue3 ul.testimonials li.testimonial.item5 .triangle,
+.blue3 ul.testimonials li.testimonial.item8 .triangle,
+.blue3 ul.testimonials li.testimonial.item11 .triangle,
+.blue3 ul.testimonials li.testimonial.item14 .triangle,
+.blue3 ul.testimonials li.testimonial.item17 .triangle,
+.blue3 ul.testimonials li.testimonial.item20 .triangle,
+.blue3 ul.testimonials li.testimonial.item23 .triangle,
+.blue3 ul.testimonials li.testimonial.item26 .triangle,
+.blue3 ul.testimonials li.testimonial.item29 .triangle {
+	border-color: #005a86 transparent transparent transparent;
+	_border-color: #005a86 #000000 #000000 #000000;
+}
+
+
+
+
+/** Titles **/
 .blue1 .block-course-testimonials h2.block-title {
   color: #00b2d9;
 }

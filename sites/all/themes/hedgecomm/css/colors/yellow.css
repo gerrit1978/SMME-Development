@@ -72,19 +72,205 @@
 }
 
 
-/* Testimonials */
-.yellow1 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
-  background: #f7a31c;
-}
+/**
+ * Testimonials
+ **/
 
-.yellow2 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
+/** Body Text **/
+.yellow1 ul.testimonials li.testimonial .body .inner {
   background: #e08a1e;
 }
 
-.yellow3 .block-course-testimonials ul.testimonials li.testimonial .body .inner {
+.yellow1 ul.testimonials li.testimonial.item1 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item4 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item7 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item10 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item13 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item16 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item19 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item22 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item25 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item28 .body .inner {
   background: #d16800;
 }
 
+.yellow1 ul.testimonials li.testimonial.item2 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item5 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item8 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item11 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item14 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item17 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item20 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item23 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item26 .body .inner,
+.yellow1 ul.testimonials li.testimonial.item29 .body .inner {
+  background: #f7a31c;
+}
+
+.yellow2 ul.testimonials li.testimonial .body .inner {
+  background: #d16800;
+}
+
+.yellow2 ul.testimonials li.testimonial.item1 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item4 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item7 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item10 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item13 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item16 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item19 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item22 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item25 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item28 .body .inner {
+  background: #f7a31c;
+}
+
+.yellow2 ul.testimonials li.testimonial.item2 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item5 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item8 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item11 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item14 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item17 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item20 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item23 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item26 .body .inner,
+.yellow2 ul.testimonials li.testimonial.item29 .body .inner {
+  background: #e08a1e;
+}
+
+.yellow3 ul.testimonials li.testimonial .body .inner {
+  background: #f7a31c;
+}
+
+.yellow3 ul.testimonials li.testimonial.item1 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item4 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item7 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item10 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item13 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item16 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item19 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item22 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item25 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item28 .body .inner {
+  background: #e08a1e;
+}
+
+.yellow3 ul.testimonials li.testimonial.item2 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item5 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item8 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item11 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item14 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item17 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item20 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item23 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item26 .body .inner,
+.yellow3 ul.testimonials li.testimonial.item29 .body .inner {
+  background: #d16800;
+}
+
+
+
+/** Triangles **/
+.yellow1 ul.testimonials li.testimonial .triangle {
+	border-color: #e08a1e transparent transparent transparent;
+	_border-color: #e08a1e #000000 #000000 #000000;
+}
+
+.yellow1 ul.testimonials li.testimonial.item1 .triangle,
+.yellow1 ul.testimonials li.testimonial.item4 .triangle,
+.yellow1 ul.testimonials li.testimonial.item7 .triangle,
+.yellow1 ul.testimonials li.testimonial.item10 .triangle,
+.yellow1 ul.testimonials li.testimonial.item13 .triangle,
+.yellow1 ul.testimonials li.testimonial.item16 .triangle,
+.yellow1 ul.testimonials li.testimonial.item19 .triangle,
+.yellow1 ul.testimonials li.testimonial.item22 .triangle,
+.yellow1 ul.testimonials li.testimonial.item25 .triangle,
+.yellow1 ul.testimonials li.testimonial.item28 .triangle {
+	border-color: #d16800 transparent transparent transparent;
+	_border-color: #d16800 #000000 #000000 #000000;
+}
+
+.yellow1 ul.testimonials li.testimonial.item2 .triangle,
+.yellow1 ul.testimonials li.testimonial.item5 .triangle,
+.yellow1 ul.testimonials li.testimonial.item8 .triangle,
+.yellow1 ul.testimonials li.testimonial.item11 .triangle,
+.yellow1 ul.testimonials li.testimonial.item14 .triangle,
+.yellow1 ul.testimonials li.testimonial.item17 .triangle,
+.yellow1 ul.testimonials li.testimonial.item20 .triangle,
+.yellow1 ul.testimonials li.testimonial.item23 .triangle,
+.yellow1 ul.testimonials li.testimonial.item26 .triangle,
+.yellow1 ul.testimonials li.testimonial.item29 .triangle {
+	border-color: #f7a31c transparent transparent transparent;
+	_border-color: #f7a31c #000000 #000000 #000000;
+}
+
+.yellow2 ul.testimonials li.testimonial .triangle {
+	border-color: #d16800 transparent transparent transparent;
+	_border-color: #d16800 #000000 #000000 #000000;
+}
+
+.yellow2 ul.testimonials li.testimonial.item1 .triangle,
+.yellow2 ul.testimonials li.testimonial.item4 .triangle,
+.yellow2 ul.testimonials li.testimonial.item7 .triangle,
+.yellow2 ul.testimonials li.testimonial.item10 .triangle,
+.yellow2 ul.testimonials li.testimonial.item13 .triangle,
+.yellow2 ul.testimonials li.testimonial.item16 .triangle,
+.yellow2 ul.testimonials li.testimonial.item19 .triangle,
+.yellow2 ul.testimonials li.testimonial.item22 .triangle,
+.yellow2 ul.testimonials li.testimonial.item25 .triangle,
+.yellow2 ul.testimonials li.testimonial.item28 .triangle {
+	border-color: #f7a31c transparent transparent transparent;
+	_border-color: #f7a31c #000000 #000000 #000000;
+}
+
+.yellow2 ul.testimonials li.testimonial.item2 .triangle,
+.yellow2 ul.testimonials li.testimonial.item5 .triangle,
+.yellow2 ul.testimonials li.testimonial.item8 .triangle,
+.yellow2 ul.testimonials li.testimonial.item11 .triangle,
+.yellow2 ul.testimonials li.testimonial.item14 .triangle,
+.yellow2 ul.testimonials li.testimonial.item17 .triangle,
+.yellow2 ul.testimonials li.testimonial.item20 .triangle,
+.yellow2 ul.testimonials li.testimonial.item23 .triangle,
+.yellow2 ul.testimonials li.testimonial.item26 .triangle,
+.yellow2 ul.testimonials li.testimonial.item29 .triangle {
+	border-color: #e08a1e transparent transparent transparent;
+	_border-color: #e08a1e #000000 #000000 #000000;
+}
+
+.yellow3 ul.testimonials li.testimonial .triangle {
+	border-color: #f7a31c transparent transparent transparent;
+	_border-color: #f7a31c #000000 #000000 #000000;
+}
+
+.yellow3 ul.testimonials li.testimonial.item1 .triangle,
+.yellow3 ul.testimonials li.testimonial.item4 .triangle,
+.yellow3 ul.testimonials li.testimonial.item7 .triangle,
+.yellow3 ul.testimonials li.testimonial.item10 .triangle,
+.yellow3 ul.testimonials li.testimonial.item13 .triangle,
+.yellow3 ul.testimonials li.testimonial.item16 .triangle,
+.yellow3 ul.testimonials li.testimonial.item19 .triangle,
+.yellow3 ul.testimonials li.testimonial.item22 .triangle,
+.yellow3 ul.testimonials li.testimonial.item25 .triangle,
+.yellow3 ul.testimonials li.testimonial.item28 .triangle {
+	border-color: #e08a1e transparent transparent transparent;
+	_border-color: #e08a1e #000000 #000000 #000000;
+}
+
+.yellow3 ul.testimonials li.testimonial.item2 .triangle,
+.yellow3 ul.testimonials li.testimonial.item5 .triangle,
+.yellow3 ul.testimonials li.testimonial.item8 .triangle,
+.yellow3 ul.testimonials li.testimonial.item11 .triangle,
+.yellow3 ul.testimonials li.testimonial.item14 .triangle,
+.yellow3 ul.testimonials li.testimonial.item17 .triangle,
+.yellow3 ul.testimonials li.testimonial.item20 .triangle,
+.yellow3 ul.testimonials li.testimonial.item23 .triangle,
+.yellow3 ul.testimonials li.testimonial.item26 .triangle,
+.yellow3 ul.testimonials li.testimonial.item29 .triangle {
+	border-color: #d16800 transparent transparent transparent;
+	_border-color: #d16800 #000000 #000000 #000000;
+}
+
+
+/** Titles **/
 .yellow1 .block-course-testimonials h2.block-title {
   color: #f7a31c;
 }

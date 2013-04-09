@@ -182,17 +182,17 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
         }
         
         // add an "onsite link" for America
-        if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') {
-          $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose your own') . "</div>";
+/*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
+          $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose Your Own') . "</div>";
           $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
-        }
+/*         } */
         
         $output_variations = theme('item_list', array('items' => $items));
       } else {
         $items = array();
 /*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
         if (TRUE) {
-          $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose your own') . "</div>";
+          $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose Your Own') . "</div>";
           $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
         }
         
@@ -206,14 +206,14 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
 	      foreach ($variations_field as $variation) {
 		      $variation_wrapper = entity_metadata_wrapper('commerce_product', $variation);
 		      $variation_product_id = $variation_wrapper->product_id->value();
-		      $variation_link = "<div class='booking-link'><a href='/book-course?pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book this Course') . "</a></div>";
+		      $variation_link = "<div class='booking-link'><a href='/book-this-course?nid=" . $nid . "&pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
 		      $items[] = array('data' => $variation_link);
 	      }
 	    
         // add an "booking onsite link" for America: currently for all regions
 /*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
         if (TRUE) {
-          $variation_link = "<div class='booking-link'><a href='/book-course?onsite=TRUE&course_nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book this Course') . "</a></div>";
+          $variation_link = "<div class='booking-link'><a href='/book-this-course?onsite=TRUE&nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
           $items[] = array('data' => $variation_link);
         }
         
@@ -222,7 +222,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
         $items = array();
 /*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
         if(TRUE) {
-          $variation_link = "<div class='booking-link'><a href='/book-course?onsite=TRUE&course_nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book this Course') . "</a></div>";
+          $variation_link = "<div class='booking-link'><a href='/book-this-course?onsite=TRUE&nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
           $items[] = array('data' => $variation_link);
         }
         
@@ -252,7 +252,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
 
 
   }
-    $output_to_top = "<a class='to-top-book' href='#'>Top&nbsp;<i class='icon-arrow-up'></i></a>";
+    $output_to_top = "<a class='to-top to-top-book' href='#'>Top&nbsp;<i class='icon-arrow-up'></i></a>";
     $output_complete = $output_header . $output_main . $output_to_top;
     return $output_complete;    
 
@@ -304,7 +304,7 @@ function theme_views_view_field__courses_per_subject__block_2__nothing_deprecate
       
       $output_variation = "<div class='col1'><span class='location'>" . $variation_location . "</span>"
         . "<span class='date'>" . $variation_date . "</span></div>"
-        . "<div class='col2'><div class='book'><a href='/book-course?pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book this Course') . "</a></div></div>";
+        . "<div class='col2'><div class='book'><a href='/book-course?pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div></div>";
       
       $variation_list[] = array('data' => $output_variation, 'class' => array('clearfix'));
       
@@ -323,7 +323,7 @@ function theme_views_view_field__courses_per_subject__block_2__nothing_deprecate
   if (isset($user_location['continent_code']) && $user_location['continent_code'] == 'NA') {
     $output_onsite = "<div class='col1'><span class='location'>" . t('Onsite') . "</span>"
       . "<span class='date'>" . t('Choose Your Own') . "</span></div>"
-      . "<div class='col2'><div class='book'><a href='/book-course?onsite=TRUE&course_nid=" . $course_nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book this Course') . "</a></div></div>";
+      . "<div class='col2'><div class='book'><a href='/book-course?onsite=TRUE&course_nid=" . $course_nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div></div>";
     
     $variation_list[] = array('data' => $output_onsite, 'class' => array('clearfix', 'onsite'));
   }

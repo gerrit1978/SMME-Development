@@ -239,40 +239,54 @@ ul.testimonials li.testimonial.last {
 }
 
 ul.testimonials li.testimonial .body {
-  background: url(../img/triangles/triangle_red1.png) no-repeat 100px bottom;
-  padding: 32px 0;
-  padding-top: 0;
+  padding: 0;
   font-size: 1.077em;
 }
+
+ul.testimonials li.testimonial .triangle {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 32px 32px 0 0;
+	border-color: #cd1c1c transparent transparent transparent;
+	line-height: 0px;
+	_border-color: #cd1c1c #000000 #000000 #000000;
+	_filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');	
+	text-indent: -999em;
+	margin-left: 100px;
+}
+
 
 ul.testimonials li.testimonial .body p {
   margin-bottom: 0;
 }
 
-ul.testimonials li.testimonial.item1 .body,
-ul.testimonials li.testimonial.item4 .body,
-ul.testimonials li.testimonial.item7 .body,
-ul.testimonials li.testimonial.item10 .body,
-ul.testimonials li.testimonial.item13 .body,
-ul.testimonials li.testimonial.item16 .body,
-ul.testimonials li.testimonial.item19 .body,
-ul.testimonials li.testimonial.item22 .body,
-ul.testimonials li.testimonial.item25 .body,
-ul.testimonials li.testimonial.item28 .body {
-  background-image: url(../img/triangles/triangle_red2.png);
+ul.testimonials li.testimonial.item1 .triangle,
+ul.testimonials li.testimonial.item4 .triangle,
+ul.testimonials li.testimonial.item7 .triangle,
+ul.testimonials li.testimonial.item10 .triangle,
+ul.testimonials li.testimonial.item13 .triangle,
+ul.testimonials li.testimonial.item16 .triangle,
+ul.testimonials li.testimonial.item19 .triangle,
+ul.testimonials li.testimonial.item22 .triangle,
+ul.testimonials li.testimonial.item25 .triangle,
+ul.testimonials li.testimonial.item28 .triangle {
+	border-color: #ef2a09 transparent transparent transparent;
+	_border-color: #ef2a09 #000000 #000000 #000000;
 }
 
-ul.testimonials li.testimonial.item2 .body,
-ul.testimonials li.testimonial.item5 .body,
-ul.testimonials li.testimonial.item8 .body,
-ul.testimonials li.testimonial.item11 .body,
-ul.testimonials li.testimonial.item14 .body,
-ul.testimonials li.testimonial.item17 .body,
-ul.testimonials li.testimonial.item20 .body,
-ul.testimonials li.testimonial.item23 .body,
-ul.testimonials li.testimonial.item26 .body,
-ul.testimonials li.testimonial.item29 .body {
-  background-image: url(../img/triangles/triangle_red3.png);
+ul.testimonials li.testimonial.item2 .triangle,
+ul.testimonials li.testimonial.item5 .triangle,
+ul.testimonials li.testimonial.item8 .triangle,
+ul.testimonials li.testimonial.item11 .triangle,
+ul.testimonials li.testimonial.item14 .triangle,
+ul.testimonials li.testimonial.item17 .triangle,
+ul.testimonials li.testimonial.item20 .triangle,
+ul.testimonials li.testimonial.item23 .triangle,
+ul.testimonials li.testimonial.item26 .triangle,
+ul.testimonials li.testimonial.item29 .triangle {
+	border-color: #a30000 transparent transparent transparent;
+	_border-color: #a30000 #000000 #000000 #000000;
 }
 
 ul.testimonials li.testimonial .body .inner {
@@ -314,7 +328,16 @@ ul.testimonials li.testimonial .name {
   font-size: 1.154em;
 }
 
-ul.testimonials li.testimonial .function {
+ul.testimonials li.testimonial .company {
+  margin-bottom: 2px;
+}
+
+ul.testimonials li.testimonial .date-location {
+  color: #939393;
+}
+
+ul.testimonials li.testimonial .company,
+ul.testimonials li.testimonial .date-location {
   margin-left: 55px;
   font-size: 1em;
 }
@@ -653,6 +676,7 @@ ul.testimonials li.testimonial .function {
 .page-catalog #block-system-main ul.catalog-items {
   margin: 0;
   padding: 0;
+  margin-bottom: 16px;
 }
 
 .page-catalog #block-system-main ul.catalog-items li.catalog-item {

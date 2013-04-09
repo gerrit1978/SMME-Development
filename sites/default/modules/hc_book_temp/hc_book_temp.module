@@ -1,47 +1,125 @@
 <?php
 
 /**
- * Implements hook_form_alter
+ * Implements hook_menu
  */
-function hc_book_temp_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'webform_client_form_41') {
+function hc_book_temp_menu() {
+  $items = array();
   
-    if (isset($_GET['pid'])) {  
-    
-      // try to load the product (public course) with this pid
-      $commerce_product_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
-      
-      $course_date = $commerce_product_wrapper->field_public_course_date_format->value();
-      
-/*
-      if (isset($date['value'])) {
-        $startdate = date('m.d.Y', $date['value']);
-      }
-      if (isset($date['value2'])) {
-        $enddate = date('m.d.Y', $date['value2']);
-      }
+  $items['book-this-course'] = array(
+    'title' => 'Book This Course',
+    'page callback' => '_hc_book_temp_render_form',
+    'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
 
-      $course_date = $startdate;
-      if ($enddate) {
-        $course_date .= " - " . $enddate;
-      }
-*/
-      $result = db_query("SELECT entity_id FROM {field_data_field_course_public_courses} WHERE field_course_public_courses_target_id=:product_id;", array(':product_id' => $_GET['pid']));
-      foreach ($result as $row) {
-        $nid = $row->entity_id;
+
+
+/**
+ * Helper function for rendering booking form
+ */
+function _hc_book_temp_render_form() {
+
+  // define which form to be shown
+  $current_location = $_SESSION['user_location']['continent_code'];
+  
+  $block = array('content' => '');
+  
+  switch ($current_location) {
+    case 'NA':
+    default:
+      $block = module_invoke('webform', 'block_view', 'client-block-53');
+      break;
+    case 'EU':
+      $block = module_invoke('webform', 'block_view', 'client-block-54');
+      break;
+    case 'AS':
+      $block = module_invoke('webform', 'block_view', 'client-block-55');
+      break;
+  }
+
+  $output = $block['content'];
+  
+  return $output;
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter: USA booking form
+ */
+function hc_book_temp_form_webform_client_form_53_alter(&$form, &$form_state) {
+
+  if (isset($_GET['nid'])) {
+    $node = node_load($_GET['nid']);
+    $course_title = $node->title;
+    $form['submitted']['course_title']['#default_value'] = $course_title;
+  }
+  
+  if (isset($_GET['pid']) && isset($_GET['nid'])) {
+    $date_options = array();
+    $course_wrapper = entity_metadata_wrapper('node', $_GET['nid']);
+    $variations = $course_wrapper->field_course_public_courses->value();
+    if (is_array($variations) && count($variations) > 0) {
+      foreach ($variations as $variation) {
+        $date_format = $variation->field_public_course_date_format['und'][0]['safe_value'];
+        $date_options[$date_format] = $date_format;
       }
       
-      $course_node = node_load($nid);
-      $course_name = $course_node->title;
+      // get default value
+      $selected_variation_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
+      $selected_date = $selected_variation_wrapper->field_public_course_date_format->value();
+      
+      $form['submitted']['session']['#type'] = 'select';
+      $form['submitted']['session']['#options'] = $date_options;
+      $form['submitted']['session']['#default_value'] = $selected_date;
+    } else {
+      unset($form['submitted']['session']);
+      $form['submitted']['session'] = array();
     }
-    
-    if (isset($_GET['onsite']) && $_GET['onsite'] == TRUE && isset($_GET['course_nid'])) {
-      $course_node = node_load($_GET['course_nid']);
-      $course_name = $course_node->title;
-    }
-    
-    $form['submitted']['course_name']['#default_value'] = $course_name;
-    $form['submitted']['course_date']['#default_value'] = $course_date;
-    
   }
+  
+  if (isset($_GET['nid']) && isset($_GET['onsite'])) {
+    unset($form['submitted']['session']);
+  }
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter: EU booking form
+ */
+function hc_book_temp_form_webform_client_form_54_alter(&$form, &$form_state) {
+
+  if (isset($_GET['nid'])) {
+    $node = node_load($_GET['nid']);
+    $course_title = $node->title;
+    $form['submitted']['course_title']['#default_value'] = $course_title;
+  }
+
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter: AS booking form
+ */
+function hc_book_temp_form_webform_client_form_55_alter(&$form, &$form_state) {
+
+  if (isset($_GET['nid'])) {
+    $node = node_load($_GET['nid']);
+    $course_title = $node->title;
+    $form['submitted']['course_title']['#default_value'] = $course_title;
+  }
+
+}
+
+
+
+
+
+/**
+ * Implements hook_form_alter
+*/
+function hc_book_temp_form_alter(&$form, &$form_state, $form_id) {
+
 }

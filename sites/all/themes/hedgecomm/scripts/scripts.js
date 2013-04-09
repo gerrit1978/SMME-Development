@@ -51,7 +51,7 @@
 
   Drupal.behaviors.toTop = {
     attach: function(context, settings) {
-      $('a.to-top').click(function(e){
+      $('a.to-top-block').click(function(e){
         e.preventDefault();
         var offset = $('#block-hc-blocks-catalog-subject-navigation').offset();
         $('html, body').animate({scrollTop: offset.top}, 1000, "easeInOutExpo");
