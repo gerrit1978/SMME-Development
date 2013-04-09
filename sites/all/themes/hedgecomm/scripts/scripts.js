@@ -92,15 +92,42 @@
       if (retina) {
         // images for catalog subject page
         if ($('body').hasClass('context-catalog')) {
+          var current_image = $('.retina-check img').attr('src');
+          if (current_image) {
+            var retina_image = current_image.replace('subject_header_default', 'subject_header_retina');
+            $('.retina-check img').attr('src', retina_image);
+          }
+        
+/*
+ *
+ * Disabled: problem with this function is the fact that different headers are different blocks. Currently solved with giving
+ * the "retina-check" to each header block. CAVEAT: what if other images are placed in a block…
+ *
+ *
+ */
+/*
+ 
+ 
 	        var subject_header_image = $('#block-hc-blocks-catalog-subject-header .image img').attr('src');
-	        var subject_header_retina_image = subject_header_image.replace('subject_header_default', 'subject_header_retina');
-	        $('#block-hc-blocks-catalog-subject-header .image img').attr('src', subject_header_retina_image);
+	        if (!subject_header_image) subject_header_image = $('#block-views-header-visuals-block .visual img').attr('src');
+	        alert(subject_header_image);
+	        if (subject_header_image) {
+		        var subject_header_retina_image = subject_header_image.replace('subject_header_default', 'subject_header_retina');
+  		      $('#block-hc-blocks-catalog-subject-header .image img').attr('src', subject_header_retina_image);		        
+	        } else {
+	          alert('geen replace van image');
+	        }
+
+*/
+
   	    }
       } 
     }
   }
   
 /*
+ * Currently disabled: solved by using tables 
+ *
   Drupal.behaviors.courseBorder = {
     attach: function(context, settings) {
       $('.view-courses-per-subject ul.courses li.course .course-title').each(function() {

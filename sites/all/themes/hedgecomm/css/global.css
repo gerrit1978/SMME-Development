@@ -1573,7 +1573,7 @@ ul.testimonials li.testimonial .date-location {
   padding: 0;
 }
 
-.page-book-a-course ul.subjects li.subject table.header {
+.page-book-a-course ul.subjects li.subject table thead {
   border: none;
   border-bottom: 1px solid #d6d6d6;
   font-family: "DaxlineWeb-Medium";
@@ -1581,7 +1581,7 @@ ul.testimonials li.testimonial .date-location {
 
 }
 
-.page-book-a-course ul.subjects li.subject table.header th {
+.page-book-a-course ul.subjects li.subject table thead th {
   border-right: 1px solid #d6d6d6;  
   text-align: center;
   padding: 24px 0;

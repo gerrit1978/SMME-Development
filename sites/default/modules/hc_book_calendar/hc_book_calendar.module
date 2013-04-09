@@ -48,17 +48,6 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
     return;
   }
 
-/*
-  // get all courses associated with this subject
-  $result = db_query("SELECT * FROM {field_data_field_course_catalog_subject} s, {field_data_field_global_order} o WHERE s.field_course_catalog_subject_tid=:tid
-                        AND s.entity_id = o.entity_id ORDER BY o.field_global_order_value ASC;",
-              array(':tid' => $subject_term_tid));
-  foreach ($result as $row) {
-    $entity_id = $row->entity_id;
-    $items_course_nids[] = $entity_id;
-  }
-*/
-  
   // get all courses associated with this subject
   
   // first, get all subject divisions for the given subject, if any
@@ -136,6 +125,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
   
   if (count($items_course_nids)) {
   
+/* This is disabled to incorporate header into main table
     $header = array(
       array('data' => t('Course'), 'class' => 'left',),
       array('data' => t('Upcoming Dates'), 'class' => 'center'),
@@ -143,6 +133,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
     );
 
     $output_header = theme('table', array('header' => $header, 'attributes' => array('class' => array('header'))));
+*/
 
     $rows = array();
     
@@ -228,11 +219,13 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
         
         $output_booking_links = theme('item_list', array('items' => $items));
 	    }
-     
       
-      
-      // finally, the booking links
-      
+      // add a header to the table
+	    $header = array(
+	      array('data' => t('Course'), 'class' => 'left',),
+	      array('data' => t('Upcoming Dates'), 'class' => 'center'),
+	      array('data' => t('Book'), 'class' => 'right'),
+	    );
       
       // finally, parse the whole table
       $rows[] = array(
@@ -246,7 +239,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
       
     }
     
-    $output_main = theme('table', array('rows' => $rows, 'attributes' => array('class' => array('main'))));
+    $output_main = theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('class' => array('main')), 'sticky' => FALSE));
 
 
 
