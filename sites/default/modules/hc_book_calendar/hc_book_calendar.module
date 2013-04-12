@@ -123,6 +123,9 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
     }
   }
   
+  // store current path in variable to use as a redirect in the form
+  $current_path = current_path();
+  
   if (count($items_course_nids)) {
   
 /* This is disabled to incorporate header into main table
@@ -197,14 +200,14 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
 	      foreach ($variations_field as $variation) {
 		      $variation_wrapper = entity_metadata_wrapper('commerce_product', $variation);
 		      $variation_product_id = $variation_wrapper->product_id->value();
-		      $variation_link = "<div class='booking-link'><a href='/book-this-course?nid=" . $nid . "&pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
+		      $variation_link = "<div class='booking-link'><a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&pid=" . $variation_product_id . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
 		      $items[] = array('data' => $variation_link);
 	      }
 	    
         // add an "booking onsite link" for America: currently for all regions
 /*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
         if (TRUE) {
-          $variation_link = "<div class='booking-link'><a href='/book-this-course?onsite=TRUE&nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
+          $variation_link = "<div class='booking-link'><a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?onsite=TRUE&nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
           $items[] = array('data' => $variation_link);
         }
         
@@ -213,7 +216,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
         $items = array();
 /*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
         if(TRUE) {
-          $variation_link = "<div class='booking-link'><a href='/book-this-course?onsite=TRUE&nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
+          $variation_link = "<div class='booking-link'><a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?onsite=TRUE&nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
           $items[] = array('data' => $variation_link);
         }
         

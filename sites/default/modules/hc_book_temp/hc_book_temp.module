@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * Implements hook_init
+ */
+function hc_book_temp_init() {
+  $path = drupal_get_path('module', 'hc_book_temp');
+  drupal_add_js($path . '/hc_book_temp.js');
+}
+
+
+/**
  * Implements hook_menu
  */
 function hc_book_temp_menu() {
@@ -51,14 +60,77 @@ function _hc_book_temp_render_form() {
  */
 function hc_book_temp_form_webform_client_form_53_alter(&$form, &$form_state) {
 
+  // add redirect to current page
+  $redirect = $_GET['redirect'];
+
+  $form['submitted']['intro']['#markup'] = "";
+  $form['#node']->webform['redirect_url'] = $redirect;
+
+/*
+  // add ajax callback and submit functions
+  $form['actions']['submit']['#ajax'] = array(
+    'callback' => 'hc_book_temp_ajax_callback',
+    'wrapper' => str_replace('_', '-', $form['#form_id']),
+  );
+
+  $form['#submit'][] = 'hc_book_temp_ajax_form_submit_redirect';
+  $form['#validate'][] = 'hc_book_temp_ajax_form_validate';
+*/
+
   if (isset($_GET['nid'])) {
     $node = node_load($_GET['nid']);
     $course_title = $node->title;
-    $form['submitted']['course_title']['#default_value'] = $course_title;
+    $form['submitted']['title']['#markup'] = t('Book the "@title" course', array('@title' => $course_title));
+    $form['submitted']['left']['course_title']['#default_value'] = $course_title;
   }
   
-  if (isset($_GET['pid']) && isset($_GET['nid'])) {
+  if (isset($_GET['pid'])) {
+
+    if (isset($_GET['nid'])) {
+      $course_nid = $_GET['nid'];
+    } else {
+      $result = db_query("SELECT entity_id FROM {field_data_field_course_public_courses} WHERE field_course_public_courses_target_id=:pid;", array(':pid' => $_GET['pid']));
+      foreach ($result as $row) {
+        $course_nid = $row->entity_id;
+        $node = node_load($course_nid);
+		    $course_title = $node->title;
+		    $form['submitted']['title']['#markup'] = t('Book the "@title" course', array('@title' => $course_title));
+		    $form['submitted']['left']['course_title']['#default_value'] = $course_title;
+      }
+    }
+
+
+    $form['submitted']['left']['your_own_date']['#prefix'] = "<div id='choose-date-wrapper' style='display: none;'>";
+    $form['submitted']['left']['your_own_date']['#suffix'] = "</div>";
+
     $date_options = array();
+    $course_wrapper = entity_metadata_wrapper('node', $course_nid);
+    $variations = $course_wrapper->field_course_public_courses->value();
+    if (is_array($variations) && count($variations) > 0) {
+      foreach ($variations as $variation) {
+        $date_format = $variation->field_public_course_date_format['und'][0]['safe_value'];
+        $date_options[$date_format] = $date_format;
+      }
+      $date_options['other'] = t('Choose Own Date');
+      
+      // get default value
+      $selected_variation_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
+      $selected_date = $selected_variation_wrapper->field_public_course_date_format->value();
+      
+      $form['submitted']['left']['session']['#type'] = 'select';
+      $form['submitted']['left']['session']['#options'] = $date_options;
+      $form['submitted']['left']['session']['#default_value'] = $selected_date;
+    } else {
+      unset($form['submitted']['left']['session']);
+      $form['submitted']['left']['session'] = array();
+    }
+  }
+  
+  if (isset($_GET['nid']) && isset($_GET['onsite'])) {
+    unset($form['submitted']['left']['session']);
+  }
+  
+  if (isset($_GET['nid']) && !isset($_GET['onsite'])) {
     $course_wrapper = entity_metadata_wrapper('node', $_GET['nid']);
     $variations = $course_wrapper->field_course_public_courses->value();
     if (is_array($variations) && count($variations) > 0) {
@@ -66,22 +138,18 @@ function hc_book_temp_form_webform_client_form_53_alter(&$form, &$form_state) {
         $date_format = $variation->field_public_course_date_format['und'][0]['safe_value'];
         $date_options[$date_format] = $date_format;
       }
+      $date_options['other'] = t('Choose Own Date');
       
-      // get default value
-      $selected_variation_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
-      $selected_date = $selected_variation_wrapper->field_public_course_date_format->value();
+      $form['submitted']['left']['session']['#type'] = 'select';
+      $form['submitted']['left']['session']['#options'] = $date_options;
+      $form['submitted']['left']['your_own_date']['#prefix'] = "<div id='choose-date-wrapper' style='display: none;'>";
+      $form['submitted']['left']['your_own_date']['#suffix'] = "</div>";
       
-      $form['submitted']['session']['#type'] = 'select';
-      $form['submitted']['session']['#options'] = $date_options;
-      $form['submitted']['session']['#default_value'] = $selected_date;
     } else {
-      unset($form['submitted']['session']);
-      $form['submitted']['session'] = array();
+      unset($form['submitted']['left']['session']);
+      $form['submitted']['left']['session'] = array();
     }
-  }
   
-  if (isset($_GET['nid']) && isset($_GET['onsite'])) {
-    unset($form['submitted']['session']);
   }
 
 }
@@ -91,10 +159,96 @@ function hc_book_temp_form_webform_client_form_53_alter(&$form, &$form_state) {
  */
 function hc_book_temp_form_webform_client_form_54_alter(&$form, &$form_state) {
 
+  // add redirect to current page
+  $redirect = $_GET['redirect'];
+
+  $form['submitted']['intro']['#markup'] = "";
+  $form['#node']->webform['redirect_url'] = $redirect;
+
+/*
+  // add ajax callback and submit functions
+  $form['actions']['submit']['#ajax'] = array(
+    'callback' => 'hc_book_temp_ajax_callback',
+    'wrapper' => str_replace('_', '-', $form['#form_id']),
+  );
+
+  $form['#submit'][] = 'hc_book_temp_ajax_form_submit_redirect';
+  $form['#validate'][] = 'hc_book_temp_ajax_form_validate';
+*/
+
   if (isset($_GET['nid'])) {
     $node = node_load($_GET['nid']);
     $course_title = $node->title;
-    $form['submitted']['course_title']['#default_value'] = $course_title;
+    $form['submitted']['title']['#markup'] = t('Book the "@title" course', array('@title' => $course_title));
+    $form['submitted']['left']['course_title']['#default_value'] = $course_title;
+  }
+  
+  if (isset($_GET['pid'])) {
+
+    if (isset($_GET['nid'])) {
+      $course_nid = $_GET['nid'];
+    } else {
+      $result = db_query("SELECT entity_id FROM {field_data_field_course_public_courses} WHERE field_course_public_courses_target_id=:pid;", array(':pid' => $_GET['pid']));
+      foreach ($result as $row) {
+        $course_nid = $row->entity_id;
+        $node = node_load($course_nid);
+		    $course_title = $node->title;
+		    $form['submitted']['title']['#markup'] = t('Book the "@title" course', array('@title' => $course_title));
+		    $form['submitted']['left']['course_title']['#default_value'] = $course_title;
+      }
+    }
+
+
+    $form['submitted']['left']['your_own_date']['#prefix'] = "<div id='choose-date-wrapper' style='display: none;'>";
+    $form['submitted']['left']['your_own_date']['#suffix'] = "</div>";
+
+    $date_options = array();
+    $course_wrapper = entity_metadata_wrapper('node', $course_nid);
+    $variations = $course_wrapper->field_course_public_courses->value();
+    if (is_array($variations) && count($variations) > 0) {
+      foreach ($variations as $variation) {
+        $date_format = $variation->field_public_course_date_format['und'][0]['safe_value'];
+        $date_options[$date_format] = $date_format;
+      }
+      $date_options['other'] = t('Choose Own Date');
+      
+      // get default value
+      $selected_variation_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
+      $selected_date = $selected_variation_wrapper->field_public_course_date_format->value();
+      
+      $form['submitted']['left']['session']['#type'] = 'select';
+      $form['submitted']['left']['session']['#options'] = $date_options;
+      $form['submitted']['left']['session']['#default_value'] = $selected_date;
+    } else {
+      unset($form['submitted']['left']['session']);
+      $form['submitted']['left']['session'] = array();
+    }
+  }
+  
+  if (isset($_GET['nid']) && isset($_GET['onsite'])) {
+    unset($form['submitted']['left']['session']);
+  }
+  
+  if (isset($_GET['nid']) && !isset($_GET['onsite'])) {
+    $course_wrapper = entity_metadata_wrapper('node', $_GET['nid']);
+    $variations = $course_wrapper->field_course_public_courses->value();
+    if (is_array($variations) && count($variations) > 0) {
+      foreach ($variations as $variation) {
+        $date_format = $variation->field_public_course_date_format['und'][0]['safe_value'];
+        $date_options[$date_format] = $date_format;
+      }
+      $date_options['other'] = t('Choose Own Date');
+      
+      $form['submitted']['left']['session']['#type'] = 'select';
+      $form['submitted']['left']['session']['#options'] = $date_options;
+      $form['submitted']['left']['your_own_date']['#prefix'] = "<div id='choose-date-wrapper' style='display: none;'>";
+      $form['submitted']['left']['your_own_date']['#suffix'] = "</div>";
+      
+    } else {
+      unset($form['submitted']['left']['session']);
+      $form['submitted']['left']['session'] = array();
+    }
+  
   }
 
 }
@@ -122,4 +276,28 @@ function hc_book_temp_form_webform_client_form_55_alter(&$form, &$form_state) {
 */
 function hc_book_temp_form_alter(&$form, &$form_state, $form_id) {
 
+}
+
+
+
+/**
+ * AJAX callback function
+ */
+function hc_book_temp_ajax_callback(&$form, &$form_state) {
+  return $form;
+}
+
+
+/**
+ * Custom submit function
+ */
+function hc_book_temp_ajax_form_submit_redirect(&$form, &$form_state) {
+//  exit('Custom submit function aangeroepen');
+}
+
+/**
+ * Custom validation function
+ */
+function hc_book_temp_ajax_form_validate(&$form, &$form_state) {
+//  exit('custom validation function aangeroepen');
 }

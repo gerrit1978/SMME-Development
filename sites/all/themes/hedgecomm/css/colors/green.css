@@ -375,3 +375,28 @@
 .green3 .block-public-course-dates h2.block-title {
   color: #078c2d;
 }
+
+/** Temporary book a course form **/
+.green1 .ui-dialog {
+  background: #47cf6e;
+}
+
+.green1 .ui-dialog #edit-actions .form-submit {
+  background: #31b85b;
+}
+
+.green2 .ui-dialog {
+  background: #31b85b;
+}
+
+.green2 .ui-dialog #edit-actions .form-submit {
+  background: #078c2d;
+}
+
+.green3 .ui-dialog {
+  background: #078c2d;
+}
+
+.green3 .ui-dialog #edit-actions .form-submit {
+  background: #47cf6e;
+}

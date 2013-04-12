@@ -544,9 +544,11 @@ ul.testimonials li.testimonial .date-location {
   margin-left: -30px;
   height: 500px;
   overflow: hidden;
-  background: #ef2a09 url(../img/temp/placeholder-carrousel.jpg);
+/*   background: #ef2a09 url(../img/temp/placeholder-carrousel.jpg); */
+  background: #ef2a09;
   color: white;
   margin-bottom: 60px;
+  position: relative;
 }
 
 .carrousel-home a {
@@ -569,6 +571,53 @@ ul.testimonials li.testimonial .date-location {
   line-height: 1;
 }
 
+.carrousel-home ul.questions {
+  margin: 0;
+  padding: 0;
+}
+
+.carrousel-home ul.questions li.question {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 55%;
+  width: 40%;
+  bottom: 0;
+}
+
+.carrousel-home ul.questions li.question .item {
+  color: #ef2a09;
+  font-size: 3.077em;
+  background: white;
+  padding: 32px;
+  line-height: 1;
+  font-family: "DaxlineWeb-Medium";
+}
+
+.carrousel-home ul.questions li.question .triangle {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 32px 32px 0 0;
+	border-color: #ffffff transparent transparent transparent;
+	line-height: 0px;
+	_border-color: #ffffff #000000 #000000 #000000;
+	_filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');	
+	text-indent: -999em;
+	margin-left: 50%;
+}
+
+.carrousel-home ul.questions li.question .hand {
+  margin-bottom: -20px;
+  width: 106px;
+  height: 259px;
+  background: url(../img/hand.jpg) no-repeat left bottom;
+/*
+	transform: rotate(5deg);
+	-ms-transform: rotate(5deg); /* IE 9 
+	-webkit-transform: rotate(5deg); /* Safari and Chrome 
+*/
+}
 
 /****************************************************************
  * D.2. VIDEO BLOCK
@@ -839,6 +888,14 @@ ul.testimonials li.testimonial .date-location {
 
 .field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-text {
   margin-top: 32px;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-text a {
+  color: #dedede;
+}
+
+.field-name-field-block .field-collection-item-field-block.highlighted .field-name-field-block-text a:hover {
+  color: #ffffff;
 }
 
 .field-collection-item-field-block {
@@ -1589,12 +1646,12 @@ ul.testimonials li.testimonial .date-location {
 
 .page-book-a-course ul.subjects li.subject table th.left,
 .page-book-a-course ul.subjects li.subject table td.left {
-  width: 284px;
+  width: 304px;
 }
 
 .page-book-a-course ul.subjects li.subject table th.center,
 .page-book-a-course ul.subjects li.subject table td.center {
-  width: 440px;
+  width: 420px;
 }
 
 .page-book-a-course ul.subjects li.subject table th.right,
@@ -1710,122 +1767,110 @@ ul.testimonials li.testimonial .date-location {
   color: black;
 }
 
-/*
-.page-book-a-course ul.subjects li.subject .courses-list .header {
-  border-bottom: 1px solid #d6d6d6;
+/** Modal form: book this course **/
+.ui-dialog {
+  width: 900px !important;
+  font-family: "DaxlineWeb" !important;
+  color: white !important;
+  -moz-box-shadow: 0 0 10px #444;
+  -webkit-box-shadow: 0 0 10px #444;
+  box-shadow: 0 0 10px #444; 
+}
+
+.ui-dialog-titlebar {
+  background: none !important;
+  border: none;
+  cursor: default !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top: 20px;
+  z-index: 100000;
+}
+
+#ui-dialog-title-simple-dialog-container {
+  display: none;
+}
+
+.page-book-a-course .ui-dialog {
+  background: #f7a31c;
+}
+
+.ui-dialog .webform-client-form {
+  padding-left: 12px;
+}
+
+.ui-dialog label {
+  color: white !important;
+}
+
+.ui-dialog .form-select {
+  float: left;
+  margin-right: 10px;
+}
+
+.ui-dialog #webform-component-title {
+  color: white !important;
   font-family: "DaxlineWeb-Medium";
+  font-size: 2.5em;
+  line-height: 1.1;
+  height: auto;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list .header div {
-  float: left;
-  font-size: 1.538em;
-  text-align: center;
-  padding: 24px 0;
-  border-right: 1px solid #d6d6d6;
+.ui-dialog #webform-component-intro {
+  color: white;
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.231em;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list .header .left {
-  width: 284px;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list .header .center {
-  width: 440px;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list .header .right {
-  width: 214px;
-  border-right: none;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses {
-  margin: 0;
-  padding: 0;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course {
-  margin: 0;
-  padding: 0;
-  border-bottom: 1px solid #d6d6d6;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .course-title {
-  float: left;
-  font-family: "DaxlineWeb-Medium";
-  color: black;
-  font-size: 1.538em;
-  border-right: 1px solid #d6d6d6;
-  padding: 0 32px;
-  width: 220px;
-  line-height: 1.538em;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .course-title a {
-  color: #00b2d9;
-  padding: 24px 0;
-  display: block;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .course-title a:hover {
-  color: #1889b3;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations {
-  font-size: 1.385em;
-  border-left: 1px solid #d6d6d6;
-  margin-left: 284px;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul {
-  margin: 0;
-  padding: 0;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li {
-  margin: 0;
-  padding: 0;
-  height: 74px;
-  line-height: 74px;
-  border-bottom: 1px solid #d6d6d6;
-  font-size: 1em;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li.last {
-  border-bottom: none;
-}
-
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col1,
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col2 {
+.ui-dialog #webform-component-left,
+.ui-dialog #webform-component-right {
+  width: 400px;
   float: left;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col1 {
-  width: 440px;
-  border-right: 1px solid #d6d6d6;
+.ui-dialog #webform-component-left {
+  margin-right: 20px;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col1 .location,
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col1 .date {
-  display: inline-block;
-  float: left;
-  width: 50%;
-  text-align: center;
+.ui-dialog .webform-component {
+  clear: left;
+  height: 50px;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col2 .book {
-  margin-left: 24px;
+.ui-dialog .webform-component-textarea {
+  height: 130px;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col2 .book a {
-  color: #00b2d9;
-  font-family: "DaxlineWeb-Medium";
+.ui-dialog .webform-component label {
+  font-family: "DaxlineWeb";
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations ul li .col2 .book a:hover {
-  color: #1889b3;
+.ui-dialog .webform-datepicker .form-item {
+  margin: 0;
 }
 
-.page-book-a-course ul.subjects li.subject .courses-list ul.courses li.course .variations .no-dates {
-  color: #cdcdcd;
-  text-align: center;
+.ui-dialog .form-text {
+  border: 1px solid white;
+  height: 26px;
+  line-height: 26px;
+  padding-left: 5px;
+  width: 400px;
 }
-*/
+
+.ui-dialog #edit-actions {
+  clear: both;
+}
+
+.ui-dialog #edit-actions .form-submit {
+  background: #e08a1e;
+  border: none;
+  color: white;
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.154em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 8px 14px;
+}
