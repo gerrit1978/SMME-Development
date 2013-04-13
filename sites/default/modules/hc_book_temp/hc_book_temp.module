@@ -111,7 +111,7 @@ function hc_book_temp_form_webform_client_form_53_alter(&$form, &$form_state) {
         $date_format = $variation->field_public_course_date_format['und'][0]['safe_value'];
         $date_options[$date_format] = $date_format;
       }
-      $date_options['other'] = t('Choose Own Date');
+      $date_options['other'] = t('Choose Your Own');
       
       // get default value
       $selected_variation_wrapper = entity_metadata_wrapper('commerce_product', $_GET['pid']);
@@ -138,7 +138,7 @@ function hc_book_temp_form_webform_client_form_53_alter(&$form, &$form_state) {
         $date_format = $variation->field_public_course_date_format['und'][0]['safe_value'];
         $date_options[$date_format] = $date_format;
       }
-      $date_options['other'] = t('Choose Own Date');
+      $date_options['other'] = t('Choose Your Own');
       
       $form['submitted']['left']['session']['#type'] = 'select';
       $form['submitted']['left']['session']['#options'] = $date_options;

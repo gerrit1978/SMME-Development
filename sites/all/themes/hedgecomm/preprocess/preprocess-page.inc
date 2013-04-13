@@ -48,4 +48,9 @@ function hedgecomm_alpha_preprocess_page(&$vars) {
     $vars['title'] = "";
   }
   
+  /** CONTACT PAGE **/
+  if (isset($vars['node']) && $vars['node']->nid == 66) {
+    $vars['title'] = "";
+  }
+  
 }

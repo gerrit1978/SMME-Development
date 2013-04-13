@@ -84,7 +84,7 @@
       });
     }
   }
-  
+
   Drupal.behaviors.retina = {
     attach: function(context, settings) {
       var retina = window.devicePixelRatio >= 2;

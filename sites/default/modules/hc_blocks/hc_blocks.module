@@ -5,13 +5,15 @@
  * This module provides a number of custom blocks
  *
  * - header block for subject (taxonomy) page
- * - navigation block for subject (taxonomy) page
+ * - inline navigation block for subject (taxonomy) page
  * - roadmap block for subject (taxonomy) page (divided according to subject divisions vocabulary)
  * - header block for course (node) page
  * - "product variations" (public dates) for course (node) page
  * - testimonial block for course (node) page
  * - header block for team (node) page
  * - testimonial block for trainer (node) page
+ * - inline navigation block for course (node) page
+ * - generic title block which only contains the page title
  *
  */
 
@@ -64,6 +66,10 @@ function hc_blocks_block_info() {
   $blocks['book_a_course_navigation'] = array(
     'info' => t('Book a Course Page Navigation'),
   );
+  
+  $blocks['page_title'] = array(
+    'info' => t('Page Title'),
+  );
 
   
   return $blocks;
@@ -105,10 +111,12 @@ function hc_blocks_block_view($delta = '') {
       $block['subject'] = t('Trainer Testimonials');
       $block['content'] = _hc_blocks_block_trainer_testimonials_render();
       break;
-     case 'book_a_course_navigation':
+    case 'book_a_course_navigation':
       $block['subject'] = t('Navigation');
       $block['content'] = _hc_blocks_block_book_a_course_navigation_render();
       break;
+    case 'page_title':
+      $block['content'] = _hc_blocks_block_page_title_render();
   }
   
   return $block;
@@ -495,4 +503,22 @@ function _hc_blocks_block_book_a_course_navigation_render() {
   $output = theme('item_list', array('items' => $items, 'attributes' => array('class' => array('clearfix'))));
   
   return $output;
+}
+
+
+/**
+ * Helper function for rendering page title block
+ */
+function _hc_blocks_block_page_title_render() {
+
+  $page_title = drupal_get_title();
+
+/*
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $node = node_load(arg(1));
+    $page_title = $node->title;
+  }
+*/
+  
+  return $page_title;
 }
