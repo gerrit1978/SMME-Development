@@ -1,0 +1,64 @@
+diff --git a/includes/webform.components.inc b/includes/webform.components.inc
+index 2bc6134..61c2e8a 100644
+--- a/includes/webform.components.inc
++++ b/includes/webform.components.inc
+@@ -448,6 +448,31 @@ function webform_component_edit_form($form, $form_state, $node, $component, $clo
+     }
+   }
+ 
++  // Custom CSS class settings.
++  $form['custom_css'] = array(
++    '#type' => 'fieldset',
++    '#title' => t('Custom CSS'),
++    '#collapsible' => TRUE,
++    '#collapsed' => TRUE,
++    '#weight' => 10,
++  );
++  $form['custom_css']['wrapper_classes'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Wrapper CSS Class(es)'),
++    '#default_value' => isset($component['extra']['wrapper_classes']) ? $component['extra']['wrapper_classes'] : '',
++    '#description' => t('Apply the above CSS class(es) to the wrapper of field.  Separate by space.'),
++    '#weight' => -1,
++    '#parents' => array('extra', 'wrapper_classes'),
++  );
++  $form['custom_css']['css_classes'] = array(
++    '#type' => 'textfield',
++    '#title' => t('CSS Class(es)'),
++    '#default_value' => isset($component['extra']['css_classes']) ? $component['extra']['css_classes'] : '',
++    '#description' => t('Apply the above CSS class(es) to the field.  Separate by space.'),
++    '#weight' => 0,
++    '#parents' => array('extra', 'css_classes'),
++  );
++
+   // Validation settings.
+   $form['validation'] = array(
+     '#type' => 'fieldset',
+diff --git a/webform.module b/webform.module
+index 6ff3c85..5ac72f4 100644
+--- a/webform.module
++++ b/webform.module
+@@ -2173,6 +2173,10 @@ function _webform_client_form_add_component($node, $component, $component_value,
+ 
+       // Add the element into the proper parent in the form.
+       $parent_fieldset[$component['form_key']] = $element;
++      // Add custom css classes to the field.
++      if (isset($component['extra']['css_classes']) && drupal_strlen($component['extra']['css_classes'])) {
++        $parent_fieldset[$component['form_key']]['#attributes']['class'] = explode(' ' , $component['extra']['css_classes']);
++      }
+ 
+       // Override the value if one already exists in the form state.
+       if (isset($component_value)) {
+@@ -2699,6 +2703,12 @@ function theme_webform_element($variables) {
+    'webform-component',
+    'webform-component-' . $type,
+   );
++  
++  $extra = $element['#webform_component']['extra'];
++  if (isset($extra['wrapper_classes']) && drupal_strlen($extra['wrapper_classes'])) {
++    $wrapper_classes = array_merge($wrapper_classes, explode(' ', $extra['wrapper_classes']));
++  }
++  
+   if (isset($element['#title_display']) && strcmp($element['#title_display'], 'inline') === 0) {
+     $wrapper_classes[] = 'webform-container-inline';
+   }

@@ -26,6 +26,7 @@
   };
   
   
+/*
   Drupal.behaviors.ownDate = {
     attach: function (context, settings) {
       $('#edit-submitted-left-session').change(function() {
@@ -37,6 +38,21 @@
       });
     }
   };
-  
+*/
+  Drupal.behaviors.ownDate = {
+    attach: function (context, settings) {
+      $('#edit-submitted-session').change(function() {
+        if ($(this).val() == 'choose_your_own_dates') {
+          $('#webform-component-right--coupon-code-markup').hide();
+          $('#webform-component-right--coupon-code').hide();
+          $('#webform-component-right--contact-markup').show();
+        } else {
+          $('#webform-component-right--coupon-code-markup').show();
+          $('#webform-component-right--coupon-code').show();
+          $('#webform-component-right--contact-markup').hide();
+        }
+      });
+    }
+  }  
 
 })(jQuery);

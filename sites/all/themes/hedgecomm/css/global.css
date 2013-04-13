@@ -1777,37 +1777,7 @@ ul.testimonials li.testimonial .date-location {
   color: black;
 }
 
-/** Modal form: book this course **/
-.ui-dialog {
-  width: 900px !important;
-  font-family: "DaxlineWeb" !important;
-  color: white !important;
-  -moz-box-shadow: 0 0 10px #444;
-  -webkit-box-shadow: 0 0 10px #444;
-  box-shadow: 0 0 10px #444; 
-}
-
-.ui-dialog-titlebar {
-  background: none !important;
-  border: none;
-  cursor: default !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.ui-dialog .ui-dialog-titlebar-close {
-  top: 20px;
-  z-index: 100000;
-}
-
-#ui-dialog-title-simple-dialog-container {
-  display: none;
-}
-
-.page-book-a-course .ui-dialog {
-  background: #f7a31c;
-}
-
+/*
 .ui-dialog .webform-client-form {
   padding-left: 12px;
 }
@@ -1884,6 +1854,7 @@ ul.testimonials li.testimonial .date-location {
   cursor: pointer;
   padding: 8px 14px;
 }
+*/
 
 /****************************************************************
  * E.8. CONTACT US PAGE

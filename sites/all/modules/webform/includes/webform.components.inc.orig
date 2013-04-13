@@ -473,31 +473,6 @@ function webform_component_edit_form($form, $form_state, $node, $component, $clo
     '#parents' => array('extra', 'css_classes'),
   );
 
-  // Custom CSS class settings.
-  $form['custom_css'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Custom CSS'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-    '#weight' => 10,
-  );
-  $form['custom_css']['wrapper_classes'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Wrapper CSS Class(es)'),
-    '#default_value' => isset($component['extra']['wrapper_classes']) ? $component['extra']['wrapper_classes'] : '',
-    '#description' => t('Apply the above CSS class(es) to the wrapper of field.  Separate by space.'),
-    '#weight' => -1,
-    '#parents' => array('extra', 'wrapper_classes'),
-  );
-  $form['custom_css']['css_classes'] = array(
-    '#type' => 'textfield',
-    '#title' => t('CSS Class(es)'),
-    '#default_value' => isset($component['extra']['css_classes']) ? $component['extra']['css_classes'] : '',
-    '#description' => t('Apply the above CSS class(es) to the field.  Separate by space.'),
-    '#weight' => 0,
-    '#parents' => array('extra', 'css_classes'),
-  );
-
   // Validation settings.
   $form['validation'] = array(
     '#type' => 'fieldset',

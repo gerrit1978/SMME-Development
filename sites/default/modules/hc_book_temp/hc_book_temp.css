@@ -1,0 +1,41 @@
+/** Modal form: book this course **/
+.ui-widget-overlay { 
+  background: none !important;
+}
+
+.ui-dialog {
+  width: 550px !important;
+/*   width: 1000px !important;   */
+  font-family: "DaxlineWeb" !important;
+  color: white !important;
+  -moz-box-shadow: 0 0 10px #444;
+  -webkit-box-shadow: 0 0 10px #444;
+  box-shadow: 0 0 10px #444; 
+}
+
+.ui-dialog-titlebar {
+  background: none !important;
+  border: none;
+  cursor: default !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top: 20px;
+  z-index: 100000;
+}
+
+#ui-dialog-title-simple-dialog-container {
+  display: none;
+}
+
+.page-book-a-course .ui-dialog {
+  background: #f7a31c;
+}
+
+
+/* Webform itself */
+#webform-client-form-67 #webform-component-right .webform-component.hidden {
+  display: none;
+}
