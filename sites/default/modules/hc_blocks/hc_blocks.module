@@ -296,7 +296,7 @@ function _hc_blocks_block_catalog_subject_course_roadmap_render() {
    
 	}
   
-  $block['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'subject-divisions clearfix')));
+  $block['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'subject-divisions clearfix'))) . '<a class="to-top to-top-block" href="#">Top&nbsp;<i class="icon-arrow-up"></i></a>';
   
   return $block;
 }

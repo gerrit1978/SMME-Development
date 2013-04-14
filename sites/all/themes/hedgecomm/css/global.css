@@ -107,6 +107,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+select,
+select option {
+  font-family: "DaxlineWeb" !important;
+}
+
 /****************************************************************
  * A.3. SECTIONS
  ***************************************************************/
@@ -938,7 +943,8 @@ ul.testimonials li.testimonial .date-location {
   margin: 0;
 }
 
-.field-collection-item-field-block .field-name-field-block-text ul {
+.field-collection-item-field-block .field-name-field-block-text ul,
+.field-collection-item-field-block .field-name-field-block-footer-text ul {
   margin-left: 32px;
 }
 
@@ -970,7 +976,7 @@ ul.testimonials li.testimonial .date-location {
 }
 
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-title {
-  font-size: 1.692em;
+  font-size: 1.538em;
   color: black;
   font-family: "DaxlineWeb-Medium";
 }
@@ -978,7 +984,7 @@ ul.testimonials li.testimonial .date-location {
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text {
   font-size: 1.385em;
   color: black;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text p {
@@ -993,6 +999,13 @@ ul.testimonials li.testimonial .date-location {
 /* Course Roadmap NEW */
 .catalog-subject-roadmap {
   margin-bottom: 32px;
+  position: relative;
+}
+
+.catalog-subject-roadmap a.to-top {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
 }
 
 .catalog-subject-roadmap h2.block-title {

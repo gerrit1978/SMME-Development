@@ -119,6 +119,8 @@ function hc_book_temp_form_webform_client_form_67_alter(&$form, &$form_state) {
     $variations = field_get_items('node', $course_node, 'field_course_public_courses');
     $options = array();
     if (count($variations)) {
+      $path = drupal_get_path('module', 'commerce_extra_price_formatters');
+      require_once($path . "/includes/extra_functions.inc");
       foreach ($variations as $variation) {
         if (isset($variation['target_id'])) {
           $commerce_product_wrapper = entity_metadata_wrapper('commerce_product', $variation['target_id']);
@@ -129,7 +131,8 @@ function hc_book_temp_form_webform_client_form_67_alter(&$form, &$form_state) {
           // price
           $commerce_product_price = $commerce_product_wrapper->commerce_price->value();
           $commerce_product_price_amount = intval($commerce_product_price['amount']);
-          $commerce_product_price_formatted = commerce_currency_format($commerce_product_price_amount, $commerce_product_price['currency_code']);
+          
+          $commerce_product_price_formatted = commerce_extra_price_no_decimal_currency_format($commerce_product_price_amount, $commerce_product_price['currency_code']);
 
           // date
           $commerce_product_dates = $commerce_product_wrapper->field_public_course_date_format->value();
