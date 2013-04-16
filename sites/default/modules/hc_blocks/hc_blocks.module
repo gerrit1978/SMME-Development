@@ -348,6 +348,7 @@ function _hc_blocks_block_course_header_render() {
 	    // title & text
 	    $course_header_title = $course_header_wrapper->field_course_header_title->value();
 	    $course_header_text = $course_header_wrapper->field_course_header_text->value();
+	    $course_header_text_formatted = $course_header_text['safe_value'];
 	    
 	    // visual
 	    $course_header_visual = $course_header_wrapper->field_course_header_visual->value();
@@ -375,7 +376,7 @@ function _hc_blocks_block_course_header_render() {
 	    $output = "<div class='image'>" . $course_header_visual_image . "</div>"
 	      . "<div class='text'>"
 	      . "<div class='title'>" . $course_header_title . "</div>"
-	      . "<div class='description'>" . $course_header_text . "</div>"
+	      . "<div class='description'>" . $course_header_text_formatted . "</div>"
 	      . "<div class='key-information'>" . $key_information_output . "</div>"
 	      . "</div>";
     } else {
