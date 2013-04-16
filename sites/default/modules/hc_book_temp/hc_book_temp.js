@@ -1,11 +1,38 @@
 (function ($) {
 
+/*
+  Drupal.behaviors.webformButton = {
+    attach: function(context, settings) {
+      var currentHtml = $('#webform-client-form-67 #edit-actions').html();
+      if (currentHtml) {
+        var newHtml = currentHtml.replace('input', 'button') + "Blah";
+        $('#webform-client-form-67 #edit-actions').html(newHtml);
+      }
+//      $('#webform-client-form-67 #edit-actions #edit-submit').attr('value', '<i class="icon-arrow-right"></i>');
+    }
+  }
+*/
+
+  Drupal.behaviors.customSelect = {
+    attach: function (context, settings) {
+      var selector1 = $('.not-logged-in #webform-client-form-67 #webform-component-attendees .form-select');
+      var selector2 = $('.not-logged-in #webform-client-form-67 #webform-component-session .form-select');
+      if (selector1) {
+        selector1.uniform();
+      }
+      if (selector2) {
+        selector2.uniform();
+      }
+    }
+  }
+
+
   Drupal.behaviors.webformAjax = {
     attach: function (context, settings) {
 
-      $('#webform-component-intro').hide();
+      $('#webform-component-error').hide();
 
-      $('.ui-dialog .webform-client-form .form-submit').click(function(e) {
+      $('.ui-dialog .webform-client-form #submit-button button').click(function(e) {
         var errors = 0;
         $('.webform-client-form .required').each(function() {
           var value = $(this).attr('value');
@@ -14,7 +41,7 @@
           }
         });
         if (errors > 0) {
-          $('#webform-component-intro').fadeOut("fast", function() {
+          $('#webform-component-error').fadeOut("fast", function() {
             $(this).html('Please fill in all required fields.').fadeIn("fast");
           });
           e.preventDefault();

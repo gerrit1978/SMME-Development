@@ -61,10 +61,10 @@ function hedgecomm_alpha_preprocess_field(&$vars) {
     $output_markers = "";
 
     $markers['NA'] = array(
-      'title' => 'SMME America',
+      'title' => 'SMME USA',
       'lat' => '33.31130',
       'lng' => '-111.97722',
-      'description' => '<strong>SMME America</strong><br />4809 East Thistle Landing Drive #100<br />Phoenix, AZ 85044, United States<br />(480) 285-1652',
+      'description' => '<strong>SMME USA</strong><br />4809 East Thistle Landing Drive #100<br />Phoenix, AZ 85044, United States<br />(480) 285-1652',
     );
     $markers['AS'] = array(
       'title' => 'SMME Asia',
@@ -147,5 +147,70 @@ function hedgecomm_alpha_preprocess_field(&$vars) {
     }
     
   }
+  
+  // add course details for landing page
+  if ($field_name == 'field_land_page_intro_desc') {
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      // require price formatting file
+      $path = drupal_get_path('module', 'commerce_extra_price_formatters');
+      require_once($path . "/includes/extra_functions.inc");
+    
+      $landing_page_nid = arg(1);
+      $landing_page_wrapper = entity_metadata_wrapper('node', $landing_page_nid);
+
+      // get course title
+      $course_field = $landing_page_wrapper->field_landing_page_course->value();
+      $course_title = $course_field->title;
+      
+      $variation_wrapper = entity_metadata_wrapper('commerce_product', $landing_page_wrapper->field_landing_page_course_varia->value());
+      $variation_location = $variation_wrapper->field_public_course_location->value();
+      $variation_date = $variation_wrapper->field_public_course_date_format->value();
+      
+      $variation_price = $variation_wrapper->commerce_price->value();
+      $variation_price_amount = intval($variation_price['amount']);
+      $variation_price_formatted = commerce_extra_price_no_decimal_currency_format($variation_price_amount, $variation_price['currency_code']);
+
+      $price_reduced = $landing_page_wrapper->field_landing_page_reduced_price->value();
+      
+      $output = "<h3>" . $course_title . "</h3>"
+        . "<div class='large'>" . $variation_location . " - " . $variation_date . " - <span class='original'>" . $variation_price_formatted . "</span> <span class='reduced'>" . $price_reduced . "</span>";
+      
+    }
+    $vars['items'][] = array(
+      '#prefix' => '<div class="extra">',
+      '#markup' => $output,
+      '#suffix' => '</div>'
+      
+    );
+  }
+  
+  // add automated contact links to landing page
+  if ($field_name == 'field_landing_page_call_action') {
+  
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $landing_page_nid = arg(1);
+      $landing_page_wrapper = entity_metadata_wrapper('node', $landing_page_nid);
+      
+      $coupon = $landing_page_wrapper->field_landing_page_coupon->value();
+      
+      $course_wrapper = $landing_page_wrapper->field_landing_page_course->value();
+      $course_nid = $course_wrapper->nid;
+      
+      $course_variation_wrapper = $landing_page_wrapper->field_landing_page_course_varia->value();
+      $product_id = $course_variation_wrapper->product_id;
+   	  $link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $course_nid . "&pid=" . $product_id . "&coupon=" . $coupon . "'>Book this</a>";
+
+    }
+
+	  foreach ($vars['items'] as $item) {
+	    $markup = $item['#markup'];
+	    $markup_changed = str_replace("[BOOK_LINK]", $link, $markup);
+	    $vars['items'] = array(
+	      '#markup' => $markup_changed,
+	    );
+	  }
+
+  }
+
 
 }

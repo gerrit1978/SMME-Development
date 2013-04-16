@@ -12,8 +12,11 @@
  * - testimonial block for course (node) page
  * - header block for team (node) page
  * - testimonial block for trainer (node) page
+ * - inline navigation block for book a course page
  * - inline navigation block for course (node) page
  * - generic title block which only contains the page title
+ * - header block for landing pages
+ * - testimonials for landing pages (based on course node)
  *
  */
 
@@ -67,8 +70,20 @@ function hc_blocks_block_info() {
     'info' => t('Book a Course Page Navigation'),
   );
   
+  $blocks['course_node_navigation'] = array(
+    'info' => t('Course Detail Page Navigation'),
+  );
+  
   $blocks['page_title'] = array(
     'info' => t('Page Title'),
+  );
+  
+  $blocks['landing_page_header'] = array(
+    'info' => t('Landing Page Header'),
+  );
+  
+  $blocks['landing_page_testimonials'] = array(
+    'info' => t('Landing Page Testimonials'),
   );
 
   
@@ -115,8 +130,18 @@ function hc_blocks_block_view($delta = '') {
       $block['subject'] = t('Navigation');
       $block['content'] = _hc_blocks_block_book_a_course_navigation_render();
       break;
+    case 'course_node_navigation':
+      $block['subject'] = t('Navigation');
+      $block['content'] = _hc_blocks_block_course_node_navigation_render();
+      break;      
     case 'page_title':
       $block['content'] = _hc_blocks_block_page_title_render();
+      break;
+    case 'landing_page_header':
+      $block['content'] = _hc_blocks_block_landing_page_header_render();
+      break;
+    case 'landing_page_testimonials':
+      $block['content'] = _hc_blocks_block_landing_page_testimonials_render();
   }
   
   return $block;
@@ -311,28 +336,43 @@ function _hc_blocks_block_course_header_render() {
   if (is_numeric(arg(1))) {
     $nid = arg(1);
     $node_wrapper = entity_metadata_wrapper('node', $nid);
+    
+    // get subject name
+    $subject = $node_wrapper->field_course_catalog_subject->value();
+    $subject_name = $subject->name;    
+
     $course_header_field = $node_wrapper->field_course_header->value();
     if ($course_header_field) {
 	    $course_header_wrapper = entity_metadata_wrapper('field_collection_item', $course_header_field->item_id);
 	    
+	    // title & text
 	    $course_header_title = $course_header_wrapper->field_course_header_title->value();
 	    $course_header_text = $course_header_wrapper->field_course_header_text->value();
 	    
+	    // visual
 	    $course_header_visual = $course_header_wrapper->field_course_header_visual->value();
-	    $course_header_visual_path = file_create_url($course_header_visual['uri']);
+	    $course_header_visual_path = image_style_url('course_node_header_default', $course_header_visual['uri']);
 	    $course_header_visual_image = theme('image', array('path' => $course_header_visual_path));
 	    
-	    $course_header_information_text = $course_header_wrapper->field_course_header_information->value();
-	    $course_header_information_text_formatted = $course_header_information_text['value'];
+	    // key information
+	    $key_information = array();
+	    $course_header_number_of_days = $course_header_wrapper->field_course_header_number_days->value();
+	    $course_header_attendee_price = $course_header_wrapper->field_course_header_attend_price->value();
+	    $course_header_credits = $course_header_wrapper->field_course_header_credits->value();
+	    $course_header_pdu = $course_header_wrapper->field_course_header_pdu->value();
+	    
+	    $key_information[] = "<div class='main'>" . $course_header_number_of_days . "</div><div class='small'>" . t('Number of Days') . "</div>";
+	    $key_information[] = "<div class='main'>" . $course_header_attendee_price . "</div><div class='small'>" . t('Attendee Price') . "</div>";
+	    $key_information[] = "<div class='main'>" . $course_header_credits . "</div><div class='small'>" . t('@subject Credits', array('@subject' => $subject_name)) . "</div>";
+	    $key_information[] = "<div class='main'>" . $course_header_pdu . "</div><div class='small'>" . t('PDUs') . "</div>";
+	    
+	    $key_information_output = theme('item_list', array('items' => $key_information, 'attributes' => array('class' => 'clearfix')));
 	    
 	    $output = "<div class='image'>" . $course_header_visual_image . "</div>"
-	      . "<div class='text-top'>"
+	      . "<div class='text'>"
 	      . "<div class='title'>" . $course_header_title . "</div>"
 	      . "<div class='description'>" . $course_header_text . "</div>"
-	      . "</div>"
-	      . "<div class='text-bottom'>"
-	      . "<div class='title'>" . t('Key Information:') . "</div>"
-	      . "<div class='description'>" . $course_header_information_text_formatted . "</div>"
+	      . "<div class='key-information'>" . $key_information_output . "</div>"
 	      . "</div>";
     } else {
       $output = "NO HEADER AVAILABLE";
@@ -507,18 +547,119 @@ function _hc_blocks_block_book_a_course_navigation_render() {
 
 
 /**
+ * Helper function for rendering course node navigation
+ */
+function _hc_blocks_block_course_node_navigation_render() {
+  
+  $block = array();
+  
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node_wrapper = entity_metadata_wrapper('node', $nid);
+    $field_block = $node_wrapper->field_block->value();
+
+    if (is_array($field_block)) {
+      $items = array();
+      $items[] = array('data' => '<p class="title">' . t('Need some info?<br />Click to skip ahead.') . '</p>');
+      
+      foreach ($field_block as $block_item) {
+        $field_block_wrapper = entity_metadata_wrapper('field_collection_item', $block_item->item_id);
+        $title = $field_block_wrapper->field_block_title->value();
+        $items[] = array('data' => "<a href='#'>" . $title . "</a>", 'data-naventityid' => $block_item->item_id);
+      }
+
+      $items[] = array('data' => "<a href='#'>" . t('Where can I book it?') . "</a>");
+
+    }
+
+  } 
+  $block['#markup'] = theme('item_list', array('items' => $items));
+  
+  return $block;
+}
+
+
+/**
  * Helper function for rendering page title block
  */
 function _hc_blocks_block_page_title_render() {
 
   $page_title = drupal_get_title();
-
-/*
-  if (arg(0) == 'node' && is_numeric(arg(1))) {
-    $node = node_load(arg(1));
-    $page_title = $node->title;
-  }
-*/
-  
   return $page_title;
+}
+
+
+/**
+ * Helper function for rendering landing page header
+ */
+function _hc_blocks_block_landing_page_header_render() {
+
+  $block = array();
+  
+  if (is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node_wrapper = entity_metadata_wrapper('node', $nid);
+    
+    // get course info
+    $course_wrapper = $node_wrapper->field_landing_page_course->value();
+    if ($course_wrapper) {
+      $course_title = $course_wrapper->title;
+    }
+    
+    // get variation info
+    $variation_wrapper = $node_wrapper->field_landing_page_course_varia->value();
+    $variation_location_field = field_get_items('commerce_product', $variation_wrapper, 'field_public_course_location');
+    $variation_location = $variation_location_field[0]['safe_value'];
+
+    $landing_page_header_field = $node_wrapper->field_landing_page_header->value();
+    if ($landing_page_header_field) {
+      $landing_page_header_wrapper = entity_metadata_wrapper('field_collection_item', $landing_page_header_field);
+      $header_description = $landing_page_header_wrapper->field_land_page_header_desc->value();
+      $header_visual = $landing_page_header_wrapper->field_land_page_header_visual->value();
+      $header_visual_path = image_style_url('landing_page_header_default', $header_visual['uri']);
+      $header_visual_image = theme('image', array('path' => $header_visual_path));
+	    
+	    $output = "<div class='image'>" . $header_visual_image . "</div>"
+	      . "<div class='text'>"
+	      . "<h3 class='title'>" . $course_title . "</h3>"
+	      . "<div class='location'>" . $variation_location . "</div>"
+	      . "<div class='description'>" . $header_description['safe_value'] . "</div>"
+	      . "</div>";
+    } else {
+      $output = "NO HEADER AVAILABLE";
+    }
+
+    $block['#markup'] = $output;
+
+
+  }
+
+
+  
+  return $output;
+}
+
+
+/**
+ * Helper function for rendering landing page testimonials
+ */
+function _hc_blocks_block_landing_page_testimonials_render() {
+
+  if (is_numeric(arg(1))) {
+    $landing_page_wrapper = entity_metadata_wrapper('node', arg(1));
+    $course_wrapper = $landing_page_wrapper->field_landing_page_course->value();
+    $course_nid = $course_wrapper->nid;
+    
+    $result = db_query("SELECT entity_id FROM {field_revision_field_testimonial_course_ref} WHERE field_testimonial_course_ref_nid=:course_nid", array(':course_nid' => $course_nid));
+    foreach ($result as $row) {
+      $testimonial_nids[] = $row->entity_id;
+    }
+  }
+
+  $output = views_embed_view('testimonials', 'block', implode(',', $testimonial_nids));
+
+  return $output;
+
+  
+  return $output;
 }

@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * This module alters the contact form on the About Us page
+ */
+
+/**
+ * Implements hook_init
+ */
+function hc_contact_init() {
+  $path = drupal_get_path('module', 'hc_contact');
+  drupal_add_css($path . '/hc_contact.css');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter
+ */
+function hc_contact_form_webform_client_form_66_alter(&$form, &$form_state) {
+
+
+  unset($form['submitted']['contact_wrapper']['submit_button']);
+
+  $form['submitted']['contact_wrapper']['submit_button'] = array(
+    '#prefix' => '<div id="submit-button">',
+    '#suffix' => '</div>',
+    '#markup' => '<button type="submit">Send Message&nbsp;<i class="icon-arrow-right icon-large"></i></button>',
+    '#weight' => 200000,
+  );
+
+}

@@ -79,6 +79,11 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
 }
 
+span.logo-spacing {
+  font-family: "DaxlineWeb-Medium";
+  letter-spacing: -1px;
+}
+
 /** Logo: Site Name **/
 .branding-data {
   position: absolute;
@@ -537,9 +542,13 @@ ul.testimonials li.testimonial .date-location {
  ***************************************************************/
 .block-page-title {
   color: white;
-  font-family: "DaxlineWeb-Medium";
-  font-size: 3.539em;
+  font-family: "DaxlineWeb";
+  font-size: 36px;
   padding: 16px 0;
+}
+
+#zone-page-title-wrapper {
+  background: #ef2a09;
 }
 
 
@@ -554,15 +563,17 @@ ul.testimonials li.testimonial .date-location {
 /****************************************************************
  * D.1. CARROUSEL BLOCK
  ***************************************************************/
+body.front #zone-header-visual-wrapper {
+  background: #ef2a09;
+}
+ 
 .carrousel-home {
   width: 1000px;
-  margin-left: -30px;
   height: 500px;
   overflow: hidden;
 /*   background: #ef2a09 url(../img/temp/placeholder-carrousel.jpg); */
   background: #ef2a09;
   color: white;
-  margin-bottom: 60px;
   position: relative;
 }
 
@@ -577,11 +588,12 @@ ul.testimonials li.testimonial .date-location {
 }
 
 .carrousel-home .block-inner {
-  margin: 0 30px;
+  margin: 0 34px;
 }
 
 .carrousel-home h3 {
-  padding-top: 200px;
+  padding-top: 170px;
+  margin-bottom: 30px;
   font-size: 3.539em;
   line-height: 1;
 }
@@ -597,8 +609,23 @@ ul.testimonials li.testimonial .date-location {
   position: absolute;
   left: 55%;
   width: 40%;
+  bottom: -500px;
+  list-style: none;
+}
+
+.carrousel-home ul.questions li.question.question0 {
   bottom: 0;
 }
+
+/*
+.carrousel-home ul.questions li.question .question-wrapper {
+  opacity: 0;
+}
+
+.carrousel-home ul.questions li.question.question0 .question-wrapper {
+  opacity: 1;
+}
+*/
 
 .carrousel-home ul.questions li.question .item {
   color: #ef2a09;
@@ -622,9 +649,22 @@ ul.testimonials li.testimonial .date-location {
 	margin-left: 50%;
 }
 
+.carrousel-home ul.questions li.question .triangle.reversed {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 0 32px 32px 0;
+	border-color: transparent #ffffff transparent transparent;
+	line-height: 0px;
+	_border-color: #000000 #ffffff #000000 #000000;
+	_filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+	text-indent: -999em;
+	margin-left: 50%;
+}
+
 .carrousel-home ul.questions li.question .hand {
   margin-bottom: -20px;
-  width: 106px;
+  width: 500px;
   height: 259px;
   background: url(../img/hand.jpg) no-repeat left bottom;
 /*
@@ -633,6 +673,7 @@ ul.testimonials li.testimonial .date-location {
 	-webkit-transform: rotate(5deg); /* Safari and Chrome 
 */
 }
+
 
 /****************************************************************
  * D.2. VIDEO BLOCK
@@ -672,6 +713,7 @@ ul.testimonials li.testimonial .date-location {
  ***************************************************************/
 .block-three-columns-home {
   color: #898989;
+  margin-top: 32px;
 }
 
 .block-three-columns-home h2.block-title {
@@ -689,25 +731,36 @@ ul.testimonials li.testimonial .date-location {
 /****************************************************************
  * D.4. CALL TO ACTION HOMEPAGE BLOCK
  ***************************************************************/
+body.front #zone-prefooter-wrapper {
+  background: #5adb82; 
+}
+
 .call-to-action-homepage {
   width: 1000px;
+  text-align: center;
   margin-left: -30px;
-  height: 120px;
-  background: #5adb82;
 }
-
+ 
 .call-to-action-homepage .block-inner {
-  margin: 0 30px;
-  line-height: 118px;
+  padding: 34px 0;
 }
 
-.call-to-action-homepage .block-inner a {
+.call-to-action-homepage .block-inner .wrapper {
+  margin: 0 auto;
+}
+
+.call-to-action-homepage .block-inner span {
+  display: inline-block;
+  margin-right: 32px;
+}
+
+#section-footer .call-to-action-homepage .block-inner a {
   color: white; 
   font-size: 1.539em;
   font-family: "DaxlineWeb-Bold";
 }
 
-.call-to-action-homepage .block-inner a:hover {
+#section-footer .call-to-action-homepage .block-inner a:hover {
   color: #383838;
 }
 
@@ -984,7 +1037,7 @@ ul.testimonials li.testimonial .date-location {
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text {
   font-size: 1.385em;
   color: black;
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 }
 
 .field-collection-item-field-block .field-name-field-block-subblock .field-name-field-subblock-text p {
@@ -1128,11 +1181,23 @@ ul.testimonials li.testimonial .date-location {
 
 /** Header **/
 #block-hc-blocks-course-header {
+  width: 1000px;
+  height: 333px;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 32px;
 }
 
-.block-header-course .text-top {
+.block-header-course .image {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.block-header-course .image img {
+  width: 500px;
+}
+
+.block-header-course .text {
   background: #eb2c23;
   position: absolute;
   top: 0;
@@ -1141,47 +1206,58 @@ ul.testimonials li.testimonial .date-location {
   height: 100%;
 }
 
-.block-header-course .text-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50%;
-  height: 33%;
-  background: #cd1c1c;
-}
-
 .block-header-course .title,
 .block-header-course .description {
   color: white;
 }
 
-.block-header-course .text-top .title {
+.block-header-course .text .title {
   font-size: 3.231em;
   line-height: 1;
   margin-left: 32px;
   margin-top: 32px;
 }
 
-.block-header-course .text-top .description {
-  font-size: 1.692em;
+.block-header-course .text .description {
+  font-size: 1.385em;
   margin: 32px;
-}
-
-.block-header-course .text-bottom .title {
-  font-size: 1.358em;
-  margin-left: 32px;
   margin-top: 16px;
 }
 
-.block-header-course .text-bottom .description {
-  font-size: 1.077em;
-  margin: 16px;
-  margin-left: 32px;
+.block-header-course .text .key-information {
+  position: absolute;
+  bottom: 30px;
 }
 
-.block-header-course .text-bottom .description ul {
-  margin-left: 10px;
+.block-header-course .text .key-information ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 8px;
 }
+
+.block-header-course .text .key-information ul li {
+  margin: 0;
+  padding: 0;
+  margin-right: 8px;
+  float: left;
+  width: 115px;
+  height: 75px;
+  background: #cd1c1c;
+  text-align: center;
+  color: white;
+  font-family: "DaxlineWeb-Medium";
+}
+
+.block-header-course .text .key-information ul li.last {
+  margin-right: 0;
+}
+
+.block-header-course .text .key-information ul li .main {
+  padding-top: 16px;
+  font-size: 1.692em;
+  font-family: "DaxlineWeb-Bold";
+}
+
 
 /** Main Content **/
 .field-name-field-course-content-title {
@@ -1872,12 +1948,9 @@ ul.testimonials li.testimonial .date-location {
 /****************************************************************
  * E.8. CONTACT US PAGE
  ***************************************************************/
-.context-contact-us h2.site-name a {
-  color: #47cf6e;
-}
 
 .context-contact-us #zone-page-title-wrapper {
-  background: #47cf6e;
+  background: #ef2a09;
   margin-bottom: 34px;
 }
 
@@ -1916,10 +1989,11 @@ ul.testimonials li.testimonial .date-location {
 .context-contact-us #block-system-main .column .email {
   margin-bottom: 32px;
   margin-left: 32px;
+  font-size: 1.231em;
 }
 
 .context-contact-us .webform-client-form {
-  background: #47cf6e;
+  background: #ef2a09;
   position: relative;
   padding: 32px;
   padding-left: 310px;
@@ -1930,7 +2004,7 @@ ul.testimonials li.testimonial .date-location {
   position: absolute;
   left: 32px;
   top: 32px;
-  color: #31b85b;
+  color: #cd1c1c;
 }
 
 .context-contact-us .webform-client-form .form-text,
@@ -1958,14 +2032,14 @@ ul.testimonials li.testimonial .date-location {
 }
 
 .context-contact-us .webform-client-form #webform-component-contact-wrapper {
-  background: #31b85b;
+  background: #cd1c1c;
   padding: 32px;
   padding-bottom: 0;
   margin: 0;
 }
 
 .context-contact-us .webform-client-form #edit-actions {
-  background: #31b85b;
+  background: #cd1c1c;
   margin: 0;
   padding: 32px;
 }
@@ -1976,4 +2050,61 @@ ul.testimonials li.testimonial .date-location {
   background: none;
   color: white;
   cursor: pointer;
+}
+
+
+/*
+ * E.9. LANDING PAGE
+ */
+.node-type-landing-page .field-name-field-land-page-intro-title {
+  color: #EB2C23;
+  font-family: "DaxlineWeb";
+  font-size: 2.846em;
+  line-height: 1.2;
+  margin-bottom: 26px;
+}
+
+.node-type-landing-page .field-name-field-land-page-intro-title p {
+  margin-bottom: 0;
+}
+
+.node-type-landing-page .field-name-field-land-page-intro-desc,
+.node-type-landing-page .field-name-field-landing-page-text-blocks,
+.node-type-landing-page .field-name-field-landing-page-call-action {
+  font-size: 1.385em;
+  color: black;
+}
+
+.node-type-landing-page .field-name-field-landing-page-text-blocks ul {
+  margin-left: 32px;
+}
+
+.node-type-landing-page .field-name-field-landing-page-text-blocks ul.columns li {
+  width: 50%;
+  float: left;
+}
+
+
+.node-type-landing-page .field-name-field-land-page-intro-desc .extra {
+  margin-top: 32px;
+  margin-bottom: 26px;
+}
+
+.node-type-landing-page .field-name-field-land-page-intro-desc .extra h3 {
+  font-family: "DaxlineWeb-Bold";
+  margin-bottom: 0;
+}
+
+.node-type-landing-page .field-name-field-land-page-intro-desc .extra .large {
+  font-size: 1.2em;
+}
+
+.node-type-landing-page .field-name-field-land-page-intro-desc .extra .large .original {
+  color: #eb2c23;
+  text-decoration: line-through;
+  font-family: "DaxlineWeb-Bold";
+}
+
+.node-type-landing-page .field-name-field-land-page-intro-desc .extra .large .reduced {
+  font-family: "DaxlineWeb-Bold";
 }

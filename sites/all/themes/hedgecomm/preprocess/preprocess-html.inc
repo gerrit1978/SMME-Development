@@ -29,4 +29,16 @@ function hedgecomm_alpha_preprocess_html(&$vars) {
       $vars['attributes_array']['class'][] = $color_field->name;
     }
   }
+  
+  /** ADD COLOR TO BODY CLASSES FOR LANDING PAGES **/
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $node_wrapper = entity_metadata_wrapper('node', arg(1));
+    if ($node_wrapper->type->value() == 'landing_page') {
+      $color_field = $node_wrapper->field_color->value();
+      if (isset($color_field->name)) {
+        $vars['attributes_array']['class'][] = $color_field->name;
+      }
+    }
+  }
+ 
 }

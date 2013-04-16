@@ -2,6 +2,7 @@
 #block-hc-blocks-catalog-subject-navigation {
   margin: 0 30px;
   margin-bottom: 16px;
+  margin-top: -14px;
 }
 
 #block-hc-blocks-catalog-subject-navigation .item-list ul {
@@ -88,4 +89,93 @@
 #block-hc-blocks-book-a-course-navigation .item-list ul li.active a {
   background: #f7a31c;
   color: white;
+}
+
+/** Course Node Detail Navigation **/
+#block-hc-blocks-course-node-navigation {
+  margin-top: -16px;
+}
+
+.inline-navigation {
+  margin: 0 30px;
+  margin-bottom: 16px;
+  margin-top: -14px;
+}
+
+.inline-navigation .item-list ul {
+  margin-bottom: 0;
+}
+
+.inline-navigation .item-list ul li {
+  float: left;
+  margin: 0;
+  margin-right: 5px;
+  padding-top: 8px;
+  font-size: 1.231em;
+}
+
+.inline-navigation .item-list ul li p.title {
+  color: #eb2c23;
+  line-height: 1.4;
+  margin-right: 16px;
+  margin-bottom: 0;
+  padding-top: 4px;
+  text-align: center;
+  font-family: "DaxlineWeb-Bold";
+}
+
+.inline-navigation .item-list ul li a {
+  color: black;
+  padding: 6px 10px 4px 10px;
+  font-family: "DaxlineWeb-Bold";
+  line-height: 1;
+}
+
+.inline-navigation .item-list ul li a:hover,
+.inline-navigation .item-list ul li.active a {
+  background: #eb2c23;
+  color: white;
+}
+
+
+/** Landing page header **/
+.landing-page-header {
+  width: 1000px;
+  height: 333px;
+  margin-bottom: 32px;
+}
+
+.landing-page-header .image {
+  float: left;
+}
+
+.landing-page-header .image img {
+  width: 500px;
+}
+
+.landing-page-header .text {
+  height: 333px;
+  background: #ef2a09;
+  color: white;
+  margin-left: 500px;
+}
+
+.landing-page-header .text .location {
+  font-size: 1.692em;
+  padding: 0 32px;
+  margin-bottom: 32px;
+}
+
+.landing-page-header .text .description {
+  color: white;
+  padding: 0 32px;
+  font-size: 1.154em;
+}
+
+.landing-page-header .text h3.title {
+  padding-top: 32px;
+  padding-left: 32px;
+  font-size: 3.231em;
+  line-height: 1;
+  margin-bottom: 0;
 }

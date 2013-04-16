@@ -30,6 +30,11 @@ function hedgecomm_alpha_preprocess_page(&$vars) {
   if (isset($vars['node']) && $vars['node']->type == 'course') {
     $vars['title'] = "";
   }
+  
+  /** LANDING PAGE DETAIL **/
+  if (isset($vars['node']) && $vars['node']->type == 'landing_page') {
+    $vars['title'] = "";
+  }
 
   /** MAIN TEAM PAGE **/
   if (arg(0) == 'team') {
@@ -50,6 +55,11 @@ function hedgecomm_alpha_preprocess_page(&$vars) {
   
   /** CONTACT PAGE **/
   if (isset($vars['node']) && $vars['node']->nid == 66) {
+    $vars['title'] = "";
+  }
+  
+  /** NEWS PAGE **/
+  if (arg(0) == 'news') {
     $vars['title'] = "";
   }
   

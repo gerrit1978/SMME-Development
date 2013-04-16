@@ -43,7 +43,6 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Superscript'		, element : 'sup' },
             */
 
-            { name : 'Marker: Yellow'	, element : 'span', styles : { 'background-color' : 'Yellow' } },
             { name : 'Marker: Green'	, element : 'span', styles : { 'background-color' : 'Lime' } },
 
             { name : 'Big'				, element : 'big' },
@@ -65,6 +64,12 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Language: LTR'	, element : 'span', attributes : { 'dir' : 'ltr' } },
 
             /* Object Styles */
+
+						{
+							name: 'Columned list',
+							element: 'ul',
+							attributes: { 'class': 'columns' }
+						},
 
             {
                     name : 'Image on Left',

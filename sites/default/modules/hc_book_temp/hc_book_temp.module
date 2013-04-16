@@ -13,6 +13,7 @@
 function hc_book_temp_init() {
   $path = drupal_get_path('module', 'hc_book_temp');
   drupal_add_css($path . '/hc_book_temp.css');
+  drupal_add_js($path . '/jquery.uniform.min.js');
   drupal_add_js($path . '/hc_book_temp.js');
 }
 
@@ -78,6 +79,26 @@ function _hc_book_temp_render_form() {
  */
 function hc_book_temp_form_webform_client_form_67_alter(&$form, &$form_state) {
 
+  // submit button
+/*
+  $form['actions']['submit']['#type'] = "button";
+  $form['actions']['submit']['#value'] = t('Book') . "<i class='icon-arrow-right icon-right'></i>";
+  print_r($form['actions']);
+  exit();
+*/
+  
+  // coupon code?
+  if (isset($_GET['coupon'])) {
+    $form['submitted']['right']['coupon_code']['#default_value'] = $_GET['coupon'];
+  }
+  
+  $form['submitted']['custom_button'] = array(
+    '#prefix' => '<div id="submit-button">',
+    '#suffix' => '</div>',
+    '#markup' => '<button type="submit">Book&nbsp;<i class="icon-arrow-right icon-large"></i></button>',
+    '#weight' => 200000,
+  );
+
   // add redirect to current page
   $redirect = $_GET['redirect'];
   $form['#node']->webform['redirect_url'] = $redirect;
@@ -113,7 +134,7 @@ function hc_book_temp_form_webform_client_form_67_alter(&$form, &$form_state) {
    * 1b. pid is not set
    * --- no default value
    * 2. There are no variations
-   * - just add option "choose your own"
+   * - just add option "choose your own" and make it default
    */
   if ($course_nid > 0) {
     $variations = field_get_items('node', $course_node, 'field_course_public_courses');

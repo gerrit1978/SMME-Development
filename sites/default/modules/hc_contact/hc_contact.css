@@ -1,0 +1,13 @@
+#webform-client-form-66 .form-actions {
+  display: none;
+}
+
+#webform-client-form-66 #submit-button button {
+  padding: 32px;
+  float: right;
+  font-size: 1.385em;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}

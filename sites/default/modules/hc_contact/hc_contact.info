@@ -1,0 +1,6 @@
+name         = Contactform
+description  = Alters contact form
+core         = 7.x
+version      = 7.x-1.0
+
+package      = HedgeComm

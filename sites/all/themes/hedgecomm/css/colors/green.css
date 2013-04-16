@@ -400,3 +400,54 @@
 .green3 .ui-dialog #edit-actions .form-submit {
   background: #47cf6e;
 }
+
+.green1 #webform-client-form-67 #submit-button button {
+  background: #31b85b;
+}
+
+.green2 #webform-client-form-67 #submit-button button {
+  background: #078c2d;
+}
+
+.green3 #webform-client-form-67 #submit-button button {
+  background: #47cf6e;
+}
+
+/*******************************************
+ * 5. Landing page detail page
+ ******************************************/
+.green1 .landing-page-header .text {
+  background: #47cf6e;
+}
+
+.green1.node-type-landing-page .field-name-field-land-page-intro-title {
+  color: #47cf6e;
+}
+
+.green1.node-type-landing-page .field-name-field-land-page-intro-desc .extra .large .original {
+  color: #47cf6e;
+}
+
+.green2 .landing-page-header .text {
+  background: #31b85b;
+}
+
+.green2.node-type-landing-page .field-name-field-land-page-intro-title {
+  color: #31b85b;
+}
+
+.green2.node-type-landing-page .field-name-field-land-page-intro-desc .extra .large .original {
+  color: #31b85b;
+}
+
+.green3 .landing-page-header .text {
+  background: #078c2d;
+}
+
+.green3.node-type-landing-page .field-name-field-land-page-intro-title {
+  color: #078c2d;
+}
+
+.green3.node-type-landing-page .field-name-field-land-page-intro-desc .extra .large .original {
+  color: #078c2d;
+}
