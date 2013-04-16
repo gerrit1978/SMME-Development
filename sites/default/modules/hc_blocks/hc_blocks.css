@@ -43,7 +43,7 @@
 
 /** Book a Course roadmap **/
 #block-hc-blocks-book-a-course-navigation {
-  margin-bottom: 30px;
+/*   margin-bottom: 30px; */
   margin-top: -10px;
   text-align: right;
 }
@@ -60,12 +60,12 @@
   float: left;
   margin: 0;
   margin-right: 5px;
-  padding-top: 14px;
+/*   padding-top: 14px; */
   font-size: 1.231em;
 }
 
 #block-hc-blocks-book-a-course-navigation .item-list ul li.first {
-  padding-top: 0;
+/*   padding-top: 0; */
 }
 
 #block-hc-blocks-book-a-course-navigation .item-list ul li p.title {
