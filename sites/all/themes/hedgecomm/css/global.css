@@ -1182,7 +1182,7 @@ body.front #zone-prefooter-wrapper {
 /** Header **/
 #block-hc-blocks-course-header {
   width: 1000px;
-  height: 333px;
+  height: 500px;
   position: relative;
   margin-bottom: 32px;
 }
@@ -1219,9 +1219,9 @@ body.front #zone-prefooter-wrapper {
 }
 
 .block-header-course .text .description {
-  font-size: 1.385em;
+  font-size: 1.538em;
   margin: 32px;
-  margin-top: 16px;
+  margin-top: 32px;
 }
 
 .block-header-course .text .key-information {

@@ -355,6 +355,41 @@ function _hc_blocks_block_course_header_render() {
 	    $course_header_visual_image = theme('image', array('path' => $course_header_visual_path));
 	    
 	    // key information
+
+	    $key_information = array();
+	    $course_header_blocks = $course_header_wrapper->field_course_header_blocks->value();
+	    
+	    if (is_array($course_header_blocks)) {
+  	    foreach ($course_header_blocks as $course_header_block) {
+          $course_header_block_id = $course_header_block->item_id;
+          $course_header_block_wrapper = entity_metadata_wrapper('field_collection_item', $course_header_block_id);
+          $course_header_block_label = $course_header_block_wrapper->field_course_header_block_label->value();
+          $course_header_block_value = $course_header_block_wrapper->field_course_header_block_value->value(); 
+          $course_header_output = "<div class='main'>" . $course_header_block_value . "</div><div class='small'>" . $course_header_block_label . "</div>";
+          $key_information[] = $course_header_output;
+  	    }
+	    }
+
+      $key_information_output = theme('item_list', array('items' => $key_information, 'attributes' => array('class' => 'clearfix')));	    
+/*
+	    if (is_array($course_header_blocks)) {
+  	    foreach ($course_header_blocks as $block) {
+          $course_header_block_id = $block->item_id;
+          $course_header_block_wrapper = entity_metadata_wrapper('field_collection_item', $course_header_block_id);
+          $course_header_block_label = $course_header_block_wrapper->field_course_header_block_label->value();
+          $course_header_block_value = $course_header_block_wrapper->field_course_header_block_value->value(); 
+          $course_header_output = $course_header_block_label . " - " . $course_header_block_value;
+          $key_information[] = $course_header_output;
+  	    }
+	    }
+
+
+
+      print $key_information_output;
+*/
+	    
+	    // key information
+/*
 	    $key_information = array();
 	    $course_header_number_of_days = $course_header_wrapper->field_course_header_number_days->value();
 	    $course_header_attendee_price = $course_header_wrapper->field_course_header_attend_price->value();
@@ -367,6 +402,7 @@ function _hc_blocks_block_course_header_render() {
 	    $key_information[] = "<div class='main'>" . $course_header_pdu . "</div><div class='small'>" . t('PDUs') . "</div>";
 	    
 	    $key_information_output = theme('item_list', array('items' => $key_information, 'attributes' => array('class' => 'clearfix')));
+*/
 	    
 	    $output = "<div class='image'>" . $course_header_visual_image . "</div>"
 	      . "<div class='text'>"
