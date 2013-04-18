@@ -8,7 +8,7 @@
  * - inline navigation block for subject (taxonomy) page
  * - roadmap block for subject (taxonomy) page (divided according to subject divisions vocabulary)
  * - header block for course (node) page
- * - "product variations" (public dates) for course (node) page
+ * - roadmap "product variations" (public dates) for course (node) page
  * - testimonial block for course (node) page
  * - header block for team (node) page
  * - testimonial block for trainer (node) page
@@ -112,7 +112,8 @@ function hc_blocks_block_view($delta = '') {
       $block['content'] = _hc_blocks_block_course_header_render();
       break;
     case 'course_public_dates':
-      $block['subject'] = _hc_blocks_block_course_public_dates_render_title();
+/*       $block['subject'] = _hc_blocks_block_course_public_dates_render_title(); */
+      $block['title'] = t('Where can I book it?');
       $block['content'] = _hc_blocks_block_course_public_dates_render();
       break;
     case 'course_testimonials':
@@ -425,13 +426,32 @@ function _hc_blocks_block_course_public_dates_render() {
         $product_pids[] = $public_course->product_id;
       }
       if (count($product_pids)) {
-        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Public Dates') . "</div><div class='right'>Book</div></div>";
-        $output .= "<div class='title clearfix'>" . $node_title . "</div>";
+        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right'>Book</div></div>";
+        $output .= "<div class='title clearfix'><div class='title-inner'>" . $node_title . "</div></div>";
       
-        $output .= views_embed_view('public_courses_temp', 'block', implode(',', $product_pids));
-        return $output;
-      }
+/*         $output .= views_embed_view('public_courses_temp', 'block', implode(',', $product_pids)); */
+        $output .= views_embed_view('public_courses', 'block', implode(',', $product_pids));
+      } 
+    } else { 
+        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right'>Book</div></div>";
+        $output .= "<div class='title clearfix'><div class='title-inner'>" . $node_title . "</div></div>";
+
+        // output: only choose your own
+        $current_path = current_path();
+          $link = '<a rel="width:500;resizable:false;position:[center,60]" class="simple-dialog" name="block-system-main" href="/book-this-course?nid=' . $nid . '&redirect=' . $current_path . '"><i class="icon-ok"></i>&nbsp;Book This Course</a>';
+
+        
+        $output .= "<div class='view-public-courses'><ul class='public-courses'>"
+          . "<li class='public-course views-row-last'>"
+          . "<span class='course-row'>"
+          . "<span class='location'>" . t('Onsite') . "</span><span class='date'>" . t('Choose Your Own') . "</span>"
+          . "</span>"
+          . "<span class='book'>" . $link . "</span>"
+          . "</li>"
+          . "</ul></div>";
+        
     }
+    return $output;    
   } else {
     return;
   }
@@ -565,7 +585,7 @@ function _hc_blocks_block_course_node_navigation_render() {
 
     if (is_array($field_block)) {
       $items = array();
-      $items[] = array('data' => '<p class="title">' . t('Need some info?<br />Click to skip ahead.') . '</p>');
+      $items[] = array('data' => '<p class="title">' . t('Have questions?<br />Click for an anwser.') . '</p>');
       
       foreach ($field_block as $block_item) {
         $field_block_wrapper = entity_metadata_wrapper('field_collection_item', $block_item->item_id);

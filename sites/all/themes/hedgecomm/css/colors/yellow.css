@@ -71,6 +71,20 @@
   background: #d16800;
 }
 
+/** Navigation Links **/
+.yellow1 .inline-navigation .item-list ul li p.title {
+  color: #f7a31c;
+}
+
+.yellow2 .inline-navigation .item-list ul li p.title {
+  color: #e08a1e;
+}
+
+.yellow3 .inline-navigation .item-list ul li p.title {
+  color: #d18600;
+}
+
+
 
 /**
  * Testimonials
@@ -412,6 +426,32 @@
 .yellow3 #webform-client-form-67 #submit-button button {
   background: #f7a31c;
 }
+
+/* Header backgrounds */
+.yellow1 .block-header-course .text { 
+  background-color: #f7a31c;
+}
+
+.yellow1 .block-header-course .text .key-information ul li {
+  background-color: #e08a1e;
+}
+
+.yellow2 .block-header-course .text { 
+  background-color: #e08a1e;
+}
+
+.yellow2 .block-header-course .text .key-information ul li {
+  background-color: #d16800;
+}
+
+.yellow3 .block-header-course .text { 
+  background-color: #d16800;
+}
+
+.yellow3 .block-header-course .text .key-information ul li {
+  background-color: #f7a31c;
+}
+
 
 /*******************************************
  * 5. Landing page detail page

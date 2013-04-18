@@ -17,16 +17,19 @@ disabled when full commerce functionality is operational.
 4. hc_contact
 A small module which alters the contact form (About Us) page for using a <button> instead of <input type="submit">
 
-5. hc_regions
+5. hc_course_roadmap
+Small module that adds a "Choose Your Own" date to the "public courses" view (course detail node page)
+
+6. hc_regions
 This module provides the region-selection functionality, and adds a session variable containing the region (EU - US - ASIA) the user
 is surfing from. This module also provides the region-selection block.
 
-6. hc_subject
+7. hc_subject
 This module alters the "taxonomy page". Normally the list of nodes belonging to a particular taxonomy term (i.e. the "subject", e.g. ITIL),
 is hardcoded in taxonomy_term_page(). This function is rewritten in this module for a more flexible node list.
 
-7. hc_subscribe
+8. hc_subscribe
 This module provides functionality for subscribing for a newsletter. Currently, Campaign Monitor is supported.
 
-8. hc_team
+9. hc_team
 This module provides a custom view mode, "team page" for the team page nodes in the view (only showing the image).

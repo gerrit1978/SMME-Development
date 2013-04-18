@@ -26,7 +26,6 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Preformatted Text', element : 'pre' },
             { name : 'Address'			, element : 'address' },
             */
-
             { name : 'Blue Title'		, element : 'h3', styles : { 'color' : 'Blue' } },
             { name : 'Red Title'		, element : 'h3', styles : { 'color' : 'Red' } },
 
@@ -44,6 +43,8 @@ if(typeof(CKEDITOR) !== 'undefined') {
             */
 
             { name : 'Marker: Green'	, element : 'span', styles : { 'background-color' : 'Lime' } },
+
+
 
             { name : 'Big'				, element : 'big' },
             { name : 'Small'			, element : 'small' },
@@ -68,7 +69,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
 						{
 							name: 'Columned list',
 							element: 'ul',
-							attributes: { 'class': 'columns' }
+							attributes: { 'class': 'columns clearfix' }
 						},
 
             {

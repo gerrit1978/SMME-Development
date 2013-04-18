@@ -44,16 +44,16 @@
 /** Book a Course roadmap **/
 #block-hc-blocks-book-a-course-navigation {
 /*   margin-bottom: 30px; */
-  margin-top: -10px;
+  margin-top: -16px;
   text-align: right;
 }
 
 #block-hc-blocks-book-a-course-navigation .item-list {
-  padding-left: 25px;
 }
 
 #block-hc-blocks-book-a-course-navigation .item-list ul {
   margin-bottom: 0;
+  padding-right: 220px;
 }
 
 #block-hc-blocks-book-a-course-navigation .item-list ul li {
@@ -80,7 +80,7 @@
 
 #block-hc-blocks-book-a-course-navigation .item-list ul li a {
   color: black;
-  padding: 6px 8px 4px 8px;
+  padding: 6px 10px 4px 10px;
   font-family: "DaxlineWeb-Bold";
   line-height: 1;
 }

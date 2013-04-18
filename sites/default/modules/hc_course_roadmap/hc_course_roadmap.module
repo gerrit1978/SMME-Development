@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * This module adds a "Choose Your Own" row to the Public Courses view
+ *
+ */
+
+/**
+ * Implements hook_views_post_execute
+ */
+function hc_course_roadmap_views_post_execute(&$view) {
+  
+  if ($view->name == 'public_courses' && arg(0) == 'node' && is_numeric(arg(1))) {
+
+    $course_nid = arg(1);
+  
+	  $current_path = current_path();
+	  
+	  $link = '<a rel="width:500;resizable:false;position:[center,60]" class="simple-dialog" name="block-system-main" href="/book-this-course?nid=' . $course_nid . '&redirect=' . $current_path . '"><i class="icon-ok"></i>&nbsp;Book This Course</a>';
+  
+    // define output here
+    $output = "<li class='public-course attachment'>"
+      . "<span class='course-row'>"
+      . "<span class='location'>Onsite</span><span class='date'>Choose Your Own</span>"
+      . "</span>"
+      . "<span class='book'>"
+      . $link
+      . "</span>"
+      . "</li>";
+    
+  
+    $view->attachment_after = $output;
+  }
+}

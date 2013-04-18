@@ -180,6 +180,19 @@
     }
   }
 
+/*
+  Drupal.behaviors.clientLogos = {
+    attach: function(context, settings) {
+      $('ul.client-logos').carouFredSel({
+        width: "100%",
+        items : {
+          visible : 5
+        }
+      });
+    }
+  }
+*/
+
   Drupal.behaviors.retina = {
     attach: function(context, settings) {
       var retina = window.devicePixelRatio >= 2;
@@ -192,6 +205,20 @@
             var retina_image = current_image.replace('subject_header_default', 'subject_header_retina');
             $('.retina-check img').attr('src', retina_image);
           }
+  	    }
+  	    if ($('body').hasClass('node-type-course')) {
+  	      var current_image = $('.retina-check img').attr('src');
+          if (current_image) {
+            var retina_image = current_image.replace('course_node_header_default', 'course_node_header_retina');
+            $('.retina-check img').attr('src', retina_image);
+          }
+
+  	    }
+      } 
+    }
+  }
+  
+
         
 /*
  *
@@ -215,11 +242,6 @@
 
 */
 
-  	    }
-      } 
-    }
-  }
-  
 /*
  * Currently disabled: solved by using tables 
  *

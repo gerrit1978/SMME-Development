@@ -40,5 +40,19 @@ function hedgecomm_alpha_preprocess_html(&$vars) {
       }
     }
   }
+  
+  /** PAGE TITLES **/
+  if (arg(0) == 'book-a-course') {
+    $vars['head_title'] = t("Book a Course at SMME");
+  }
+  if (arg(0) == 'team') {
+    $vars['head_title'] = t("Meet the Team at SMME");  
+  }
+  if (arg(0) == 'catalog') {
+    $vars['head_title'] = t("Training Catalog at SMME");  
+  }
+  if (arg(0) == 'news') {
+    $vars['head_title'] = t("Blog at SMME");  
+  }
  
 }

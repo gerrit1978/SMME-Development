@@ -574,7 +574,7 @@ body.front #zone-header-visual-wrapper {
  
 .carrousel-home {
   width: 1000px;
-  height: 500px;
+  height: 450px;
   overflow: hidden;
 /*   background: #ef2a09 url(../img/temp/placeholder-carrousel.jpg); */
   background: #ef2a09;
@@ -597,8 +597,8 @@ body.front #zone-header-visual-wrapper {
 }
 
 .carrousel-home h3 {
-  padding-top: 170px;
-  margin-bottom: 30px;
+  padding-top: 120px;
+  margin-bottom: 80px;
   font-size: 3.539em;
   line-height: 1;
 }
@@ -612,8 +612,8 @@ body.front #zone-header-visual-wrapper {
   margin: 0;
   padding: 0;
   position: absolute;
-  left: 55%;
-  width: 40%;
+  left: 50%;
+  width: 500px;
   bottom: -500px;
   list-style: none;
 }
@@ -637,8 +637,10 @@ body.front #zone-header-visual-wrapper {
   font-size: 3.077em;
   background: white;
   padding: 32px;
+  width: 436px;
   line-height: 1;
   font-family: "DaxlineWeb-Medium";
+  text-align: center;
 }
 
 .carrousel-home ul.questions li.question .triangle {
@@ -1218,9 +1220,10 @@ body.front #zone-prefooter-wrapper {
 
 .block-header-course .text .title {
   font-size: 3.231em;
-  line-height: 1;
+  line-height: 1.3;
   margin-left: 32px;
   margin-top: 32px;
+  padding-right: 16px;
 }
 
 .block-header-course .text .description {
@@ -1314,7 +1317,7 @@ body.front #zone-prefooter-wrapper {
 }
 
 .block-course-testimonials h2.block-title {
-  font-size: 3.231em;
+  font-size: 2.923em;
   color: #eb2c23;
   margin-bottom: 32px;
 }
@@ -1327,7 +1330,6 @@ body.front #zone-prefooter-wrapper {
 /** Public course dates block **/
 .block-public-course-dates {
   margin-bottom: 32px;
-  border-bottom: 1px solid #d6d6d6;
 }
 
 .block-public-course-dates h2.block-title {
@@ -1342,7 +1344,6 @@ body.front #zone-prefooter-wrapper {
   font-family: "DaxlineWeb-Medium";
   color: black;
   font-size: 1.538em;
-  padding: 16px 32px;
   border-bottom: 1px solid #d6d6d6;
 }
 
@@ -1350,91 +1351,122 @@ body.front #zone-prefooter-wrapper {
   float: left;
 }
 
+.block-public-course-dates .header .left,
+.block-public-course-dates .header .center,
+.block-public-course-dates .header .right {
+  text-align: center;
+  height: 74px;
+  line-height: 74px;
+  border-right: 1px solid #d6d6d6;
+}
+
 .block-public-course-dates .header .left {
-  width: 300px;
+  width: 303px;
 }
 
 .block-public-course-dates .header .center {
-  width: 365px;
+  width: 419px;
 }
 
 .block-public-course-dates .header .right {
-  width: 200px;
+  width: 216px;
+  border-right: none;
 }
 
 .block-public-course-dates .title {
-  width: 284px;
+  width: 271px;
   float: left;
-  padding: 32px 0;
-  padding-top: 22px;
+  padding-bottom: 0;
+  display: table;
   margin-left: 32px;
   font-family: "DaxlineWeb-Medium";
   color: black;
-  font-size: 1.538em;
+  font-size: 1.358em;
+  color: #00b2d9;
   border-right: 1px solid #d6d6d6;
-  line-height: 1;
+  height: 74px;
+  line-height: 1.531em;
 }
 
-.block-public-course-dates .view-public-courses-temp {
+.block-public-course-dates .title .title-inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.block-public-course-dates .view-public-courses {
   float: left;
   border-left: 1px solid #d6d6d6;
   margin-left: -1px;
 }
 
-.block-public-course-dates .view-public-courses-temp ul.public-courses {
+.block-public-course-dates .view-public-courses ul.public-courses {
   margin: 0;
   padding: 0;
 }
 
-.block-public-course-dates .view-public-courses-temp ul.public-courses li.public-course {
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course {
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #d6d6d6;
-  height: 64px;
-  line-height: 64px;
+  height: 74px;
+  line-height: 74px;
+  list-style: none;
 }
 
-.block-public-course-dates .view-public-courses-temp ul.public-courses li.public-course.views-row-last {
+.block-public-course-dates .view-public-courses .attachment li.public-course {
+  border-top: 1px solid #d6d6d6;
+  list-style: none;
+  height: 74px;
+  line-height: 74px;
+}
+
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course.views-row-last {
   border-bottom: none;
   padding-bottom: 0;
 }
 
-.block-public-course-dates .view-public-courses-temp .course-row {
-  width: 350px;
+.block-public-course-dates .view-public-courses .course-row {
+  width: 419px;
   display: inline-block;
-  padding-left: 16px;
-  height: 64px;
-  line-height: 64px;
+  height: 74px;
+  line-height: 74px;
   border-right: 1px solid #d6d6d6;
+  float: left;
 }
 
-.block-public-course-dates .view-public-courses-temp .course-row .location {
-  color: #00b2d9;
-  font-family: "DaxlineWeb-Medium";
-  font-size: 1.231em;
-  margin-right: 16px;
-}
-
-.block-public-course-dates .view-public-courses-temp .course-row .date {
-  font-size: 1.231em;
-}
-
-.block-public-course-dates .view-public-courses-temp .book {
-  width: 212px;
-  height: 64px;
-  line-height: 64px;
-  padding: 0 32px;
-  padding-left: 8px;
+.block-public-course-dates .view-public-courses .course-row .location {
+  color: black;
+  width: 50%;
   display: inline-block;
+  float: left;
+  font-size: 1.385em;
+  text-align: center;
 }
 
-.block-public-course-dates .view-public-courses-temp .book a {
+.block-public-course-dates .view-public-courses .course-row .date {
+  font-size: 1.385em;
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+.block-public-course-dates .view-public-courses .book {
+  width: 216px;
+  height: 74px;
+  line-height: 74px;
+  padding: 0;
+  display: inline-block;
+  float: left;
+  text-align: center;
+}
+
+.block-public-course-dates .view-public-courses .book a {
   color: #00b2d9;
-  font-family: "DaxlineWeb-Medium";
-  font-size: 1.231em;
+  font-size: 1.385em;
 }
 
-.block-public-course-dates .view-public-courses-temp .book a:hover {
+.block-public-course-dates .view-public-courses .book a:hover {
   color: #1889b3
 }
 
@@ -1479,13 +1511,13 @@ body.front #zone-prefooter-wrapper {
 }
 
 .page-team .view-team ul.team-items li.team-item .visual {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .page-team .view-team ul.team-items li.team-item .name a {
-  font-family: "DaxlineWeb-Bold";
+  font-family: "DaxlineWeb-Medium";
   color: #00b2d9;
-  font-size: 1.692em;
+  font-size: 1.538em;
 }
 
 .page-team .view-team ul.team-items li.team-item .name a:hover {
@@ -1494,8 +1526,8 @@ body.front #zone-prefooter-wrapper {
 
 .page-team .view-team ul.team-items li.team-item .role,
 .page-team .view-team ul.team-items li.team-item .teaches {
-  font-size: 1.077em;
-  color: #838383;
+  font-size: 1.038em;
+  color: black;
 }
 
 .page-team .view-team ul.team-items li.team-item .teaches a {
