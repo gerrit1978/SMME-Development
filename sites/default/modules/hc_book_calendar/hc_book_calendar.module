@@ -166,13 +166,18 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
       $output_variations = "";
       if (is_array($variations_field) && count($variations_field)) {
         $items = array();
-        foreach ($variations_field as $variation) {
+        foreach ($variations_field as $key => $variation) {
 		      $variation_wrapper = entity_metadata_wrapper('commerce_product', $variation);
-		      $variation_product_id = $variation_wrapper->product_id->value();
-		      $variation_location = $variation_wrapper->field_public_course_location->value();
-		      $variation_date = $variation_wrapper->field_public_course_date_format->value();      
-		      $output_variation = "<div class='location'>" . $variation_location . "</div><div class='date'>" . $variation_date . "</div>";
-          $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
+		      $variation_id = $variation_wrapper->product_id->value();
+          if (_hc_regions_check_product_variation($variation_id)) {
+			      $variation_product_id = $variation_wrapper->product_id->value();
+			      $variation_location = $variation_wrapper->field_public_course_location->value();
+			      $variation_date = $variation_wrapper->field_public_course_date_format->value();      
+			      $output_variation = "<div class='location'>" . $variation_location . "</div><div class='date'>" . $variation_date . "</div>";
+	          $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
+	        } else {
+	          unset($variations_field[$key]);
+	        }
         }
         
         // add an "onsite link" for America
@@ -249,7 +254,8 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
 
   }
     $output_to_top = "<a class='to-top to-top-book' href='#'>Top&nbsp;<i class='icon-arrow-up'></i></a>";
-    $output_complete = $output_header . $output_main . $output_to_top;
+/*     $output_complete = $output_header . $output_main . $output_to_top; */
+    $output_complete = $output_main . $output_to_top;
     return $output_complete;    
 
 

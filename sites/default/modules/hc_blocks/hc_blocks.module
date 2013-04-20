@@ -423,8 +423,12 @@ function _hc_blocks_block_course_public_dates_render() {
     if (is_array($public_course_field) && count($public_course_field)) {
       $product_pids = array();
       foreach ($public_course_field as $public_course) {
-        $product_pids[] = $public_course->product_id;
+        $product_id = $public_course->product_id;
+        if (_hc_regions_check_product_variation($product_id)) {
+          $product_pids[] = $public_course->product_id;        
+        }
       }
+      
       if (count($product_pids)) {
         $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right'>Book</div></div>";
         $output .= "<div class='title clearfix'><div class='title-inner'>" . $node_title . "</div></div>";
@@ -585,7 +589,7 @@ function _hc_blocks_block_course_node_navigation_render() {
 
     if (is_array($field_block)) {
       $items = array();
-      $items[] = array('data' => '<p class="title">' . t('Have questions?<br />Click for an anwser.') . '</p>');
+      $items[] = array('data' => '<p class="title">' . t('Have questions?<br />Click for an answer.') . '</p>');
       
       foreach ($field_block as $block_item) {
         $field_block_wrapper = entity_metadata_wrapper('field_collection_item', $block_item->item_id);

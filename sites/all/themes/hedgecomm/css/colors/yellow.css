@@ -84,6 +84,21 @@
   color: #d18600;
 }
 
+.yellow1 .inline-navigation .item-list ul li a:hover,
+.yellow1 .inline-navigation .item-list ul li.active a {
+  background-color: #f7a31c;
+}
+
+.yellow2 .inline-navigation .item-list ul li a:hover,
+.yellow2 .inline-navigation .item-list ul li.active a {
+  background-color: #e08a1e;
+}
+
+.yellow3 .inline-navigation .item-list ul li a:hover,
+.yellow3 .inline-navigation .item-list ul li.active a {
+  background-color: #d16800;
+}
+
 
 
 /**

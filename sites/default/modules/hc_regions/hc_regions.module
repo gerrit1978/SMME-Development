@@ -8,6 +8,8 @@
  * This module adds a session variable, containing the region the user
  * is currently surfing from. It also provides the region selection block.
  *
+ *
+ * TODO: clean this up!
  */
 
 /************************************************************************************
@@ -131,6 +133,23 @@ function hc_regions_preprocess_node(&$vars) {
 /************************************************************************************
  * Internal Helper Functions
  ***********************************************************************************/
+
+/**
+ * Helper function for checking if a product variation (course date) belongs to a specific region
+ */
+function _hc_regions_check_product_variation($product_id) {
+  $user_location = $_SESSION['user_location'];
+  $continent_code = $user_location['continent_code'];
+  $product_wrapper = entity_metadata_wrapper('commerce_product', $product_id);
+  $product_region = $product_wrapper->field_global_region->value();
+  if (is_array($product_region) && isset($product_region[0])) {
+    if ($continent_code == $product_region[0]) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+}
 
 /** 
  * Custom submit function for "add to cart" form on products

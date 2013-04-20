@@ -84,6 +84,21 @@
   color: #005a86;
 }
 
+.blue1 .inline-navigation .item-list ul li a:hover,
+.blue1 .inline-navigation .item-list ul li.active a {
+  background-color: #00b2d9;
+}
+
+.blue2 .inline-navigation .item-list ul li a:hover,
+.blue2 .inline-navigation .item-list ul li.active a {
+  background-color: #1889b3;
+}
+
+.blue3 .inline-navigation .item-list ul li a:hover,
+.blue3 .inline-navigation .item-list ul li.active a {
+  background-color: #005a86;
+}
+
 
 /**
  * Testimonials 

@@ -84,6 +84,22 @@
   color: #078c2d;
 }
 
+.green1 .inline-navigation .item-list ul li a:hover,
+.green1 .inline-navigation .item-list ul li.active a {
+  background-color: #47cf6e;
+}
+
+.green2 .inline-navigation .item-list ul li a:hover,
+.green2 .inline-navigation .item-list ul li.active a {
+  background-color: #31b85b;
+}
+
+.green3 .inline-navigation .item-list ul li a:hover,
+.green3 .inline-navigation .item-list ul li.active a {
+  background-color: #078c2d;
+}
+
+
 
 
 /**

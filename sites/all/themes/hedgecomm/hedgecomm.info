@@ -365,6 +365,7 @@ stylesheets[all][] = css/colors/blue.css
 stylesheets[all][] = css/colors/green.css
 stylesheets[all][] = fonts/fonts.css
 stylesheets[all][] = font-awesome/css/font-awesome.min.css
+stylesheets[all][] = smme-icons/stylesheet.css
 stylesheets[all][] = uniform/themes/default/css/uniform.default.css
 
 scripts[] = scripts/jquery.easing.1.3.js

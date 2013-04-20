@@ -57,6 +57,11 @@ function hedgecomm_alpha_preprocess_page(&$vars) {
   if (isset($vars['node']) && $vars['node']->nid == 66) {
     $vars['title'] = "";
   }
+
+  /** TEAM PAGE **/
+  if (isset($vars['node']) && $vars['node']->nid == 83) {
+    $vars['title'] = "";
+  }
   
   /** NEWS PAGE **/
   if (arg(0) == 'news') {

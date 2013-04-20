@@ -180,18 +180,18 @@
     }
   }
 
-/*
   Drupal.behaviors.clientLogos = {
     attach: function(context, settings) {
       $('ul.client-logos').carouFredSel({
-        width: "100%",
-        items : {
-          visible : 5
+        width: 810,
+        scroll: {
+          items: 4,
+          easing: 'easeInOutExpo',
+          duration: 1000
         }
       });
     }
   }
-*/
 
   Drupal.behaviors.retina = {
     attach: function(context, settings) {
@@ -212,8 +212,17 @@
             var retina_image = current_image.replace('course_node_header_default', 'course_node_header_retina');
             $('.retina-check img').attr('src', retina_image);
           }
-
   	    }
+  	    if ($('body').hasClass('context-team')) {
+          $('ul.team-items .retina-check img').each(function() {
+            var current_image = $(this).attr('src');
+            if (current_image) {
+	            var retina_image = current_image.replace('team_thumbnail_default', 'team_thumbnail_retina');
+	            $(this).attr('src', retina_image);
+            }
+          });
+  	    }
+  	    
       } 
     }
   }

@@ -188,6 +188,51 @@ strong {
   padding-bottom: 30px;
 }
 
+/****************************************************************
+ * A.6. SMME ICONS
+ ***************************************************************/
+
+/* TODO: rework this. This is for contact page only */
+.smme-icons {
+  font-family: "smme_icon_fontregular" !important;
+  display: inline-block;
+}
+
+.smme-icons.small {
+  font-size: 24px;
+  height: 36px;
+}
+
+.smme-icons.smme-icons-plain {
+  font-size: 32px;
+}
+
+.smme-icons.smme-icons-plain.large {
+  font-size: 48px;
+}
+
+/* FINAL STYLES HERE */
+.smme-icon-wrapper {
+  margin-bottom: 0;
+}
+
+.smme-icon-wrapper span.smme-icon {
+  font-family: "smme_icon_fontregular";
+  display: inline-block;
+}
+
+.smme-icon-wrapper.smme-icon-medium span.smme-icon {
+  font-size: 32px;
+  line-height: 0.2em;
+}
+
+.smme-icon-wrapper.smme-icon-medium {
+  line-height: 1.6em;
+  margin-bottom: 1.6em;
+}
+
+
+
 /************************************************************************************************************************************
  *
  *
@@ -612,7 +657,7 @@ body.front #zone-header-visual-wrapper {
   margin: 0;
   padding: 0;
   position: absolute;
-  left: 50%;
+  left: 470px;
   width: 500px;
   bottom: -500px;
   list-style: none;
@@ -735,6 +780,11 @@ body.front #zone-header-visual-wrapper {
   margin-bottom: 5px;
 }
 
+.block-three-columns-home .omega h2, 
+.block-three-columns-home .omega p {
+  padding-right: 10px;
+}
+
 /****************************************************************
  * D.4. CALL TO ACTION HOMEPAGE BLOCK
  ***************************************************************/
@@ -769,6 +819,33 @@ body.front #zone-prefooter-wrapper {
 
 #section-footer .call-to-action-homepage .block-inner a:hover {
   color: #383838;
+}
+
+/****************************************************************
+ * D.5. CLIENT LOGOS BLOCK
+ ***************************************************************/
+body.front .client-logos {
+  margin-top: 32px;
+}
+
+body.front .client-logos h2.block-title {
+  float: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 18px;
+  margin-right: 16px;
+  font-size: 0.923em;
+  color: #828282;
+}
+
+body.front .client-logos ul.client-logos {
+  margin: 0;
+  padding: 0;
+}
+
+body.front .client-logos ul.client-logos li {
+  float: left;
+  margin-right: 32px;
 }
 
 /************************************************************************************************************************************
@@ -1473,35 +1550,35 @@ body.front #zone-prefooter-wrapper {
 /****************************************************************
  * E.4. TEAM OVERVIEW PAGE
  ***************************************************************/
-.page-team h2.site-name a {
+.context-team h2.site-name a {
   color: #ef2a09;
 }
 
 /** Header on team page **/
-.page-team .block-header-team ul li .text {
+.context-team .block-header-team ul li .text {
   background: #ef2a09;
 }
 
-.page-team .block-header-team ul li .text .title,
-.page-team .block-header-team ul li .text .description {
+.context-team .block-header-team ul li .text .title,
+.context-team .block-header-team ul li .text .description {
   color: white;
 }
 
 /** Main view with team members on team page **/
-.page-team .view-team h3 {
+.context-team #region-content h2.block-title {
   font-family: "DaxlineWeb-Medium";
   font-weight: normal;
   font-size: 3.231em;
   color: #ef2a09;
 }
 
-.page-team .view-team ul.team-items {
+.context-team .view-team-block ul.team-items {
   margin: 0;
   padding: 0;
-  margin-bottom: 60px;
+  margin-bottom: 32px;
 }
 
-.page-team .view-team ul.team-items li.team-item {
+.context-team .view-team-block ul.team-items li.team-item {
   list-style: none;
   float: left;
   margin: 0;
@@ -1510,27 +1587,32 @@ body.front #zone-prefooter-wrapper {
   width: 300px;
 }
 
-.page-team .view-team ul.team-items li.team-item .visual {
+.context-team .view-team-block ul.team-items li.team-item .visual {
   margin-bottom: 16px;
 }
 
-.page-team .view-team ul.team-items li.team-item .name a {
+.context-team .view-team-block ul.team-items li.team-item .visual img {
+  width: 300px;
+}
+
+.context-team .view-team-block ul.team-items li.team-item .name a {
   font-family: "DaxlineWeb-Medium";
   color: #00b2d9;
   font-size: 1.538em;
 }
 
-.page-team .view-team ul.team-items li.team-item .name a:hover {
+.context-team .view-team-block ul.team-items li.team-item .name a:hover {
   color: black;
 }
 
-.page-team .view-team ul.team-items li.team-item .role,
-.page-team .view-team ul.team-items li.team-item .teaches {
+.context-team .view-team-block ul.team-items li.team-item .role,
+.context-team .view-team-block ul.team-items li.team-item .teaches {
   font-size: 1.038em;
   color: black;
 }
 
-.page-team .view-team ul.team-items li.team-item .teaches a {
+.context-team .view-team-block ul.team-items li.team-item .teaches,
+.context-team .view-team-block ul.team-items li.team-item .teaches a {
   color: #838383;
 }
 
@@ -2017,15 +2099,43 @@ body.front #zone-prefooter-wrapper {
   margin: 32px 0 16px 0;
 }
 
-.context-contact-us #block-system-main .column .icon {
+
+/*
+.context-contact-us #block-system-main .column .awesome-wrapper {
   float: left;
+  margin-right: 5px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+}
+*/
+
+/*
+  line-height: 32px;
+  
+  background: url(../img/red_circle.png);
+}
+
+.context-contact-us #block-system-main .column .awesome-wrapper.icon-address i {
+  top: 10px;
+}
+
+.context-contact-us #block-system-main .column .awesome-wrapper i {
+  color: white;
+}
+*/
+
+.context-contact-us #block-system-main .column .contact-icon {
+  width: 35px;
+  float: left;
+  margin-top: -6px;
 }
 
 .context-contact-us #block-system-main .column .address,
 .context-contact-us #block-system-main .column .call,
 .context-contact-us #block-system-main .column .email {
   margin-bottom: 32px;
-  margin-left: 32px;
+  margin-left: 37px;
   font-size: 1.231em;
 }
 
