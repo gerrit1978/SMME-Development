@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -26,6 +26,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Preformatted Text', element : 'pre' },
             { name : 'Address'			, element : 'address' },
             */
+
             { name : 'Blue Title'		, element : 'h3', styles : { 'color' : 'Blue' } },
             { name : 'Red Title'		, element : 'h3', styles : { 'color' : 'Red' } },
 
@@ -42,9 +43,8 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Superscript'		, element : 'sup' },
             */
 
+            { name : 'Marker: Yellow'	, element : 'span', styles : { 'background-color' : 'Yellow' } },
             { name : 'Marker: Green'	, element : 'span', styles : { 'background-color' : 'Lime' } },
-
-
 
             { name : 'Big'				, element : 'big' },
             { name : 'Small'			, element : 'small' },
@@ -65,12 +65,6 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Language: LTR'	, element : 'span', attributes : { 'dir' : 'ltr' } },
 
             /* Object Styles */
-
-						{
-							name: 'Columned list',
-							element: 'ul',
-							attributes: { 'class': 'columns clearfix' }
-						},
 
             {
                     name : 'Image on Left',

@@ -4,6 +4,9 @@
  * @file
  * This module adds a "Choose Your Own" row to the Public Courses view
  *
+ * This module also checks if prices differ from the "default region" price.
+ * If so, add a class to the row, to indicate the price should be highlighted in red.
+ *
  */
 
 /**
@@ -17,13 +20,14 @@ function hc_course_roadmap_views_post_execute(&$view) {
   
 	  $current_path = current_path();
 	  
-	  $link = '<a rel="width:500;resizable:false;position:[center,60]" class="simple-dialog" name="block-system-main" href="/book-this-course?nid=' . $course_nid . '&redirect=' . $current_path . '"><i class="icon-ok"></i>&nbsp;Book This Course</a>';
+	  $link = '<a rel="width:500;resizable:false;position:[center,60]" class="simple-dialog" name="block-system-main" href="/book-this-course?nid=' . $course_nid . '&redirect=' . $current_path . '"><i class="icon-ok"></i>&nbsp;Book It</a>';
   
     // define output here
     $output = "<li class='public-course attachment'>"
       . "<span class='course-row'>"
       . "<span class='location'>Onsite</span><span class='date'>Choose Your Own</span>"
       . "</span>"
+      . "<span class='price'>TBD</span>"
       . "<span class='book'>"
       . $link
       . "</span>"
@@ -32,4 +36,37 @@ function hc_course_roadmap_views_post_execute(&$view) {
   
     $view->attachment_after = $output;
   }
+}
+
+// Create a variable to store the path to this module
+define('MY_MODULE_PATH', drupal_get_path('module', 'hc_course_roadmap'));
+
+function hc_course_roadmap_theme_registry_alter(&$theme_registry) {
+  $theme_registry_copy = $theme_registry;
+  _theme_process_registry($theme_registry_copy, 'phptemplate', 'theme_engine', 'hedgecomm', MY_MODULE_PATH);
+  $theme_registry += array_diff_key($theme_registry_copy, $theme_registry);
+
+  // A list of templates the module will provide templates for
+  $hooks = array('page');
+  foreach ($hooks as $h) {
+    // Add the key 'theme paths' if it doesn't exist in this theme's registry
+    if (!isset($theme_registry[$h]['theme paths'])) {
+      $theme_registry[$h]['theme paths'] = array();
+    }
+
+    //Shift this module's directory to the top of the theme path list 
+    if(is_array($theme_registry[$h]['theme paths'])) {
+      $first_element = array_shift($theme_registry[$h]['theme paths']);
+      if ($first_element) {
+        array_unshift($theme_registry[$h]['theme paths'], $first_element, MY_MODULE_PATH);
+      } else {
+        array_unshift($theme_registry[$h]['theme paths'], MY_MODULE_PATH);
+      }
+    }
+  }
+}
+
+
+function hc_course_roadmap_preprocess_views_view_list__public_courses__block(&$vars) {
+  exit('preprocess functie ook aangeroepen');
 }

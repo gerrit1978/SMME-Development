@@ -202,7 +202,7 @@ function hc_regions_select_region_form($form, &$form_state) {
   $form['change_region'] = array(
     '#title' => '<i class="icon-globe"></i>&nbsp;Region',
     '#type' => 'select',
-    '#options' => array('AS' => 'Asia', 'EU' => 'Europe', 'NA' => 'USA',),
+    '#options' => array('EU' => 'Europe', 'AS' => 'Middle East', 'NA' => 'USA',),
     '#default_value' => "$continent_code",
   );
   
@@ -254,7 +254,7 @@ function _hc_regions_continent_code_to_continent_name($continent_code) {
       $continent_name = "Europe";
       break;
     case 'AS':
-      $continent_name = "Asia";
+      $continent_name = "Middle East";
       break;
   }
   

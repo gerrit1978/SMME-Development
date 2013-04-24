@@ -218,12 +218,14 @@ strong {
 
 .smme-icon-wrapper span.smme-icon {
   font-family: "smme_icon_fontregular";
-  display: inline-block;
+  display: block;
+  font-weight: normal;
 }
 
 .smme-icon-wrapper.smme-icon-medium span.smme-icon {
   font-size: 32px;
-  line-height: 0.2em;
+  height: 32px;
+  float: left;
 }
 
 .smme-icon-wrapper.smme-icon-medium {
@@ -244,37 +246,40 @@ strong {
 /****************************************************************
  * B.1. FOOTER NEWS
  ***************************************************************/
-#block-views-news-block h2.block-title {
+.blog-footer h2.block-title {
   font-size: 1.538em;
   margin-bottom: 30px;
 }
 
-.view-news .footer ul.news-items {
+.blog-footer .footer ul.news-items {
   margin: 0;
   margin-bottom: 32px;
 }
 
-.view-news .footer ul.news-items li.news-item {
+.blog-footer .footer ul.news-items li.news-item {
   margin: 0;
   width: 290px;
   float: left;
   margin-right: 32px;
 }
 
-.view-news .footer ul.news-items li.news-item.views-row-last {
+.blog-footer .footer ul.news-items li.news-item.views-row-last {
   margin-right: 0;
 }
 
-.view-news .footer ul.news-items li.news-item .news-body {
+.blog-footer .footer ul.news-items li.news-item .news-title {
+  font-size: 1.231em;
+}
+
+.blog-footer .footer ul.news-items li.news-item .news-body {
   color: #939393;
 }
 
-.view-news .footer ul.news-items li.news-item .news-body,
-.view-news .footer ul.news-items li.news-item .news-link {
-  display: inline;
+.blog-footer .footer ul.news-items li.news-item .news-body {
+  margin-bottom: 8px;
 }
 
-.view-news .view-footer {
+.blog-footer .view-footer {
   margin-top: 20px;
 }
 
@@ -593,7 +598,7 @@ ul.testimonials li.testimonial .date-location {
 .block-page-title {
   color: white;
   font-family: "DaxlineWeb";
-  font-size: 36px;
+  font-size: 3.231em;
   padding: 16px 0;
 }
 
@@ -601,6 +606,57 @@ ul.testimonials li.testimonial .date-location {
   background: #ef2a09;
 }
 
+/****************************************************************
+ * C.8. SOCIAL MEDIA
+ ***************************************************************/
+.social-media {
+  margin-top: 16px;
+}
+
+.social-media ul {
+  margin: 0;
+  padding: 0;
+}
+
+.social-media ul li {
+  list-style: none;
+  float: left;
+  margin-right: 8px;
+}
+
+/****************************************************************
+ * C.9. BLOG MENU
+ ***************************************************************/
+.blog-menu {
+  margin: 32px 0;
+}
+
+.blog-menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-menu ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  float: left;
+  margin-right: 16px;
+  font-size: 1.385em;
+}
+
+.blog-menu ul li a {
+  color: #9b9b9b;
+}
+
+.blog-menu ul li a:hover,
+.blog-menu ul li a.active {
+  color: #000000;
+}
+
+.blog-menu ul li a.active {
+  font-family: "DaxlineWeb-Medium";
+}
 
 /************************************************************************************************************************************
  *
@@ -765,7 +821,7 @@ body.front #zone-header-visual-wrapper {
  ***************************************************************/
 .block-three-columns-home {
   color: #898989;
-  margin-top: 32px;
+  margin-top: 12px;
 }
 
 .block-three-columns-home h2.block-title {
@@ -799,16 +855,17 @@ body.front #zone-prefooter-wrapper {
 }
  
 .call-to-action-homepage .block-inner {
-  padding: 34px 0;
+  padding: 34px 0 26px 0;
 }
 
 .call-to-action-homepage .block-inner .wrapper {
   margin: 0 auto;
 }
 
-.call-to-action-homepage .block-inner span {
+.call-to-action-homepage .block-inner p.smme-icon-wrapper {
   display: inline-block;
   margin-right: 32px;
+  margin-bottom: 0;
 }
 
 #section-footer .call-to-action-homepage .block-inner a {
@@ -828,14 +885,15 @@ body.front .client-logos {
   margin-top: 32px;
 }
 
-body.front .client-logos h2.block-title {
+body.front .client-logos .view-header {
   float: left;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding-top: 18px;
-  margin-right: 16px;
+  padding-top: 8px;
+  margin-right: 0;
   font-size: 0.923em;
   color: #828282;
+  text-align: center;
 }
 
 body.front .client-logos ul.client-logos {
@@ -1150,7 +1208,7 @@ body.front .client-logos ul.client-logos li {
   font-family: "DaxlineWeb";
   font-size: 2.923em;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .catalog-subject-roadmap ul {
@@ -1396,7 +1454,8 @@ body.front .client-logos ul.client-logos li {
 .block-course-testimonials h2.block-title {
   font-size: 2.923em;
   color: #eb2c23;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
+  line-height: 1;
 }
 
 .block-course-testimonials ul.testimonials {
@@ -1407,6 +1466,11 @@ body.front .client-logos ul.client-logos li {
 /** Public course dates block **/
 .block-public-course-dates {
   margin-bottom: 32px;
+  position: relative;
+}
+
+.block-public-course-dates a.to-top {
+  float: right;
 }
 
 .block-public-course-dates h2.block-title {
@@ -1414,7 +1478,7 @@ body.front .client-logos ul.client-logos li {
   font-family: "DaxlineWeb";
   font-size: 2.923em;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .block-public-course-dates .header {
@@ -1430,7 +1494,8 @@ body.front .client-logos ul.client-logos li {
 
 .block-public-course-dates .header .left,
 .block-public-course-dates .header .center,
-.block-public-course-dates .header .right {
+.block-public-course-dates .header .right1,
+.block-public-course-dates .header .right2 {
   text-align: center;
   height: 74px;
   line-height: 74px;
@@ -1445,8 +1510,12 @@ body.front .client-logos ul.client-logos li {
   width: 419px;
 }
 
-.block-public-course-dates .header .right {
-  width: 216px;
+.block-public-course-dates .header .right1 {
+  width: 110px;
+}
+
+.block-public-course-dates .header .right2 {
+  width: 100px;
   border-right: none;
 }
 
@@ -1497,6 +1566,26 @@ body.front .client-logos ul.client-logos li {
   line-height: 74px;
 }
 
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course.highlighted,
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course.highlighted .location,
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course.highlighted .book a {
+  color: #ef2a09;
+}
+
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course.highlighted .price {
+  line-height: 22px;
+}
+
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course.highlighted .price .xtra-small {
+  font-size: 0.769em;
+  display: block;
+  padding-top: 16px;
+}
+
+.block-public-course-dates .view-public-courses ul.public-courses li.public-course.highlighted .book a:hover {
+  color: #cd1c1c;
+}
+
 .block-public-course-dates .view-public-courses ul.public-courses li.public-course.views-row-last {
   border-bottom: none;
   padding-bottom: 0;
@@ -1528,8 +1617,20 @@ body.front .client-logos ul.client-logos li {
   float: left;
 }
 
+.block-public-course-dates .view-public-courses .price {
+  width: 110px;
+  height: 74px;
+  line-height: 74px;
+  padding: 0;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  border-right: 1px solid #d6d6d6;
+  font-size: 1.385em;
+}
+
 .block-public-course-dates .view-public-courses .book {
-  width: 216px;
+  width: 104px;
   height: 74px;
   line-height: 74px;
   padding: 0;
@@ -1566,53 +1667,59 @@ body.front .client-logos ul.client-logos li {
 
 /** Main view with team members on team page **/
 .context-team #region-content h2.block-title {
-  font-family: "DaxlineWeb-Medium";
+  font-family: "DaxlineWeb";
   font-weight: normal;
   font-size: 3.231em;
+  line-height: 1;
   color: #ef2a09;
-}
-
-.context-team .view-team-block ul.team-items {
-  margin: 0;
-  padding: 0;
   margin-bottom: 32px;
 }
 
-.context-team .view-team-block ul.team-items li.team-item {
+.context-team .team-block ul.team-items {
+  margin: 0;
+  padding: 0;
+}
+
+.context-team .team-block ul.team-items li.team-item {
   list-style: none;
   float: left;
   margin: 0;
   padding: 0;
-  margin-right: 10px;
+  margin-right: 20px;
+  width: 300px;
+  margin-bottom: 32px;
+}
+
+.context-team .team-block ul.team-items li.team-item.last {
+  margin-right: 0;
+}
+
+.context-team .team-block ul.team-items li.team-item .visual {
+  margin-bottom: 6px;
+}
+
+.context-team .team-block ul.team-items li.team-item .visual img {
   width: 300px;
 }
 
-.context-team .view-team-block ul.team-items li.team-item .visual {
-  margin-bottom: 16px;
-}
-
-.context-team .view-team-block ul.team-items li.team-item .visual img {
-  width: 300px;
-}
-
-.context-team .view-team-block ul.team-items li.team-item .name a {
+.context-team .team-block ul.team-items li.team-item .name a {
   font-family: "DaxlineWeb-Medium";
   color: #00b2d9;
   font-size: 1.538em;
 }
 
-.context-team .view-team-block ul.team-items li.team-item .name a:hover {
+.context-team .team-block ul.team-items li.team-item .name a:hover {
   color: black;
 }
 
-.context-team .view-team-block ul.team-items li.team-item .role,
-.context-team .view-team-block ul.team-items li.team-item .teaches {
+.context-team .team-block ul.team-items li.team-item .role,
+.context-team .team-block ul.team-items li.team-item .teaches {
   font-size: 1.038em;
   color: black;
 }
 
-.context-team .view-team-block ul.team-items li.team-item .teaches,
-.context-team .view-team-block ul.team-items li.team-item .teaches a {
+.context-team .team-block ul.team-items li.team-item .teaches,
+.context-team .team-block ul.team-items li.team-item .teaches a {
   color: #838383;
 }
 
@@ -1671,8 +1778,8 @@ body.front .client-logos ul.client-logos li {
 .field-name-field-team-about .field-label {
   font-size: 2.111em;
   line-height: 1;
-  margin-bottom: 32px;
-  font-family: "DaxlineWeb-Medium";
+  margin-bottom: 16px;
+  font-family: "DaxlineWeb";
   font-weight: normal;
   color: #ef2a09;
 }
@@ -1723,7 +1830,7 @@ body.front .client-logos ul.client-logos li {
 /****************************************************************
  * E.6. BLOG/NEWS OVERVIEW PAGE
  ***************************************************************/
-.page-news h1.title {
+.view-blog-pages h1.title {
   background: #eb2c23;
   margin-left: -30px;
   margin-right: -30px;
@@ -1731,34 +1838,74 @@ body.front .client-logos ul.client-logos li {
   color: white;
 }
 
-.page-news .main-page ul.news-items { 
+.view-blog-pages ul.news-items { 
   margin: 0;
   padding: 0;
 }
 
-.page-news .main-page ul.news-items li.news-item {
-  float: none;
-  margin-bottom: 40px;
-  padding-left: 250px;
-  padding-bottom: 40px;
-  border-bottom: 2px solid #e2e2e2;
+.view-blog-pages ul.news-items li.news-item {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 32px;
 }
 
-.page-news .main-page ul.news-items li.news-item.views-row-first {
-  margin-top: 60px;
-}
-
-.page-news .main-page ul.news-items li.news-item.views-row-last {
+.view-blog-pages ul.news-items li.news-item.views-row-last {
   border-bottom: none;
 }
 
-.page-news .main-page ul.news-items li.news-item .news-title {
+.view-blog-pages ul.news-items li.news-item .thumbnail {
+  width: 115px;
+  float: left;
+  padding-top: 15px;
+}
+
+.view-blog-pages ul.news-items li.news-item .main {
+  margin-left: 140px;
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 32px;  
+}
+
+.view-blog-pages ul.news-items li.news-item.views-row-last .main {
+  border-bottom: none;
+}
+
+.view-blog-pages ul.news-items li.news-item .main .title {
+  font-size: 3.231em;
+  color: black;
+}
+
+.view-blog-pages ul.news-items li.news-item .main .intro {
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #b2b2b2;
+  font-family: "DaxlineWeb-Bold";
+}
+
+.view-blog-pages ul.news-items li.news-item .main .body {
+  font-size: 1.385em;
+}
+
+.view-blog-pages ul.news-items li.news-item .main .link {
+  font-size: 1.385em;
+  font-family: "DaxlineWeb-Medium";
+}
+
+.view-blog-pages ul.news-items li.news-item .main .link a {
+  color: #00b2d9;
+}
+
+.view-blog-pages ul.news-items li.news-item .main .link a:hover {
+  color: #1889b3;
+}
+
+/*
+.context-blog .main-page ul.news-items li.news-item .news-title {
   font-size: 3.231em;
   font-family: "DaxlineWeb-Medium";
   color: #3f3f3f;
 }
 
-.page-news .main-page ul.news-items li.news-item .intro {
+.context-blog .main-page ul.news-items li.news-item .intro {
   text-transform: uppercase;
   font-size: 1.077em;
   font-family: "DaxlineWeb-Medium";
@@ -1766,32 +1913,33 @@ body.front .client-logos ul.client-logos li {
   margin-bottom: 30px;
 }
 
-.page-news .main-page ul.news-items li.news-item .intro a {
+.context-blog .main-page ul.news-items li.news-item .intro a {
   color: #00b2d9;
 }
 
-.page-news .main-page ul.news-items li.news-item .intro a:hover {
+.context-blog .main-page ul.news-items li.news-item .intro a:hover {
   color: #000;
 }
 
-.page-news .main-page ul.news-items li.news-item .news-body {
+.context-blog .main-page ul.news-items li.news-item .news-body {
   font-size: 1.384em;
   color: #838383;
 }
 
-.page-news .main-page ul.news-items li.news-item .read-this-post {
+.context-blog .main-page ul.news-items li.news-item .read-this-post {
   font-family: "DaxlineWeb-Bold";
   font-size: 1.231em;
   margin-top: 20px;
 }
 
-.page-news .main-page ul.news-items li.news-item .read-this-post a {
+.context-blog .main-page ul.news-items li.news-item .read-this-post a {
   color: #00b2d9;
 }
 
-.page-news .main-page ul.news-items li.news-item .read-this-post a:hover {
+.context-blog .main-page ul.news-items li.news-item .read-this-post a:hover {
   color: black;
 }
+*/
 
 
 /****************************************************************
@@ -1872,10 +2020,15 @@ body.front .client-logos ul.client-logos li {
   width: 420px;
 }
 
-.page-book-a-course ul.subjects li.subject table th.right,
-.page-book-a-course ul.subjects li.subject table td.right {
+.page-book-a-course ul.subjects li.subject table th.right1,
+.page-book-a-course ul.subjects li.subject table td.right1 {
+  width: 110px;
+}
+
+.page-book-a-course ul.subjects li.subject table th.right2,
+.page-book-a-course ul.subjects li.subject table td.right2 {
   border-right: none;
-  width: 217px;
+  width: 107px;
 }
 
 .page-book-a-course ul.subjects li.subject table.main {
@@ -1932,6 +2085,10 @@ body.front .client-logos ul.client-logos li {
   line-height: 74px;
 }
 
+.page-book-a-course ul.subjects li.subject table.main td.center .variations ul li.highlighted {
+  color: #ef2a09;
+}
+
 .page-book-a-course ul.subjects li.subject table.main td.center .variations ul li.last {
   border-bottom: none;
 }
@@ -1944,12 +2101,90 @@ body.front .client-logos ul.client-logos li {
   font-size: 1.385em;
 }
 
-.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul {
+.page-book-a-course ul.subjects li.subject table.main td.right1 {
+  width: 110px;
+  font-size: 1.385em;
+  text-align: center;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right1 ul {
   margin: 0;
   padding: 0;
 }
 
-.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li {
+.page-book-a-course ul.subjects li.subject table.main td.right1 ul li {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 74px;
+  line-height: 74px;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right1 ul li.highlighted {
+  color: #ef2a09;
+  line-height: 22px;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right1 ul li.highlighted .price .xtra-small {
+  padding-top: 16px;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right1 ul li.highlighted .xtra-small {
+  font-size: 0.769em;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right1 ul li.last {
+  border-bottom: none;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 {
+  width: 90px;
+  font-size: 1.385em;
+  border-right: none;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 ul {
+  margin: 0;
+  padding: 0;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 ul li {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 74px;
+  line-height: 74px;
+  border-bottom: 1px solid #d6d6d6;  
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 ul li.highlighted a {
+  color: #ef2a09;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 ul li.highlighted a:hover {
+  color: #cd1c1c;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 ul li.last {
+  border-bottom: none;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 ul li a {
+  color: #00b2d9;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td.right2 ul li a:hover {
+  color: #1889b3;
+}
+
+/*
+.page-book-a-course ul.subjects li.subject table.main td ul {
+  margin: 0;
+  padding: 0;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td ul li {
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #d6d6d6;
@@ -1957,22 +2192,40 @@ body.front .client-logos ul.client-logos li {
   line-height: 74px;
 }
 
-.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li.last {
+.page-book-a-course ul.subjects li.subject table.main td ul li.last {
   border-bottom: none;
 }
+*/
 
-.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li .booking-link {
+/*
+.page-book-a-course ul.subjects li.subject table.main td ul li .price-book {
+
+}
+
+.page-book-a-course ul.subjects li.subject table.main td ul li .price-book .price {
   font-size: 1.385em;
+  width: 110px;
+  float: left;
+  border-right: 1px solid #d6d6d6;
   text-align: center;
 }
 
-.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li .booking-link a {
+
+.page-book-a-course ul.subjects li.subject table.main td ul li .booking-link {
+  font-size: 1.385em;
+  text-align: center;
+  width: 90px;
+  float: left;
+}
+
+.page-book-a-course ul.subjects li.subject table.main td ul li .booking-link a {
   color: #00b2d9;
 }
 
-.page-book-a-course ul.subjects li.subject table.main td.right .booking-links ul li .booking-link a:hover {
+.page-book-a-course ul.subjects li.subject table.main td ul li .booking-link a:hover {
   color: #1889b3;
 }
+*/
 
 
 .page-book-a-course ul.subjects li.subject a.to-top-book {
@@ -2088,7 +2341,7 @@ body.front .client-logos ul.client-logos li {
   font-weight: normal;
 }
 
-.context-contact-us #block-system-main .column-as {
+.context-contact-us #block-system-main .column-na {
   margin-right: 0;
 }
 

@@ -20,16 +20,20 @@ A small module which alters the contact form (About Us) page for using a <button
 5. hc_course_roadmap
 Small module that adds a "Choose Your Own" date to the "public courses" view (course detail node page)
 
-6. hc_regions
+6. hc_currency
+Alters the currency format for Euros, to use point as thousands separator.
+
+7. hc_regions
 This module provides the region-selection functionality, and adds a session variable containing the region (EU - US - ASIA) the user
 is surfing from. This module also provides the region-selection block.
 
-7. hc_subject
+8. hc_subject
 This module alters the "taxonomy page". Normally the list of nodes belonging to a particular taxonomy term (i.e. the "subject", e.g. ITIL),
 is hardcoded in taxonomy_term_page(). This function is rewritten in this module for a more flexible node list.
 
-8. hc_subscribe
+9. hc_subscribe
 This module provides functionality for subscribing for a newsletter. Currently, Campaign Monitor is supported.
 
-9. hc_team
-This module provides a custom view mode, "team page" for the team page nodes in the view (only showing the image).
+10. hc_team
+This module provides a custom view mode, "team page" for the team page nodes in the view (only showing the image). This is deprecated,
+since now a thumbnail field is added, and this image is used instead of the header image.

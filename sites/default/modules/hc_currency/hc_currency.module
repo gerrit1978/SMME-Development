@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * This module alters the formatting of EUR prices
+ */
+
+/**
+ * Implements hook_commerce_currency_info_alter
+ */
+function hc_currency_commerce_currency_info_alter(&$currencies, $langcode) {
+  $currencies['EUR']['thousands_separator'] = ".";
+}

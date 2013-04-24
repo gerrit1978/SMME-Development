@@ -198,3 +198,7 @@
   cursor: pointer;
   padding: 10px;
 }
+
+#webform-client-form-67 #webform-component-left--company-address label {
+  line-height: 22px;
+}

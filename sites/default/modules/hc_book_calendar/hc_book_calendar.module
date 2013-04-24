@@ -128,16 +128,6 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
   
   if (count($items_course_nids)) {
   
-/* This is disabled to incorporate header into main table
-    $header = array(
-      array('data' => t('Course'), 'class' => 'left',),
-      array('data' => t('Upcoming Dates'), 'class' => 'center'),
-      array('data' => t('Book'), 'class' => 'right'),
-    );
-
-    $output_header = theme('table', array('header' => $header, 'attributes' => array('class' => array('header'))));
-*/
-
     $rows = array();
     
 
@@ -164,75 +154,158 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
       // second, the dates for this course
       $variations_field = $course_wrapper->field_course_public_courses->value();
       $output_variations = "";
-      if (is_array($variations_field) && count($variations_field)) {
-        $items = array();
-        foreach ($variations_field as $key => $variation) {
-		      $variation_wrapper = entity_metadata_wrapper('commerce_product', $variation);
-		      $variation_id = $variation_wrapper->product_id->value();
-          if (_hc_regions_check_product_variation($variation_id)) {
-			      $variation_product_id = $variation_wrapper->product_id->value();
-			      $variation_location = $variation_wrapper->field_public_course_location->value();
-			      $variation_date = $variation_wrapper->field_public_course_date_format->value();      
-			      $output_variation = "<div class='location'>" . $variation_location . "</div><div class='date'>" . $variation_date . "</div>";
-	          $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
-	        } else {
-	          unset($variations_field[$key]);
-	        }
-        }
-        
-        // add an "onsite link" for America
-/*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
-          $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose Your Own') . "</div>";
-          $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
-/*         } */
-        
-        $output_variations = theme('item_list', array('items' => $items));
-      } else {
-        $items = array();
-/*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
-        if (TRUE) {
-          $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose Your Own') . "</div>";
-          $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
-        }
-        
-        $output_variations = theme('item_list', array('items' => $items));
-      }
-      
-      // third, the booking links
+      $output_prices = "";
       $output_booking_links = "";
       if (is_array($variations_field) && count($variations_field)) {
         $items = array();
-	      foreach ($variations_field as $variation) {
+        $items_price = array();
+        $items_booking = array();
+        foreach ($variations_field as $key => $variation) {
+          $highlight_class = "";
 		      $variation_wrapper = entity_metadata_wrapper('commerce_product', $variation);
-		      $variation_product_id = $variation_wrapper->product_id->value();
-		      $variation_link = "<div class='booking-link'><a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&pid=" . $variation_product_id . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
-		      $items[] = array('data' => $variation_link);
-	      }
-	    
-        // add an "booking onsite link" for America: currently for all regions
-/*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
-        if (TRUE) {
-          $variation_link = "<div class='booking-link'><a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
-          $items[] = array('data' => $variation_link);
+		      $status = $variation_wrapper->status->value();
+		      if ($status == 1) {
+			      $variation_id = $variation_wrapper->product_id->value();
+	          if (_hc_regions_check_product_variation($variation_id)) {
+				      $variation_product_id = $variation_wrapper->product_id->value();
+              $variation_price = $variation_wrapper->commerce_price->value();
+/*
+              if ($variation_product_id == 39) {
+                print_r($variation_wrapper->commerce_price->value());
+                exit();
+              }
+*/
+
+              // check for reduced price here
+              $default_price = 0;
+              $highlight_class = "";
+              $user_location = $_SESSION['user_location'];
+              $continent_code = $user_location['continent_code'];
+              $highlight_class = "";
+
+              switch ($continent_code) {
+                case 'EU':
+                  $result = db_query("SELECT d.field_course_header_block_pr_eu_value FROM field_data_field_course_header a, field_data_field_course_header_blocks b, field_data_field_course_header_block_type c, 
+                    field_data_field_course_header_block_pr_eu d 
+                   WHERE a.entity_id =:course_nid and a.field_course_header_revision_id = b.entity_id 
+                   AND b.field_course_header_blocks_revision_id = c.entity_id 
+                   AND b.field_course_header_blocks_revision_id = d.entity_id
+                   AND c.field_course_header_block_type_value = 'price';", array(':course_nid' => $nid));
+
+                   foreach ($result as $row) {
+                     $default_price = $row->field_course_header_block_pr_eu_value;
+                   }
+                  break;
+                case 'NA':
+                  $result = db_query("SELECT d.field_course_header_block_pr_usa_value FROM field_data_field_course_header a, field_data_field_course_header_blocks b, field_data_field_course_header_block_type c, 
+                    field_data_field_course_header_block_pr_usa d 
+                   WHERE a.entity_id =:course_nid and a.field_course_header_revision_id = b.entity_id 
+                   AND b.field_course_header_blocks_revision_id = c.entity_id 
+                   AND b.field_course_header_blocks_revision_id = d.entity_id
+                   AND c.field_course_header_block_type_value = 'price';", array(':course_nid' => $nid));
+
+                   foreach ($result as $row) {
+                     $default_price = $row->field_course_header_block_pr_usa_value;
+                   }
+                  break;
+                case 'AS':
+                  $result = db_query("SELECT d.field_course_header_block_pr_as_value FROM field_data_field_course_header a, field_data_field_course_header_blocks b, field_data_field_course_header_block_type c, 
+                    field_data_field_course_header_block_pr_as d 
+                   WHERE a.entity_id =:course_nid and a.field_course_header_revision_id = b.entity_id 
+                   AND b.field_course_header_blocks_revision_id = c.entity_id 
+                   AND b.field_course_header_blocks_revision_id = d.entity_id
+                   AND c.field_course_header_block_type_value = 'price';", array(':course_nid' => $nid));
+
+                   foreach ($result as $row) {
+                     $default_price = $row->field_course_header_block_pr_as_value;
+                   }
+                  break;
+
+
+                  
+              }
+
+		          // price
+		          $path = drupal_get_path('module', 'commerce_extra_price_formatters');
+              require_once($path . "/includes/extra_functions.inc");
+
+              // check if variation price differs from default price
+              $variation_price_int = intval($variation_price['amount']);
+              $variation_price_corrected = $variation_price_int / 100;
+ 
+              if (($default_price > 0) && ($default_price != $variation_price_corrected)) {
+                $highlight_class = "highlighted";
+              }
+				      
+				      $variation_price_formatted = commerce_extra_price_no_decimal_currency_format($variation_price['amount'], $variation_price['currency_code']);
+				      if ($highlight_class == "highlighted") {
+  				      $variation_price_output = "<div class='price'><div class='xtra-small'>Discount!</div>" . $variation_price_formatted . "</div>";				      
+				      } else {
+  				      $variation_price_output = "<div class='price'>" . $variation_price_formatted . "</div>";				      				      
+				      }
+				      $items_price[] = array('data' => $variation_price_output, 'class' => array($highlight_class));
+
+              // location
+				      $variation_location = $variation_wrapper->field_public_course_location->value();
+				      $variation_date = $variation_wrapper->field_public_course_date_format->value();      
+				      $output_variation = "<div class='location'>" . $variation_location . "</div><div class='date'>" . $variation_date . "</div>";
+		          $items[] = array('data' => $output_variation, 'class' => array('clearfix', $highlight_class));
+		          
+		          
+		          
+		          // booking links
+    		      $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&pid=" . $variation_product_id . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
+			        $items_booking[] = array('data' => $variation_link, 'class' => array($highlight_class));
+		          		          
+		        } else {
+		          unset($variations_field[$key]);
+		        }
+		      } else {
+		        unset($variations_field[$key]);
+		      }
         }
         
-        $output_booking_links = theme('item_list', array('items' => $items));
-	    } else {
-        $items = array();
-/*         if (isset($_SESSION['user_location']) && $_SESSION['user_location']['continent_code'] == 'NA') { */
-        if(TRUE) {
-          $variation_link = "<div class='booking-link'><a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div>";
-          $items[] = array('data' => $variation_link);
-        }
-        
-        $output_booking_links = theme('item_list', array('items' => $items));
-	    }
+          // add an "onsite link"
+          $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose Your Own') . "</div>";
+          $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
+          $output_variations = theme('item_list', array('items' => $items));
+
+          // prices
+          $items_price[] = array('data' => "<div class='price'>TBD</div>");
+          $output_prices = theme('item_list', array('items' => $items_price));
+
+          // booking links
+	        $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
+          
+          $items_booking[] = array('data' => $variation_link);
+       
+          $output_booking_links = theme('item_list', array('items' => $items_booking));
+      } else {
       
+        // no public dates found -> just add the "Choose Your Own" date and "TBD" price
+        $items = array();
+        $output_variation = "<div class='location'>" . t('Onsite') . "</div><div class='date'>" . t('Choose Your Own') . "</div>";
+        $items[] = array('data' => $output_variation, 'class' => array('clearfix'));
+        
+        $output_variations = theme('item_list', array('items' => $items));
+
+        $output_prices = "<div class='price'>" . t('TBD') . "</div>"; 
+
+        $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
+        
+        $items_booking = array('data' => $variation_link);
+        
+        $output_booking_links = theme('item_list', array('items' => $items_booking));
+
+      }
+      
+    
       // add a header to the table
 	    $header = array(
 	      array('data' => t('Course'), 'class' => 'left',),
 	      array('data' => t('Upcoming Dates'), 'class' => 'center'),
-	      array('data' => t('Book'), 'class' => 'right'),
+	      array('data' => t('Price'), 'class' => 'right1'),
+	      array('data' => t('Book'), 'class' => 'right2'),	      
 	    );
       
       // finally, parse the whole table
@@ -240,7 +313,8 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
         'data' => array(
           array('data' => "<div class='course-title'>$course_link</div>", 'class' => 'left'),
           array('data' => "<div class='variations'>$output_variations</div>", 'class' => 'center'),
-          array('data' => "<div class='booking-links'>$output_booking_links</div>",'class' => 'right'),
+          array('data' => "<div class='price'>$output_prices</div>", 'class' => 'right1'),
+          array('data' => "<div class='booking-links'>$output_booking_links</div>",'class' => 'right2'),
         ),
         'class' => array($extra_class),
       );
@@ -306,7 +380,7 @@ function theme_views_view_field__courses_per_subject__block_2__nothing_deprecate
       
       $output_variation = "<div class='col1'><span class='location'>" . $variation_location . "</span>"
         . "<span class='date'>" . $variation_date . "</span></div>"
-        . "<div class='col2'><div class='book'><a href='/book-course?pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div></div>";
+        . "<div class='col2'><div class='book'><a href='/book-course?pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a></div></div>";
       
       $variation_list[] = array('data' => $output_variation, 'class' => array('clearfix'));
       
@@ -325,7 +399,7 @@ function theme_views_view_field__courses_per_subject__block_2__nothing_deprecate
   if (isset($user_location['continent_code']) && $user_location['continent_code'] == 'NA') {
     $output_onsite = "<div class='col1'><span class='location'>" . t('Onsite') . "</span>"
       . "<span class='date'>" . t('Choose Your Own') . "</span></div>"
-      . "<div class='col2'><div class='book'><a href='/book-course?onsite=TRUE&course_nid=" . $course_nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book This Course') . "</a></div></div>";
+      . "<div class='col2'><div class='book'><a href='/book-course?onsite=TRUE&course_nid=" . $course_nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a></div></div>";
     
     $variation_list[] = array('data' => $output_onsite, 'class' => array('clearfix', 'onsite'));
   }

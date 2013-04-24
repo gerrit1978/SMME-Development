@@ -21,7 +21,7 @@
   <?php print $page; ?>
   <?php print $page_bottom; ?>
   
-<!-- begin SnapEngage code -->
+<!-- begin SnapEngage code
 <script type="text/javascript">
   (function() {
     var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
@@ -29,7 +29,7 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
   })();
 </script>
-<!-- end SnapEngage code -->  
+end SnapEngage code -->  
   
 </body>
 </html>

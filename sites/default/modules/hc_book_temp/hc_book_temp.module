@@ -86,6 +86,15 @@ function hc_book_temp_form_webform_client_form_67_alter(&$form, &$form_state) {
   print_r($form['actions']);
   exit();
 */
+
+  $user_location = $_SESSION['user_location'];
+  $continent_code = $user_location['continent_code'];
+  
+  if ($continent_code != "EU") {
+    $form['submitted']['left']['vat']['#printed'] = TRUE;
+    $form['submitted']['left']['company_address']['#printed'] = TRUE;
+  }
+
   
   // coupon code?
   if (isset($_GET['coupon'])) {
@@ -145,29 +154,31 @@ function hc_book_temp_form_webform_client_form_67_alter(&$form, &$form_state) {
       foreach ($variations as $variation) {
         if (isset($variation['target_id'])) {
           $commerce_product_wrapper = entity_metadata_wrapper('commerce_product', $variation['target_id']);
+          if ($commerce_product_wrapper->status->value() == 1) {          
           
-          // check if region for this variation matches the region the user if currently surfing from
-          if (_hc_regions_check_product_variation($variation['target_id'])) {
-	          // location
-	          $commerce_product_location = $commerce_product_wrapper->field_public_course_location->value();
-	          
-	          // price
-	          $commerce_product_price = $commerce_product_wrapper->commerce_price->value();
-	          $commerce_product_price_amount = intval($commerce_product_price['amount']);
-	          
-	          $commerce_product_price_formatted = commerce_extra_price_no_decimal_currency_format($commerce_product_price_amount, $commerce_product_price['currency_code']);
-	
-	          // date
-	          $commerce_product_dates = $commerce_product_wrapper->field_public_course_date_format->value();
-	          
-	          // compose the option
-	          $option = $commerce_product_location . " - " . $commerce_product_price_formatted . " - " . $commerce_product_dates;
-	          $options[$option] = $option;
-          }
-          // check if this variation was already chosen
-          if (isset($_GET['pid']) && $_GET['pid'] == $variation['target_id']) {
-            $default_option = $option;
-          }
+	          // check if region for this variation matches the region the user if currently surfing from
+	          if (_hc_regions_check_product_variation($variation['target_id'])) {
+		          // location
+		          $commerce_product_location = $commerce_product_wrapper->field_public_course_location->value();
+		          
+		          // price
+		          $commerce_product_price = $commerce_product_wrapper->commerce_price->value();
+		          $commerce_product_price_amount = intval($commerce_product_price['amount']);
+		          
+		          $commerce_product_price_formatted = commerce_extra_price_no_decimal_currency_format($commerce_product_price_amount, $commerce_product_price['currency_code']);
+		
+		          // date
+		          $commerce_product_dates = $commerce_product_wrapper->field_public_course_date_format->value();
+		          
+		          // compose the option
+		          $option = $commerce_product_location . " - " . $commerce_product_price_formatted . " - " . $commerce_product_dates;
+		          $options[$option] = $option;
+	          }
+	          // check if this variation was already chosen
+	          if (isset($_GET['pid']) && $_GET['pid'] == $variation['target_id']) {
+	            $default_option = $option;
+	          }
+	        }
         }
 
       }

@@ -64,19 +64,19 @@ function hedgecomm_alpha_preprocess_field(&$vars) {
       'title' => 'SMME USA',
       'lat' => '33.31130',
       'lng' => '-111.97722',
-      'description' => '<strong>SMME USA</strong><br />4809 East Thistle Landing Drive #100<br />Phoenix, AZ 85044, United States<br />(480) 285-1652',
+      'description' => '<strong>SMME USA</strong><br />4809 E Thistle Landing Dr, Ste 100<br />Phoenix, AZ 85044<br/>United States<br />480-285-1652',
     );
     $markers['AS'] = array(
-      'title' => 'SMME Asia',
+      'title' => 'SMME Middle East',
       'lat' => '25.10205',
       'lng' => '55.16095',
-      'description' => '<strong>SMME Asia</strong><br />Knowledge Village, Block 12, Office F-07 <br />Dubai, United Arab Emirates<br />+971 4 882 4453',
+      'description' => '<strong>SMME Middle East</strong><br />Office F07, Block 12<br />Dubai Knowledge Village<br />United Arab Emirates<br />971-4-882-4453',
     );
     $markers['EU'] = array(
       'title' => 'SMME Europe',
       'lat' => '50.84925',
       'lng' => '4.73648',
-      'description' => '<strong>SMME Europe</strong><br />Interleuvenlaan 62<br />3001 Heverlee, Belgium<br />+32 (0)16 39 47 94',
+      'description' => '<strong>SMME Europe</strong><br />Interleuvenlaan 62<br />3001 Heverlee<br />Belgium<br />32-16-39-47-94',
     );
     
     // all three regions?

@@ -365,9 +365,57 @@ function _hc_blocks_block_course_header_render() {
   	    foreach ($course_header_blocks as $course_header_block) {
           $course_header_block_id = $course_header_block->item_id;
           $course_header_block_wrapper = entity_metadata_wrapper('field_collection_item', $course_header_block_id);
-          $course_header_block_label = $course_header_block_wrapper->field_course_header_block_label->value();
-          $course_header_block_value = $course_header_block_wrapper->field_course_header_block_value->value(); 
-          $course_header_output = "<div class='main'>" . $course_header_block_value . "</div><div class='small'>" . $course_header_block_label . "</div>";
+          $course_header_output = "";
+          // check for type: text or price
+          $course_header_block_type = $course_header_block_wrapper->field_course_header_block_type->value();
+          if (empty($course_header_block_type) || $course_header_block_type == 'text') {
+	          $course_header_block_label = $course_header_block_wrapper->field_course_header_block_label->value();
+	          $course_header_block_value = $course_header_block_wrapper->field_course_header_block_value->value(); 
+	          $course_header_output = "<div class='main'>" . $course_header_block_value . "</div><div class='small'>" . $course_header_block_label . "</div>";
+          } 
+          if ($course_header_block_type == 'price') {
+          
+            // get price type
+            $course_header_block_price_type = $course_header_block_wrapper->field_course_header_block_pr_typ->value();
+            $small = "";
+            switch ($course_header_block_price_type) {
+              case 'attendee':
+                $label = 'Attendee Price';
+                break;
+              case 'session':
+                $label = 'Session Price';
+                break;
+            }
+            $small = "<div class='small'>" . $label . "</div>";
+            
+            // get region-based price
+			      $path = drupal_get_path('module', 'commerce_extra_price_formatters');
+			      require_once($path . "/includes/extra_functions.inc");
+
+            $user_location = $_SESSION['user_location'];
+            switch ($user_location['continent_code']) {
+              case 'EU':
+                $price_field = "field_course_header_block_pr_eu";
+                $currency_code = "EUR";
+                break;
+              case 'NA':
+              default:
+                $price_field = "field_course_header_block_pr_usa";
+                $currency_code = "USD";
+                break;
+              case 'AS':
+                $price_field = "field_course_header_block_pr_as";
+                $currency_code = "USD";                
+                break;
+            }
+            $course_price = $course_header_block_wrapper->$price_field->value() * 100;
+            $course_price_formatted = commerce_extra_price_no_decimal_currency_format($course_price, $currency_code);
+            
+            $large = "<div class='main'>" . $course_price_formatted . "</div>";
+
+            $course_header_output = $large . $small;
+          }
+          
           $key_information[] = $course_header_output;
   	    }
 	    }
@@ -424,13 +472,16 @@ function _hc_blocks_block_course_public_dates_render() {
       $product_pids = array();
       foreach ($public_course_field as $public_course) {
         $product_id = $public_course->product_id;
-        if (_hc_regions_check_product_variation($product_id)) {
-          $product_pids[] = $public_course->product_id;        
-        }
+        $variation_wrapper = entity_metadata_wrapper('commerce_product', $product_id);
+        if ($variation_wrapper->status->value() == 1) {
+	        if (_hc_regions_check_product_variation($product_id)) {
+	          $product_pids[] = $public_course->product_id;        
+	        }
+	      }
       }
       
       if (count($product_pids)) {
-        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right'>Book</div></div>";
+        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right1'>Price</div><div class='right2'>Book</div></div>";
         $output .= "<div class='title clearfix'><div class='title-inner'>" . $node_title . "</div></div>";
       
 /*         $output .= views_embed_view('public_courses_temp', 'block', implode(',', $product_pids)); */
@@ -455,6 +506,9 @@ function _hc_blocks_block_course_public_dates_render() {
           . "</ul></div>";
         
     }
+    
+    $output .= '<a class="to-top to-top-block" href="#">Top&nbsp;<i class="icon-arrow-up"></i></a>';
+    
     return $output;    
   } else {
     return;

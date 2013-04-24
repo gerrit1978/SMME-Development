@@ -10,6 +10,10 @@
  */
 function hedgecomm_alpha_preprocess_page(&$vars) {
 
+  // currently: all page titles disabled! NEH!
+  $vars['title'] = "";
+
+
   /** HOMEPAGE **/
   if (drupal_is_front_page()) {
     $vars['title'] = "";
