@@ -1,0 +1,198 @@
+<?php
+
+/**
+ * @file
+ * Temporary booking form
+ */
+
+/**
+ * Implements hook_init
+ */
+function hc_booking_form_init() {
+  $path = drupal_get_path('module', 'hc_booking_form');
+  drupal_add_css($path . '/hc_booking_form.css');
+  drupal_add_js($path . '/hc_booking_form.js');
+}
+
+/**
+ * Implements hook_menu
+ */
+function hc_booking_form_menu() {
+  $items = array();
+  
+  $items['book-this-course'] = array(
+    'title' => 'Book This Course',
+    'page callback' => '_hc_booking_form_render_form',
+    'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
+
+
+/**
+ * Callback function for rendering form
+ */
+function _hc_booking_form_render_form() {
+  // currently: just one simple form for the three regions, see mail Jace 13/04/2013 - 01:15
+  $block = module_invoke('webform', 'block_view', 'client-block-67');
+  
+  $output = $block['content'];
+  
+  return $output;
+
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter: simple booking form
+ *
+ * Three possibilities:
+ *
+ * 1. only $_GET['nid'] is set: from the "book a course" page, "choose your own date" is chosen
+ * 2. $_GET['nid'] and $_GET['pid'] are set: from the "book a course" page, a specific date is chosen
+ * 3. only $_GET['pid'] is set: from the course detail page, a specific date is chosen
+ */
+/*
+function hc_booking_form_form_alter(&$form, &$form_state, $form_id) {
+
+  if ($form_id == 'webform_client_form_67') {
+    exit('alteren!');
+  }
+
+} 
+ 
+*/
+ 
+function hc_booking_form_form_webform_client_form_67_alter(&$form, &$form_state) {
+
+  // HIDE SUBMIT BUTTON AND ADD BUTTON INSTEAD
+/*
+  $form['actions']['custom_submit'] = array(
+    '#type' => 'button',
+    '#value' => 'custom button<i class="arrow-right"></i>',
+  );
+*/
+
+  // submit button
+/*
+  $form['submitted']['submit_button'] = array(
+    '#type' => 'button',
+    '#value' => 'blahblahblah',
+  );
+
+  unset($form['actions']);
+*/
+    
+/*   $form['submitted']['submit_button']['#type'] = 'button'; */
+
+  // EU FIELDS
+  $user_location = $_SESSION['user_location'];
+  $continent_code = $user_location['continent_code'];
+  
+  if ($continent_code != "EU") {
+    $form['submitted']['complete']['left']['vat']['#printed'] = TRUE;
+    $form['submitted']['complete']['left']['company_address']['#printed'] = TRUE;
+  }
+  
+
+  // COUPON CODE
+  if (isset($_GET['coupon'])) {
+    $form['submitted']['complete']['right']['coupon_code']['#default_value'] = $_GET['coupon'];
+  }
+
+  // COURSE TITLE AND NID
+  $course_nid = 0;
+  $course_title = "";
+
+  if (isset($_GET['nid'])) {
+    $course_nid = $_GET['nid'];
+    $course_node = node_load($course_nid);
+    $course_title = $course_node->title;
+  } else {
+    if (isset($_GET['pid'])) {
+	    $result = db_query("SELECT entity_id FROM {field_data_field_course_public_courses} WHERE field_course_public_courses_target_id=:pid;", array(':pid' => $_GET['pid']));
+	    foreach ($result as $row) {
+	      $course_nid = $row->entity_id;
+	      $course_node = node_load($course_nid);
+		    $course_title = $course_node->title;
+		  }  
+    }
+  }
+  
+  $form['submitted']['title_markup']['#markup'] = $course_title;
+
+  // SESSION POSSIBILITIES: Check for variations
+  /*
+   * 1. There are variations
+   * - store them in the option array
+   * - add option "Choose your own"
+   * 1a. pid is set
+   * --- make that option default
+   * 1b. pid is not set
+   * --- no default value
+   * 2. There are no variations
+   * - just add option "choose your own" and make it default
+   */
+  if ($course_nid > 0) {
+    $variations = field_get_items('node', $course_node, 'field_course_public_courses');
+    $options = array();
+    if (is_array($variations) && count($variations)) {
+      $path = drupal_get_path('module', 'commerce_extra_price_formatters');
+      require_once($path . "/includes/extra_functions.inc");
+      foreach ($variations as $variation) {
+        if (isset($variation['target_id'])) {
+          $commerce_product_wrapper = entity_metadata_wrapper('commerce_product', $variation['target_id']);
+          if ($commerce_product_wrapper->status->value() == 1) {          
+          
+	          // check if region for this variation matches the region the user if currently surfing from
+	          if (_hc_regions_check_product_variation($variation['target_id'])) {
+		          // location
+		          $commerce_product_location = $commerce_product_wrapper->field_public_course_location->value();
+		          
+		          // price
+		          $commerce_product_price = $commerce_product_wrapper->commerce_price->value();
+		          $commerce_product_price_amount = intval($commerce_product_price['amount']);
+		          
+		          $commerce_product_price_formatted = commerce_extra_price_no_decimal_currency_format($commerce_product_price_amount, $commerce_product_price['currency_code']);
+		
+		          // date
+		          $commerce_product_dates = $commerce_product_wrapper->field_public_course_date_format->value();
+		          
+		          // compose the option
+		          $option = $commerce_product_location . " - " . $commerce_product_price_formatted . " - " . $commerce_product_dates;
+		          $options[$option] = $option;
+	          }
+	          // check if this variation was already chosen
+	          if (isset($_GET['pid']) && $_GET['pid'] == $variation['target_id']) {
+	            $default_option = $option;
+	          }
+	        }
+        }
+
+      }
+    }
+    // now add the "Choose Your Own Dates" option
+    $options['choose_your_own_dates'] = t('Choose Your Own Dates');
+
+    // set these options to the form select
+    $form['submitted']['complete']['session']['#options'] = $options;
+
+    // if necessary, set default option (session location-date-price)
+    if (isset($default_option)) {
+      $form['submitted']['complete']['session']['#default_value'] = $default_option;
+      
+      // make the "coupon_code_markup" and "coupon_code" component visible
+      $form['submitted']['complete']['right']['coupon_code_markup']['#webform_component']['extra']['wrapper_classes'] = "";
+      $form['submitted']['complete']['right']['coupon_code']['#webform_component']['extra']['wrapper_classes'] = "";      
+      
+    } else {
+      $form['submitted']['complete']['session']['#default_value'] = "choose_your_own_dates";
+      
+      // make the "contact_markup" component visible
+      $form['submitted']['complete']['right']['contact_markup']['#webform_component']['extra']['wrapper_classes'] = "";      
+    }
+  }  
+
+
+}

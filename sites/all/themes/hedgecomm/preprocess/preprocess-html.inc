@@ -41,6 +41,19 @@ function hedgecomm_alpha_preprocess_html(&$vars) {
     }
   }
   
+  if (arg(0) == 'deals') {
+    $vars['attributes_array']['class'][] = "green1";  
+  }
+
+  if (arg(0) == 'goodies') {
+    $vars['attributes_array']['class'][] = "yellow1";  
+  }
+  
+  if (arg(0) == 'node' && arg(1) == 40) {
+    $vars['attributes_array']['class'][] = "blue1";    
+  }
+
+  
   /** PAGE TITLES **/
   if (arg(0) == 'book-a-course') {
     $vars['head_title'] = t("Book a Course at SMME");
@@ -54,5 +67,29 @@ function hedgecomm_alpha_preprocess_html(&$vars) {
   if (arg(0) == 'news') {
     $vars['head_title'] = t("Blog at SMME");  
   }
- 
+  
+  if (drupal_is_front_page()) {
+    $vars['head_title'] = "SMME - Your IT Management Training Partner";
+  }
+  
+  /** APPLE TOUCH ICON **/
+/*
+  $appleIcon_default = array(
+    '#tag' => 'link', '#attributes' => array('href' => '/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_a.png', 'rel' => 'apple-touch-icon'),
+  );
+  $appleIcon_a = array(
+    '#tag' => 'link', '#attributes' => array('href' => '/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_a.png', 'rel' => 'apple-touch-icon', 'sizes' => '72x72'),
+  );
+  $appleIcon_b = array(
+    '#tag' => 'link', '#attributes' => array('href' => '/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_b.png', 'rel' => 'apple-touch-icon', 'sizes' => '114x114'),
+  );
+  $appleIcon_c = array(
+    '#tag' => 'link', '#attributes' => array('href' => '/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_c.png', 'rel' => 'apple-touch-icon', 'sizes' => '144x144'),
+  );
+
+  drupal_add_html_head($appleIcon_default, 'apple-touch-icon');  
+  drupal_add_html_head($appleIcon_a, 'apple-touch-icon');
+  drupal_add_html_head($appleIcon_b, 'apple-touch-icon');
+  drupal_add_html_head($appleIcon_c, 'apple-touch-icon');     
+*/
 }

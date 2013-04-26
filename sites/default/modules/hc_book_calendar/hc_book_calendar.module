@@ -254,7 +254,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
 		          
 		          
 		          // booking links
-    		      $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&pid=" . $variation_product_id . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
+    		      $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&pid=" . $variation_product_id . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
 			        $items_booking[] = array('data' => $variation_link, 'class' => array($highlight_class));
 		          		          
 		        } else {
@@ -275,7 +275,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
           $output_prices = theme('item_list', array('items' => $items_price));
 
           // booking links
-	        $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
+	        $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
           
           $items_booking[] = array('data' => $variation_link);
        
@@ -291,7 +291,7 @@ function theme_views_view_field__book_a_course__page__nothing(&$vars) {
 
         $output_prices = "<div class='price'>" . t('TBD') . "</div>"; 
 
-        $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "&redirect=" . $current_path . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
+        $variation_link = "<a rel='resizable:false;position:[center,60]' class='simple-dialog' name='block-system-main' href='/book-this-course?nid=" . $nid . "'><i class='icon-ok'></i>&nbsp;" . t('Book It') . "</a>";
         
         $items_booking = array('data' => $variation_link);
         

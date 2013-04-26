@@ -126,16 +126,16 @@
         var selectorBalloonNextTriangle = "ul.questions li.question" + newI + " .triangle";
         var selectorHandNext = "ul.questions li.question" + newI + " .hand";
         var randomNumber=Math.floor(Math.random()*(11));
-        var backgroundHandNext = randomNumber * 32;
+        var backgroundHandNext = randomNumber * 42;
         var backgroundHandNextString = backgroundHandNext + "px bottom";
         var randomNumber2 = Math.floor(Math.random()*(numberOfQuestions + 1));
         var backgroundHandNextRotation = randomNumber2;
         var backgroundHandNextRotationString = "rotate(" + backgroundHandNextRotation + "deg)";
-        if (backgroundHandNext >= 160) {
-          var backgroundHandNextImage = "url(/sites/all/themes/hedgecomm/img/hand_swapped.jpg)";
+        if (backgroundHandNext >= 200) {
+          var backgroundHandNextImage = "url(/sites/all/themes/hedgecomm/img/hand_swapped.png)";
           $(selectorBalloonNextTriangle).addClass('reversed');
         } else {
-          var backgroundHandNextImage = "url(/sites/all/themes/hedgecomm/img/hand.jpg)";        
+          var backgroundHandNextImage = "url(/sites/all/themes/hedgecomm/img/hand.png)";        
           $(selectorBalloonNextTriangle).removeClass('reversed');
         }
 /*
@@ -182,12 +182,27 @@
 
   Drupal.behaviors.clientLogos = {
     attach: function(context, settings) {
+    
+      $('ul.client-logos').find('img').each(function() {
+        var height = $(this).attr('height');
+        var width = $(this).attr('width');
+        
+        var newHeight = height / 3;
+        var newWidth = width / 3;
+        $(this).attr('height', newHeight);
+        $(this).attr('width', newWidth);
+      });
+    
       $('ul.client-logos').carouFredSel({
         width: 810,
         scroll: {
           items: 4,
           easing: 'easeInOutExpo',
           duration: 1000
+        },
+        auto : {
+          delay: 900,
+          timeoutDuration: 4635
         }
       });
     }

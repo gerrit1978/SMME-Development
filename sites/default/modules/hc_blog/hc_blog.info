@@ -1,0 +1,5 @@
+name        = Blog Fields
+description = Alters the output of blog fields
+core        = 7.x
+version     = 7.x-1.0
+package     = HedgeComm

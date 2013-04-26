@@ -1,7 +1,0 @@
-name         = Temporary Booking Function
-description  = Alters webform
-core         = 7.x
-version      = 7.x-1.0
-package      = HedgeComm
-
-dependencies[] = commerce_extra_price_formatters

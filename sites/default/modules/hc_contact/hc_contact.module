@@ -24,7 +24,7 @@ function hc_contact_form_webform_client_form_66_alter(&$form, &$form_state) {
   $form['submitted']['contact_wrapper']['submit_button'] = array(
     '#prefix' => '<div id="submit-button">',
     '#suffix' => '</div>',
-    '#markup' => '<button type="submit">Send Message&nbsp;<i class="icon-arrow-right icon-large"></i></button>',
+    '#markup' => '<button type="submit">Send&nbsp;&nbsp;<i class="icon-circle-arrow-right icon-large"></i></button>',
     '#weight' => 200000,
   );
 

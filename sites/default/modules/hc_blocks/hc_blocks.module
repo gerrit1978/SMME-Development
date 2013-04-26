@@ -17,6 +17,8 @@
  * - generic title block which only contains the page title
  * - header block for landing pages
  * - testimonials for landing pages (based on course node)
+ * - custom pager for blog views
+ * - extra form for landing pages (EU)
  *
  */
 
@@ -85,6 +87,14 @@ function hc_blocks_block_info() {
   $blocks['landing_page_testimonials'] = array(
     'info' => t('Landing Page Testimonials'),
   );
+  
+  $blocks['blog_pager'] = array(
+    'info' => t('Blog pager'),
+  );
+  
+  $blocks['landing_page_form'] = array(
+    'info' => t('Landing Page Form'),
+  );
 
   
   return $blocks;
@@ -143,6 +153,13 @@ function hc_blocks_block_view($delta = '') {
       break;
     case 'landing_page_testimonials':
       $block['content'] = _hc_blocks_block_landing_page_testimonials_render();
+      break;
+    case 'blog_pager':
+      $block['content'] = _hc_blocks_block_blog_pager_render();
+      break;
+    case 'landing_page_form':
+      $block['content'] = _hc_blocks_block_landing_page_form();
+      break;
   }
   
   return $block;
@@ -460,14 +477,31 @@ function _hc_blocks_block_course_public_dates_render_title() {
  * Helper function for rendering public course dates block
  */
 function _hc_blocks_block_course_public_dates_render() {
-
   $output = "";
-
   if (arg(0) == 'node' && is_numeric(arg(1))) {
     $nid = arg(1);
     $node_wrapper = entity_metadata_wrapper('node', $nid);
     $node_title = $node_wrapper->title->value();
     $public_course_field = $node_wrapper->field_course_public_courses->value();
+    
+    // generate default content
+    $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right1'>Price</div><div class='right2'>Book</div></div>";
+    $output .= "<div class='title clearfix'><div class='title-inner'>" . $node_title . "</div></div>";
+
+    // generate link for opening temporary booking form
+    $link = '<a rel="width:500;resizable:false;position:[center,60]" class="simple-dialog" name="block-system-main" href="/book-this-course?nid=' . $nid . '"><i class="icon-ok"></i>&nbsp;Book It</a>';
+    
+    $output .= "<div class='view-public-courses'><ul class='public-courses'>"
+      . "<li class='public-course views-row-last'>"
+      . "<span class='course-row'>"
+      . "<span class='location'>" . t('Onsite') . "</span><span class='date'>" . t('Choose Your Own') . "</span>"
+      . "</span>"
+      . "<span class='price'>" . t('TBD') . "</span>"
+      . "<span class='book'>" . $link . "</span>"
+      . "</li>"
+      . "</ul></div>";
+
+    
     if (is_array($public_course_field) && count($public_course_field)) {
       $product_pids = array();
       foreach ($public_course_field as $public_course) {
@@ -479,34 +513,17 @@ function _hc_blocks_block_course_public_dates_render() {
 	        }
 	      }
       }
-      
       if (count($product_pids)) {
-        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right1'>Price</div><div class='right2'>Book</div></div>";
-        $output .= "<div class='title clearfix'><div class='title-inner'>" . $node_title . "</div></div>";
       
-/*         $output .= views_embed_view('public_courses_temp', 'block', implode(',', $product_pids)); */
-        $output .= views_embed_view('public_courses', 'block', implode(',', $product_pids));
-      } 
-    } else { 
-        $output .= "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right'>Book</div></div>";
+        // in this case, the course has variations so we use the View to generate the output. The views is altered
+        // by the hc_course_roadmap module (last row is added with possibility to choose own dates)
+        $output = "<div class='header clearfix'><div class='left'>Course</div><div class='center'>" . t('Upcoming Dates') . "</div><div class='right1'>Price</div><div class='right2'>Book</div></div>";
         $output .= "<div class='title clearfix'><div class='title-inner'>" . $node_title . "</div></div>";
-
-        // output: only choose your own
-        $current_path = current_path();
-          $link = '<a rel="width:500;resizable:false;position:[center,60]" class="simple-dialog" name="block-system-main" href="/book-this-course?nid=' . $nid . '&redirect=' . $current_path . '"><i class="icon-ok"></i>&nbsp;Book This Course</a>';
-
-        
-        $output .= "<div class='view-public-courses'><ul class='public-courses'>"
-          . "<li class='public-course views-row-last'>"
-          . "<span class='course-row'>"
-          . "<span class='location'>" . t('Onsite') . "</span><span class='date'>" . t('Choose Your Own') . "</span>"
-          . "</span>"
-          . "<span class='book'>" . $link . "</span>"
-          . "</li>"
-          . "</ul></div>";
-        
+        $output .= views_embed_view('public_courses', 'block', implode(',', $product_pids));
+      }
     }
     
+    // add the "to top" link by default
     $output .= '<a class="to-top to-top-block" href="#">Top&nbsp;<i class="icon-arrow-up"></i></a>';
     
     return $output;    
@@ -742,7 +759,45 @@ function _hc_blocks_block_landing_page_testimonials_render() {
   $output = views_embed_view('testimonials', 'block', implode(',', $testimonial_nids));
 
   return $output;
+}
 
+/**
+ * Helper function for rendering blog view pager
+ */
+function _hc_blocks_block_blog_pager_render() {
+
+	    global $my_custom_pager;
+	    
+	    $output = $my_custom_pager;
+	    
+	    return $output;
+
+/*
+  $pager = "";
+
+  switch (arg(0)) {
+    case 'blog':
+      $view = views_get_view('blog_pages');
+			$pager_type = ($view->pager['use_pager'] === 'mini' ? 'views_mini_pager' : 'pager');
+
+			$pager_theme = views_theme_functions($pager_type, $view, $view->display_handler->display);
+			$pager = theme($pager_theme, NULL, $view->pager['items_per_page'], $view->pager['element']);
+
+
+      break;
+  }
+
+  $output = $pager;
+  
+  return $output;
+*/
+}
+
+/**
+ * Helper function for rendering extra form on landing page 
+ */
+function _hc_blocks_block_landing_page_form() {
+  $output = "Extra form comes here";
   
   return $output;
 }

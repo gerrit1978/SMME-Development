@@ -1,0 +1,255 @@
+/** Modal form: book this course **/
+.ui-widget-overlay { 
+  background: none !important;
+}
+
+.ui-dialog {
+  width: 550px !important;
+/*   width: 1000px !important;   */
+  font-family: "DaxlineWeb" !important;
+  color: white !important;
+  -moz-box-shadow: 0 0 10px #444;
+  -webkit-box-shadow: 0 0 10px #444;
+  box-shadow: 0 0 10px #444; 
+  position: relative;
+  background: #f7a31c;
+}
+
+.ui-dialog-titlebar {
+  background: none !important;
+  border: none;
+  cursor: default !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top: 20px;
+  z-index: 100000;
+}
+
+.ui-widget-header .ui-icon {
+  background-image: url(img/ui-icons.png);
+}
+
+#ui-dialog-title-simple-dialog-container {
+  display: none;
+}
+
+.page-book-a-course .ui-dialog {
+  background: #f7a31c;
+}
+
+/* Webform itself */
+#webform-client-form-67,
+#webform-client-form-67 label,
+#webform-client-form-67 .form-required {
+  color: white;
+}
+
+#webform-client-form-67 label {
+  float: left;
+  margin-left: 6px;
+  font-family: "DaxlineWeb-Medium";
+}
+
+#webform-client-form-67 .form-text {
+  width: 255px;
+  padding-left: 5px;
+  height: 35px;
+  line-height: 35px;
+  color: black;
+  border: 1px solid #C4C4C4;
+}
+
+#webform-client-form-67 #webform-component-complete--right .webform-component.hidden {
+  display: none;
+}
+
+#webform-client-form-67 #webform-component-intro-markup {
+  text-align: center;
+  font-size: 2.692em;
+  color: white;
+  margin: 0;
+  margin-top: 5px;
+}
+
+#webform-client-form-67 #webform-component-intro-markup p {
+  font-size: 1em;
+  margin: 0;
+}
+
+#webform-client-form-67 #webform-component-title-markup {
+  color: white;
+  text-align: center;
+  font-family: "DaxlineWeb-Bold";
+  font-size: 1.692em;
+  margin: 0;
+  margin-top: 5px;
+}
+
+#webform-client-form-67 #webform-component-title-markup p {
+  line-height: 1.2;
+  margin: 0;
+}
+
+#webform-client-form-67 #webform-component-error {
+  font-family: "DaxlineWeb";
+  font-size: 1.307em;
+  text-align: center;
+}
+
+#webform-client-form-67 #webform-component-complete--attendees {
+  width: 150px;
+  float: left;
+  margin-right: 8px;
+}
+
+#webform-client-form-67 #webform-component-complete--attendees label {
+  margin-right: 10px;
+  float: left;
+}
+
+#webform-client-form-67 #webform-component-complete--attendees select {
+  width: 50px;
+}
+
+#webform-client-form-67 #webform-component-complete--attendees select option {
+/*
+  height: 20px;
+  line-height: 20px;
+  font-size: 1.154em;
+*/
+}
+#webform-client-form-67 #webform-component-complete {
+  margin-left: 6px;
+  margin-bottom: 0;
+}
+
+
+#webform-client-form-67 #webform-component-complete--session {
+  float: left;
+  width: 340px;
+}
+
+#webform-client-form-67 #webform-component-complete--session label {
+  margin-right: 10px;
+  float: left;
+}
+
+#webform-client-form-67 #webform-component-complete--session select {
+  width: 260px;
+}
+
+#webform-client-form-67 .form-required {
+  margin-left: -5px;
+}
+
+#webform-client-form-67 #webform-component-complete--session select option {
+/*   font-size: 1.154em; */
+}
+
+#webform-client-form-67 #webform-component-complete--left {
+  clear: left;
+  float: left;
+  margin-right: 20px;
+}
+
+#webform-client-form-67 #webform-component-complete--left label {
+  width: 120px;
+  font-size: 1.231em;
+  height: 35px;
+  line-height: 35px;
+  font-weight: normal;
+}
+
+#webform-client-form-67 #webform-component-complete--left #webform-component-complete--left--mailinglist label {
+  float: none;
+}
+
+#webform-client-form-67 #webform-component-complete--left #webform-component-complete--left--mailinglist .form-checkbox {
+  margin-left: 165px;
+}
+
+#webform-client-form-67 #webform-component-complete--right {
+  float: left;
+  width: 100px;
+  text-align: center;
+}
+
+#webform-client-form-67 #webform-component-complete--right--coupon-code-markup,
+#webform-client-form-67 #webform-component-complete--right--contact-markup {
+  font-size: 1.231em;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+#webform-client-form-67 #webform-component-complete--right--coupon-code {
+  margin-top: 0;
+}
+
+#webform-client-form-67 #webform-component-complete--right .form-text {
+  width: 50px;
+}
+
+#webform-client-form-67 #edit-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+}
+
+#webform-client-form-67 #edit-actions input {
+  color: white;
+  background: #e08a1e;
+  border: none;
+  line-height: 20px;
+  font-size: 1.538em;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#webform-client-form-67 #webform-component-complete--left--company-address label {
+  line-height: 22px;
+}
+
+#webform-client-form-67 #webform-component-required {
+  font-weight: bold;
+  position: absolute;
+  bottom: 12px;
+  left: 25px;
+}
+
+#webform-client-form-67 #edit-submitted-complete-left-mailinglist {
+  font-size: 0.9em;
+  font-weight: lighter;
+}
+
+/* Error messages */
+#simple-dialog-container #zone-content,
+#simple-dialog-container #region-content {
+  width: 500px !important;
+  padding: 0;
+}
+
+#simple-dialog-container #messages {
+  width: 200px;
+  color: white;
+}
+
+/**
+ * Confirmation
+ */
+#simple-dialog-container #node-page-110 {
+  color: white;
+  text-align: center;
+  font-size: 1.231em;
+}
+
+#simple-dialog-container #node-page-110 .smme-icon-huge .smme-icon {
+  font-size: 240px;
+  line-height: 1;
+}
+
+#simple-dialog-container #node-page-110 p {
+  margin-bottom: 10px;
+}

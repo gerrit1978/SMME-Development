@@ -12,6 +12,10 @@
 /****************************************************************
  * A.1. LAYOUT
  ***************************************************************/
+.zone-wrapper {
+  min-width: 1000px;
+}
+
 .zone.container-12 {
   width: 1000px !important;
   margin: 0 auto;
@@ -82,6 +86,10 @@ h1, h2, h3, h4, h5, h6 {
 span.logo-spacing {
   font-family: "DaxlineWeb-Medium";
   letter-spacing: -1px;
+}
+
+select option {
+  font-family: Arial !important;
 }
 
 /** Logo: Site Name **/
@@ -233,6 +241,10 @@ strong {
   margin-bottom: 1.6em;
 }
 
+.smme-icon-wrapper.smme-icon-very-large span.smme-icon {
+  font-size: 64px;
+}
+
 
 
 /************************************************************************************************************************************
@@ -319,6 +331,7 @@ ul.testimonials li.testimonial .triangle {
 	_filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');	
 	text-indent: -999em;
 	margin-left: 100px;
+	margin-top: -2px;
 }
 
 
@@ -628,7 +641,7 @@ ul.testimonials li.testimonial .date-location {
  * C.9. BLOG MENU
  ***************************************************************/
 .blog-menu {
-  margin: 32px 0;
+  margin: 32px 0 26px 0;
 }
 
 .blog-menu ul {
@@ -683,7 +696,8 @@ body.front #zone-header-visual-wrapper {
   position: relative;
 }
 
-.carrousel-home a {
+.carrousel-home a,
+.carrousel-home a:link {
   color: white;
   font-size: 1.539em;
   font-family: "DaxlineWeb-Bold";
@@ -755,6 +769,7 @@ body.front #zone-header-visual-wrapper {
 	_filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');	
 	text-indent: -999em;
 	margin-left: 50%;
+	margin-top: -2px;
 }
 
 .carrousel-home ul.questions li.question .triangle.reversed {
@@ -774,7 +789,8 @@ body.front #zone-header-visual-wrapper {
   margin-bottom: -20px;
   width: 500px;
   height: 259px;
-  background: url(../img/hand.jpg) no-repeat left bottom;
+  background: url(../img/hand.png) no-repeat left bottom;
+  background-size:106px 259px;
 /*
 	transform: rotate(5deg);
 	-ms-transform: rotate(5deg); /* IE 9 
@@ -846,6 +862,7 @@ body.front #zone-header-visual-wrapper {
  ***************************************************************/
 body.front #zone-prefooter-wrapper {
   background: #5adb82; 
+  padding: 0;
 }
 
 .call-to-action-homepage {
@@ -871,6 +888,10 @@ body.front #zone-prefooter-wrapper {
 #section-footer .call-to-action-homepage .block-inner a {
   color: white; 
   font-size: 1.539em;
+  font-weight: lighter;
+}
+
+#section-footer .call-to-action-homepage .block-inner a .bold {
   font-family: "DaxlineWeb-Bold";
 }
 
@@ -904,6 +925,57 @@ body.front .client-logos ul.client-logos {
 body.front .client-logos ul.client-logos li {
   float: left;
   margin-right: 32px;
+}
+
+body.front .client-logos ul.client-logos li img {
+/*
+  height: 50px;
+  width: auto;
+*/
+}
+
+/****************************************************************
+ * D.6. BLOG PAGER
+ ***************************************************************/
+#zone-prefooter-wrapper {
+  background-color: #ef2a09;
+  padding: 32px 0;
+}
+
+.item-list ul.pager {
+  border: none !important;
+}
+
+.item-list ul.pager li {
+  border: none !important;
+  float: left;
+}
+
+.item-list ul.pager li a {
+  color: white !important;
+}
+
+.item-list ul.pager li.pager-next.last {
+  position: relative;
+}
+
+.pager li.pager-first a, .pager li.pager-previous a, .pager li.pager-next a, .pager li.pager-last a,
+.pager li.pager-first .blog-pager-inactive, .pager li.pager-previous .blog-pager-inactive, .pager li.pager-next .blog-pager-inactive, .pager li.pager-last .blog-pager-inactive {
+  font-size: 2em;
+  width: auto;
+  background: none;
+  color: white;
+  font-family: "DaxlineWeb-Medium" !important;
+  font-weight: normal;
+  padding: 0;
+}
+
+.pager li.pager-first .blog-pager-inactive, .pager li.pager-previous .blog-pager-inactive, .pager li.pager-next .blog-pager-inactive, .pager li.pager-last .blog-pager-inactive {
+  color: #fbc7c7;
+}
+
+#section-footer .pager li.pager-first a:hover, #section-footer .pager li.pager-previous a:hover, #section-footer .pager li.pager-next a:hover, #section-footer .pager li.pager-last a:hover {
+  color: #cd1c1c;
 }
 
 /************************************************************************************************************************************
@@ -1537,6 +1609,7 @@ body.front .client-logos ul.client-logos li {
 .block-public-course-dates .title .title-inner {
   display: table-cell;
   vertical-align: middle;
+  padding-top: 3px;
 }
 
 .block-public-course-dates .view-public-courses {
@@ -1723,6 +1796,11 @@ body.front .client-logos ul.client-logos li {
   color: #838383;
 }
 
+/** Team testimonials title **/
+#block-hc-blocks-trainer-testimonials h2.block-title {
+  margin-top: 0;
+}
+
 
 /****************************************************************
  * E.5. TEAM DETAIL (NODE) PAGE
@@ -1778,7 +1856,7 @@ body.front .client-logos ul.client-logos li {
 .field-name-field-team-about .field-label {
   font-size: 2.111em;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 26px;
   font-family: "DaxlineWeb";
   font-weight: normal;
   color: #ef2a09;
@@ -1793,7 +1871,7 @@ body.front .client-logos ul.client-logos li {
 }
 
 .field-name-field-team-about p {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 
@@ -1805,6 +1883,10 @@ body.front .client-logos ul.client-logos li {
   color: #000;
 }
 
+.field-name-field-team-accreditations {
+  margin-bottom: 32px;
+}
+
 .field-name-field-global-region #map-canvas {
   font-size: 0.75em;
 }
@@ -1814,12 +1896,12 @@ body.front .client-logos ul.client-logos li {
 .field-name-field-global-region .field-label {
   font-family: "DaxlineWeb-Bold";
   font-weight: normal;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
 }
 
 .field-name-field-team-certifications .field-label,
 .field-name-field-team-accreditations .field-label {
-  margin-bottom: 0;
+  margin-bottom: 28px;
 }
 
 .field-name-field-team-certifications,
@@ -1851,6 +1933,7 @@ body.front .client-logos ul.client-logos li {
 
 .view-blog-pages ul.news-items li.news-item.views-row-last {
   border-bottom: none;
+  margin-bottom: 0;
 }
 
 .view-blog-pages ul.news-items li.news-item .thumbnail {
@@ -1879,6 +1962,15 @@ body.front .client-logos ul.client-logos li {
   margin-bottom: 16px;
   color: #b2b2b2;
   font-family: "DaxlineWeb-Bold";
+}
+
+.view-blog-pages ul.news-items li.news-item .main .intro a,
+.view-blog-pages ul.news-items li.news-item .main .intro .type {
+  color: #00b2d9;
+}
+
+.view-blog-pages ul.news-items li.news-item .main .intro a:hover {
+  color: #1889b3;
 }
 
 .view-blog-pages ul.news-items li.news-item .main .body {
@@ -2413,6 +2505,20 @@ body.front .client-logos ul.client-logos li {
   border: 1px solid #c4c4c4;
   height: 26px;
   line-height: 26px;
+  font-size: 1.385em;
+  padding-left: 4px;
+}
+
+.context-contact-us .webform-client-form .form-textarea {
+  font-size: 1.385em;
+  font-family: "DaxlineWeb";
+  padding: 4px;
+}
+
+.context-contact-us .webform-client-form .form-required {
+  color: white;
+  position: relative;
+  left: -5px;
 }
 
 .context-contact-us .webform-client-form .webform-component {
@@ -2421,6 +2527,14 @@ body.front .client-logos ul.client-logos li {
 
 .context-contact-us .webform-client-form #webform-component-contact-wrapper--contact-message {
   margin-bottom: 0;
+}
+
+.context-contact-us .webform-client-form #webform-component-contact-wrapper--required-field {
+  font-size: 1.385em;
+}
+
+.context-contact-us .webform-client-form #webform-component-contact-top i.icon-pencil {
+  font-size: 100px;
 }
 
 .context-contact-us .webform-client-form label {

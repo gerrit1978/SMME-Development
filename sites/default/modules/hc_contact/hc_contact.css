@@ -3,11 +3,14 @@
 }
 
 #webform-client-form-66 #submit-button button {
-  padding: 32px;
+  padding: 16px 32px;
+  margin-bottom: 32px;
   float: right;
   font-size: 1.385em;
   border: none;
   background: none;
   color: white;
   cursor: pointer;
+  font-family: "DaxlineWeb-Bold";
+  background: #ef2a09;
 }

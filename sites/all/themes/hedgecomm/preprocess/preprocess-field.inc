@@ -44,7 +44,7 @@ function hedgecomm_alpha_preprocess_field(&$vars) {
         $label = t('@title in action', array('@title' => $firstname));
         break;
       case 'field_global_region':
-        $label = t('Where in the World is @title', array('@title' => $firstname));
+        $label = t('Where in the world is @title?', array('@title' => $firstname));
     }
     
     $vars['label'] = $label;

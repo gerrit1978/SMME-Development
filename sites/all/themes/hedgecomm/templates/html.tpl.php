@@ -10,6 +10,10 @@
 <head profile="<?php print $grddl_profile; ?>">
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
+  <link href="/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_a.png" rel="apple-touch-icon" />  
+  <link href="/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_a.png" rel="apple-touch-icon" sizes="72x72" />  
+  <link href="/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_b.png" rel="apple-touch-icon" sizes="114x114" />  
+  <link href="/sites/all/themes/hedgecomm/img/apple/apple_touch_icon_c.png" rel="apple-touch-icon" sizes="144x144" />  
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>

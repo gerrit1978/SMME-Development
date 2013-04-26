@@ -4,11 +4,11 @@
 
 @font-face {
     font-family: 'smme_icon_fontregular';
-    src: url('smme_icon_font6-webfont.eot');
-    src: url('smme_icon_font6-webfont.eot?#iefix') format('embedded-opentype'),
-         url('smme_icon_font6-webfont.woff') format('woff'),
-         url('smme_icon_font6-webfont.ttf') format('truetype'),
-         url('smme_icon_font6-webfont.svg#smme_icon_fontregular') format('svg');
+    src: url('smme_icon_font9-webfont.eot');
+    src: url('smme_icon_font9-webfont.eot?#iefix') format('embedded-opentype'),
+         url('smme_icon_font9-webfont.woff') format('woff'),
+         url('smme_icon_font9-webfont.ttf') format('truetype'),
+         url('smme_icon_font9-webfont.svg#smme_icon_fontregular') format('svg');
     font-weight: normal;
     font-style: normal;
 

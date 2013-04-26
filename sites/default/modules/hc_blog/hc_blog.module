@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * Implements hook_theme
+ *
+ * see http://grayside.org/2010/09/how-override-views-field-template-module for details concerning hook_theme and theme functions
+ */
+function hc_blog_theme($existing, $type, $theme, $path) {
+  return array(
+
+    // region field
+    'views_view_field__blog_pages__nothing' => array( 
+        'arguments' => array('view' => FALSE, 'field' => FALSE, 'row' => FALSE),
+        'original hook' => 'views_view_field',
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_api
+ */
+function hc_blog_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+
+/**
+ * Theme function for formatting product 
+ */
+function theme_views_view_field__blog_pages__nothing(&$vars) {
+
+  $row = $vars['row'];
+
+  $title = $row->node_title;
+  
+  // TODO: trim
+  $body = $row->field_body[0]['rendered']['#markup'];
+  $alter = array(
+    'max_length' => 220,
+    'word_boundary' => TRUE,
+    'ellipsis' => TRUE,
+  );
+  $body_trimmed = views_trim_text($alter, $body);
+
+  $firstname = $row->field_field_team_firstname[0]['rendered']['#markup'];
+  $lastname = $row->field_field_team_lastname[0]['rendered']['#markup'];
+  $role = $row->field_field_team_role[0]['rendered']['#markup'];
+  $location_office = $row->field_field_blog_location_office[0]['rendered']['#markup'];
+  
+  $location_office_rendered = "";
+  if ($location_office) {
+    $location_office_rendered = " &bull; " . $location_office;
+  }
+  
+  // date
+  $created = $row->node_created;
+  $created_rendered = format_date($created, 'custom', 'd M Y');
+
+  // type
+  $type_row = $row->field_field_blog_type;
+  $type_array = array();
+  $type_rendered = "";
+  if (is_array($type_row)) {
+    foreach ($type_row as $type) {
+      $type_text = $type['rendered']['#markup'];
+      
+      switch (strtolower($type_text)) {
+        case 'deals':
+          $type_array[] = l($type_text, "deals");
+          break;
+        case 'goodies':
+          $type_array[] = l($type_text, "goodies");
+          break;
+        case 'news':
+          $type_array[] = l($type_text, "news");
+          break;
+      }
+    }
+    if (count($type_array)) {
+      $type_rendered = implode(', ', $type_array);
+    }
+  }
+
+  $output = "<div class='title'>" . $title . "</div>"
+    . "<div class='intro'>" . $firstname . " " . $lastname . ", " . $role . $location_office_rendered . " &bull; " . $created_rendered . " &bull; <span class='type'>" . $type_rendered . "</span></div>"
+    . "<div class='body'>" . $body_trimmed . "</div>"
+    . "<div class='link'><a href='#'><i class='icon-plus'></i>&nbsp;Read More</a></div>";
+
+  return $output;
+}

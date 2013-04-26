@@ -1,0 +1,154 @@
+<?php
+
+/**
+ * @file
+ * This module provides backoffice functionality
+ *
+ * Currently, a block is provided for the Dashboard
+ * containing links to the "manage content" pages.
+ *
+ * In addition, the node form for "landing pages"
+ * is altered for cleaner course variation selection
+ *
+ */
+
+/**
+ * Implements hook_block_info
+ */
+function hc_backoffice_block_info() {
+  $blocks = array();
+  
+  $blocks['dashboard_admin'] = array(
+    'info' => t('Backoffice links to administration pages'),
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view
+ */
+function hc_backoffice_block_view($delta = '') {
+
+  $block = array();
+
+  switch ($delta) {
+    case 'dashboard_admin':
+      $block['subject'] = t('Administration Pages');
+      $block['content'] = _hc_backoffice_block_dashboard_admin_render();
+      break;
+  }
+  
+  return $block;
+}
+
+/**
+ * Implements hook_form_FORM_IDalter
+ */
+function hc_backoffice_form_landing_page_node_form_alter(&$form, &$form_state) {
+
+  $form['field_courses_to_choose_from']['und']['#size'] = 50;
+
+  $current_options = $form['field_courses_to_choose_from']['und']['#options'];
+
+  if (is_array($current_options) && count($current_options) > 0) {
+    foreach ($current_options as $key => $option) {
+      if (is_numeric($key)) {
+        $variation_wrapper = entity_metadata_wrapper("commerce_product", $key);
+        $date_format = $variation_wrapper->field_public_course_date_format->value();
+        $location = $variation_wrapper->field_public_course_location->value();
+        $form['field_courses_to_choose_from']['und']['#options'][$key] = $option . " | " . $date_format . " | " . $location;
+      }
+    }
+  }
+/*
+  print_r($current_options);
+  exit();
+*/
+
+/*   unset($form['field_landing_page_course_varia']); */
+/*   $form['field_landing_page_course_varia']['und']['#options'] = array('Blah'); */
+/*
+  print_r($form);
+  exit();
+*/
+}
+
+
+
+
+/**
+ * Helper function for rendering dashboard block
+ */
+function _hc_backoffice_block_dashboard_admin_render() {
+  $header = array('Content Type', 'View', 'Add New');
+
+  $rows = array(
+    array(
+	    '<strong>Static Pages</strong>',
+	    l('Overview', 'admin/content/overview/page'),
+	    l('Add', 'node/add/page'),
+    ),
+    array(
+      '<strong>Subject Catalog</strong>',
+      l('Overview', 'admin/content/overview/catalog'),
+      l('Add', 'admin/structure/taxonomy/catalog/add'),
+    ),
+    array(
+      '<strong>Subject Divisions</strong>',
+      l('Overview', 'admin/content/overview/subject-divisions'),
+      l('Add', 'admin/structure/taxonomy/subject_divisions/add'),
+    ),
+    array(
+      '<strong>Courses</strong>',
+      l('Overview', 'admin/content/overview/course'),
+      l('Add', 'node/add/course'),
+    ),
+    array(
+      '<strong>Team</strong>',
+      l('Overview', 'admin/content/overview/team'),
+      l('Add', 'node/add/team-member'),
+    ),
+    array(
+      '<strong>Testimonials</strong>',
+      l('Overview', 'admin/content/overview/testimonials'),
+      l('Add', 'node/add/testimonial'),
+    ),
+    array(
+      '<strong>Homepage Carrousel Questions</strong>',
+      l('Overview', 'admin/content/overview/homepage-questions'),
+      l('Add', 'node/add/homepage-carrousel-questions'),
+    ),
+    array(
+      '<strong>Landing Pages</strong>',
+      l('Overview', 'admin/content/overview/landing-page'),
+      l('Add', 'node/add/landing-page'),
+    ),
+    array(
+      '<strong>Blog posts</strong>',
+      l('Overview', 'admin/content/overview/blog'),
+      l('Add', 'node/add/blog'),
+    ),
+    array(
+      '<strong>Static Page headers</strong>',
+      l('Overview', 'admin/content/overview/header'),
+      l('Add', 'node/add/header'),
+    ),
+    array(
+      '<strong>Client Logos</strong>',
+      l('Overview', 'admin/content/overview/customer-logos'),
+      l('Add', 'node/add/customer-logo'),
+    ),
+    
+  );
+  
+
+$table_element = array(
+    '#theme' => 'table',
+    '#header' => $header,
+    '#rows' => $rows,
+    '#empty' =>t('Your table is empty'),
+   );
+ 
+  return drupal_render($table_element);
+}

@@ -410,35 +410,23 @@
   background: #f7a31c;
 }
 
-.yellow1 .ui-dialog #edit-actions .form-submit {
-  background: #e08a1e;
-}
-
 .yellow2 .ui-dialog {
   background: #e08a1e;
-}
-
-.yellow2 .ui-dialog #edit-actions .form-submit {
-  background: #d16800;
 }
 
 .yellow3 .ui-dialog {
   background: #d16800;
 }
 
-.yellow3 .ui-dialog #edit-actions .form-submit {
-  background: #f7a31c;
-}
-
-.yellow1 #webform-client-form-67 #submit-button button {
+.yellow1 #webform-client-form-67 #edit-actions input {
   background: #e08a1e;
 }
 
-.yellow2 #webform-client-form-67 #submit-button button {
+.yellow2 #webform-client-form-67 #edit-actions input {
   background: #d16800;
 }
 
-.yellow3 #webform-client-form-67 #submit-button button {
+.yellow3 #webform-client-form-67 #edit-actions input {
   background: #f7a31c;
 }
 
@@ -505,4 +493,19 @@
 
 .yellow3.node-type-landing-page .field-name-field-land-page-intro-desc .extra .large .original {
   color: #d16800;
+}
+
+/***********************************************
+ * 6. Blog pages 
+ ***********************************************/
+.yellow1 #zone-page-title-wrapper {
+  background: #f7a31c;
+}
+
+.yellow2 #zone-page-title-wrapper {
+  background: #e08a1e;
+}
+
+.yellow3 #zone-page-title-wrapper {
+  background: #d16800;
 }
